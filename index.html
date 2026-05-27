@@ -406,7 +406,7 @@ footer .credit { font-weight: 500; color: var(--ink-soft); }
   <details>
     <summary>▸ How this works (data pipeline)</summary>
     <div class="det-body">
-      Data is aggregated from <strong>PLFS 2023–24</strong> (MOSPI), <strong>NASSCOM Strategic Review 2025</strong>, <strong>NASSCOM-Zinnov GCC Landscape Report</strong>, company FY25 filings, and <strong>NSDC Sector Skill Council</strong> reports. The pipeline scripts (<code>pipeline/</code>) tabulate sources into <code>data/occupations.json</code>, write rich markdown descriptions to <code>pages/</code>, send each to an LLM via OpenRouter with the rubric in <code>pipeline/make_prompt.py</code>, and merge into <code>site/data.json</code> which this page reads.<br><br>
+      Data is aggregated from <strong>PLFS 2023–24</strong> (MOSPI), <strong>NASSCOM Strategic Review 2025</strong>, <strong>NASSCOM-Zinnov GCC Landscape Report</strong>, company FY25 filings, and <strong>NSDC Sector Skill Council</strong> reports. The pipeline scripts (<code>pipeline/</code>) tabulate sources into <code>data/occupations.json</code>, write rich markdown descriptions to <code>pages/</code>, send each to an LLM via OpenRouter with the rubric in <code>pipeline/make_prompt.py</code>, and merge into <code>data.json</code> which this page reads.<br><br>
       Inspired by Andrej Karpathy's <a href="https://karpathy.ai/jobs/" target="_blank">US Job Market Visualizer</a>. Same idea, India-localized data, India-specific rubric (factoring wage arbitrage erosion, service-export composition, and informal-sector dynamics).
     </div>
   </details>

@@ -10,7 +10,7 @@ help:
 	@echo "  make pages       Generate pages/*.md from occupations.json"
 	@echo "  make score       Run LLM scoring (needs OPENROUTER_API_KEY in .env)"
 	@echo "  make csv         Build data/occupations.csv"
-	@echo "  make site        Build site/data.json from sources + scores"
+	@echo "  make site        Build data.json from sources + scores"
 	@echo "  make serve       Serve the site locally at http://localhost:8000"
 	@echo ""
 	@echo "  make all         Run the full pipeline (pages → score → csv → site)"
@@ -43,10 +43,10 @@ all: pages score csv site
 
 serve:
 	@echo "Serving on http://localhost:8000 — Ctrl+C to stop"
-	cd site && python -m http.server 8000
+	python -m http.server 8000
 
 clean:
 	rm -rf pages/*.md
 	rm -f data/occupations.csv
-	rm -f site/data.json
+	rm -f data.json
 	@echo "Cleaned generated files. Source data in data/occupations.json and data/scores.json preserved."

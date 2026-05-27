@@ -2,7 +2,7 @@
 
 Analyzing how susceptible every occupation in the Indian economy is to AI and automation, using data from PLFS (MOSPI), NASSCOM Strategic Review, NSDC Sector Skill Councils, NASSCOM-Zinnov GCC Landscape Report, and individual company filings.
 
-**Live demo:** [tonumoy.github.io/india-jobs](https://tonumoy.github.io/india-jobs/) *(once you enable GitHub Pages — see Deploy section below)*
+**Live demo:** [tonumoy.github.io/India-Jobs](https://tonumoy.github.io/India-Jobs/) *(once you enable GitHub Pages — see Deploy section below)*
 
 **New here? Read [QUICKSTART.md](QUICKSTART.md) first.** It explains exactly what's happening, what LLM is in use, and gives you a 5-minute path to a live site.
 
@@ -58,8 +58,8 @@ India has no single equivalent of the US Bureau of Labor Statistics' Occupationa
                 │
                 ▼
    ┌──────────────────────────┐
-   │  site/data.json          │  ← Compact merged data
-   │  site/index.html         │  ← The treemap (D3.js)
+   │  data.json               │  ← Compact merged data
+   │  index.html              │  ← The treemap (D3.js)
    └──────────────────────────┘
 ```
 
@@ -67,8 +67,8 @@ India has no single equivalent of the US Bureau of Labor Statistics' Occupationa
 2. **Process** (`process.py`) — Generates rich Markdown descriptions for each occupation in `pages/`. For 8+ key occupations (TCS engineers, BPM voice agents, content writers, etc.) the descriptions include hand-researched industry context. The rest are templated.
 3. **Tabulate** (`make_csv.py`) — Flattens the data into `data/occupations.csv` for spreadsheet exploration.
 4. **Score** (`score.py`) — Sends each occupation's Markdown description to an LLM (default: Gemini Flash via OpenRouter) with the rubric in `make_prompt.py`. Each occupation gets an AI Exposure score from 0–10 plus a rationale. Results saved to `data/scores.json`. **Fork this to write your own prompts.**
-5. **Build site data** (`build_site_data.py`) — Merges occupations + scores into a compact `site/data.json` for the frontend.
-6. **Website** (`site/index.html`) — Interactive treemap visualization where area = employment and color = the selected metric (AI exposure / hiring trend / median pay / education). Loads `data.json` at runtime.
+5. **Build site data** (`build_site_data.py`) — Merges occupations + scores into a compact `data.json` at the repo root for the frontend.
+6. **Website** (`index.html`) — Interactive treemap visualization where area = employment and color = the selected metric (AI exposure / hiring trend / median pay / education). Loads `data.json` at runtime.
 
 ## Key files
 
@@ -80,8 +80,8 @@ India has no single equivalent of the US Bureau of Labor Statistics' Occupationa
 | `pages/*.md` | Rich Markdown descriptions, one per occupation (LLM input) |
 | `pipeline/make_prompt.py` | The India-specific scoring rubric (the heart of the system) |
 | `pipeline/score.py` | LLM scoring loop (OpenRouter, resumable) |
-| `site/index.html` | Treemap visualization (D3.js, single-file frontend) |
-| `site/data.json` | Compact merged data the frontend reads |
+| `index.html` | Treemap visualization (D3.js, single-file frontend) |
+| `data.json` | Compact merged data the frontend reads |
 
 ## AI exposure scoring
 
@@ -109,7 +109,7 @@ The prompt in `make_prompt.py` instructs the LLM to weight:
 
 ## Visualization
 
-The treemap (`site/index.html`):
+The treemap (`index.html`):
 
 - **Area** of each rectangle = total employment in that occupation
 - **Color** = the selected metric (AI exposure / hiring trend / median pay / education)
@@ -120,8 +120,8 @@ The treemap (`site/index.html`):
 
 ```bash
 # Clone
-git clone https://github.com/Tonumoy/india-jobs
-cd india-jobs
+git clone https://github.com/Tonumoy/India-Jobs
+cd India-Jobs
 
 # Install (uses uv — install from https://github.com/astral-sh/uv if needed)
 uv sync
@@ -154,7 +154,7 @@ uv run python pipeline/make_csv.py
 uv run python pipeline/build_site_data.py
 
 # Serve the site locally
-cd site && python -m http.server 8000
+python -m http.server 8000
 # Open http://localhost:8000
 ```
 
@@ -181,15 +181,15 @@ Re-run and you have a "Humanoid Robotics Exposure" layer. The same applies to of
 ## Deploy to GitHub Pages
 
 ```bash
-# After committing the repo to github.com/<you>/india-jobs:
+# After committing the repo to github.com/<you>/<repo-name>:
 # 1. Go to Settings → Pages
 # 2. Source: Deploy from a branch
-# 3. Branch: main, folder: /site
+# 3. Branch: main, folder: /(root)
 # 4. Save
-# Your site is live at <you>.github.io/india-jobs/
+# Your site is live at <you>.github.io/<repo-name>/  (case-sensitive!)
 ```
 
-Or use GitHub Actions for automatic builds; the static `site/` folder is self-contained.
+`index.html` and `data.json` live at the repo root, and a `.nojekyll` file disables GitHub's default Jekyll processing — so Pages serves the static files verbatim.
 
 ## Caveats
 

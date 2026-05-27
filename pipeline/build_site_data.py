@@ -1,6 +1,6 @@
 """
-Merge occupations master + LLM scores into a compact `site/data.json`
-that the frontend treemap consumes.
+Merge occupations master + LLM scores into a compact `data.json` at the
+repo root that the frontend treemap consumes.
 
 Schema (kept minimal — keys are short for smaller JSON over the wire):
 {
@@ -30,7 +30,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 DATA_DIR = ROOT / "data"
-SITE_DIR = ROOT / "site"
 
 
 def main():
@@ -77,8 +76,7 @@ def main():
         ],
     }
 
-    SITE_DIR.mkdir(exist_ok=True)
-    out = SITE_DIR / "data.json"
+    out = ROOT / "data.json"
     out.write_text(json.dumps(site_data, indent=2, ensure_ascii=False))
     print(f"Wrote {out} ({out.stat().st_size:,} bytes, {len(bundle['occupations'])} occupations).")
 

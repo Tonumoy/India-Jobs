@@ -23,10 +23,10 @@ This is the "I just want to get it running" guide. The full README has the deep 
         ├──► pipeline/make_csv.py ──►  data/occupations.csv
         │     "Flatten everything into a CSV."         (For Excel/spreadsheet exploration.)
         │
-        └──► pipeline/build_site_data.py ──► site/data.json
+        └──► pipeline/build_site_data.py ──► data.json
               "Merge occupations + scores."            (39KB. The frontend fetches this.)
 
-   site/index.html  ←  loads site/data.json at runtime, renders the treemap.
+   index.html  ←  loads data.json at runtime, renders the treemap.
 ```
 
 ## What LLM is being used right now?
@@ -56,8 +56,8 @@ Most people will deploy as-shipped first, then re-score later when they have an 
 2. Go to [github.com/new](https://github.com/new). Name it `india-jobs`. Make it **Public**. Click **Create repository**.
 3. On the empty repo page, click "uploading an existing file". Drag the **contents** of the unzipped folder (not the folder itself — the files inside it) into the upload box. Wait for upload. Click **Commit changes**.
 4. In the repo, click **Settings** (top right tabs) → **Pages** (left sidebar).
-5. Under "Source", choose **Deploy from a branch**. Under "Branch", pick **main** and folder **`/site`**. Click **Save**.
-6. Wait ~30 seconds, then visit `https://<your-github-username>.github.io/india-jobs/`.
+5. Under "Source", choose **Deploy from a branch**. Under "Branch", pick **main** and folder **`/(root)`**. Click **Save**.
+6. Wait ~30 seconds, then visit `https://<your-github-username>.github.io/<repo-name>/` (note: case-sensitive — must match the repo name exactly).
 
 That's it. The site is live and shows the hand-curated scores. You haven't used an LLM yet, but the visualization is real and shareable.
 
@@ -128,11 +128,11 @@ Your treemap now colors by your new question. Same data, completely different st
 
 **"Module not found" errors when running scripts directly:** Use `uv run python pipeline/...` (or the Makefile) rather than `python pipeline/...`. The scripts import `make_prompt` from the same directory, which works under `uv run` but can break under bare python depending on your shell.
 
-**Site loads but the treemap is blank:** Open browser DevTools (F12) → Console. If you see "Failed to load resource: data.json" — the file isn't where the page expects it. Run `make site` to regenerate, then make sure both `index.html` and `data.json` are in the same `site/` folder.
+**Site loads but the treemap is blank:** Open browser DevTools (F12) → Console. If you see "Failed to load resource: data.json" — the file isn't where the page expects it. Run `make site` to regenerate, then make sure both `index.html` and `data.json` are at the repo root.
 
 **OpenRouter returns 401:** The `.env` file isn't being read. Check that `.env` is in the repo root (not in `pipeline/`), and that the line is exactly `OPENROUTER_API_KEY=sk-or-v1-...` (no quotes, no spaces).
 
-**GitHub Pages shows 404:** The Pages source path is wrong. In Settings → Pages, make sure the folder is `/site`, not `/` (root) or `/docs`.
+**GitHub Pages shows 404:** Two common causes — (1) the URL is case-sensitive: `tonumoy.github.io/India-Jobs/` works, `tonumoy.github.io/india-jobs/` does not. (2) In Settings → Pages, make sure the folder is `/(root)`, not `/docs`.
 
 **The hover tooltip doesn't show on mobile:** That's expected — there's no hover on touch devices. I should probably add a tap handler. Open an issue and I'll fix it (or fork and fix).
 
