@@ -203,4 +203,4 @@ MIT. Fork, modify, write your own prompts, post your own visualizations.
 
 ## Built by
 
-[Tonumoy Mukherjee](https://www.linkedin.com/in/tonumoy-mukherjee/) 
+[Tonumoy Mukherjee](https://www.linkedin.com/in/bodhi108/) 
