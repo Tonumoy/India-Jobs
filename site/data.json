@@ -1,0 +1,1093 @@
+{
+  "meta": {
+    "total_occupations": 90,
+    "total_sectors": 15,
+    "total_workforce_covered": 455393000,
+    "last_updated": "2026-05-27",
+    "scoring_model": "seed/expert-calibrated",
+    "edu_codes": {
+      "1": "None / Primary",
+      "2": "10th / 12th",
+      "3": "ITI / Diploma",
+      "4": "Bachelor's",
+      "5": "Master's / Professional (CA, MBBS, LLB)",
+      "6": "PhD"
+    },
+    "hire_codes": {
+      "-3": "Strongly declining",
+      "-2": "Declining",
+      "-1": "Slowly declining",
+      "0": "Flat",
+      "1": "Growing",
+      "2": "Strong growth",
+      "3": "Booming"
+    }
+  },
+  "sectors": [
+    {
+      "n": "Agriculture & Allied",
+      "ch": [
+        {
+          "n": "Cultivators",
+          "s": "cultivators",
+          "v": 119000000,
+          "ai": 1,
+          "h": 0,
+          "p": 110000,
+          "e": 1,
+          "src": "PLFS 2023-24",
+          "r": "Self-employed land-bound physical work, weather-dependent. AI tools (Plantix, satellite crop monitoring) augment decisions but cannot substitute the labour. Mechanisation is uneconomic at India's 1.1 ha avg holding size."
+        },
+        {
+          "n": "Agricultural labourers",
+          "s": "agri-labour",
+          "v": 88000000,
+          "ai": 1,
+          "h": -1,
+          "p": 90000,
+          "e": 1,
+          "src": "PLFS 2023-24",
+          "r": "Outdoor manual wage labour. AI exposure essentially zero — capital cost of automation far exceeds labour cost at Indian wage levels."
+        },
+        {
+          "n": "Dairy & livestock workers",
+          "s": "dairy-livestock",
+          "v": 25000000,
+          "ai": 2,
+          "h": 1,
+          "p": 140000,
+          "e": 1,
+          "src": "PLFS 2023-24 + NDDB",
+          "r": "Animal handling, milking, fodder management — predominantly physical. IoT sensors and breed-management apps assist but the core labour is hands-on."
+        },
+        {
+          "n": "Fishing & aquaculture",
+          "s": "fishing-aquaculture",
+          "v": 14000000,
+          "ai": 2,
+          "h": 1,
+          "p": 180000,
+          "e": 2,
+          "src": "PLFS + DoF",
+          "r": "Outdoor physical work; AI used in fish-stock prediction and aquaculture monitoring, but field labour is irreducible."
+        }
+      ]
+    },
+    {
+      "n": "Construction",
+      "ch": [
+        {
+          "n": "Construction labour",
+          "s": "construction-labour",
+          "v": 50000000,
+          "ai": 1,
+          "h": 1,
+          "p": 180000,
+          "e": 1,
+          "src": "PLFS 2023-24",
+          "r": "Manual outdoor work on heterogeneous sites. Robotics adoption is decades away in Indian construction at current wage levels."
+        },
+        {
+          "n": "Civil engineers",
+          "s": "civil-engineers",
+          "v": 800000,
+          "ai": 4,
+          "h": 0,
+          "p": 600000,
+          "e": 4,
+          "src": "NSDC CSSC report",
+          "r": "Project design and management; AI assists with CAD, structural analysis, and BIM. Significant productivity uplift but the on-site coordination work remains human."
+        },
+        {
+          "n": "Architects",
+          "s": "architects",
+          "v": 150000,
+          "ai": 6,
+          "h": -1,
+          "p": 700000,
+          "e": 4,
+          "src": "Council of Architecture",
+          "r": "Drafting, rendering, and concept exploration are now substantially AI-augmented (Midjourney, Stable Diffusion architectural workflows, AutoCAD generative design). Junior drafting work most exposed."
+        }
+      ]
+    },
+    {
+      "n": "Manufacturing",
+      "ch": [
+        {
+          "n": "Textile workers",
+          "s": "textile-workers",
+          "v": 12000000,
+          "ai": 3,
+          "h": -1,
+          "p": 200000,
+          "e": 2,
+          "src": "Ministry of Textiles",
+          "r": "Operating textile machinery and finishing work. Computer-vision QC is emerging, but core fabric handling is dexterity-bound and India's cheap labour delays automation."
+        },
+        {
+          "n": "Machine operators",
+          "s": "machine-operators",
+          "v": 8000000,
+          "ai": 4,
+          "h": 0,
+          "p": 280000,
+          "e": 3,
+          "src": "NSDC CSSM",
+          "r": "Skilled machine operation with significant procedural element. AI-vision quality inspection and predictive maintenance reshape parts of the work; the operator role remains."
+        },
+        {
+          "n": "Auto & components",
+          "s": "auto-components",
+          "v": 4500000,
+          "ai": 4,
+          "h": 0,
+          "p": 350000,
+          "e": 3,
+          "src": "ACMA",
+          "r": "Mixed assembly + skilled machining. Indian auto-component industry adopting robotics + AI inspection, but slower than global peers due to wage arbitrage."
+        },
+        {
+          "n": "Quality control inspectors",
+          "s": "qc-inspectors",
+          "v": 1200000,
+          "ai": 7,
+          "h": -1,
+          "p": 380000,
+          "e": 3,
+          "src": "NSDC",
+          "r": "Visual inspection is the canonical computer-vision task. Major Indian manufacturers (Tata, Mahindra, Bajaj) are deploying AI vision systems; 1.2M jobs are structurally exposed."
+        },
+        {
+          "n": "Industrial engineers",
+          "s": "industrial-engineers",
+          "v": 600000,
+          "ai": 5,
+          "h": 1,
+          "p": 900000,
+          "e": 4,
+          "src": "NSDC + AICTE",
+          "r": "Process optimisation, simulation modelling, and quality systems design. AI assists but cross-functional coordination and on-shop-floor judgement remain human."
+        }
+      ]
+    },
+    {
+      "n": "Retail & Trade",
+      "ch": [
+        {
+          "n": "Retail sales associates",
+          "s": "retail-sales",
+          "v": 28000000,
+          "ai": 4,
+          "h": 0,
+          "p": 200000,
+          "e": 2,
+          "src": "Retailers Association of India",
+          "r": "In-person retail interaction is hard to automate, but back-end inventory and demand-forecasting tasks are increasingly AI-driven, reducing total store staffing."
+        },
+        {
+          "n": "Wholesale traders",
+          "s": "wholesale-traders",
+          "v": 12000000,
+          "ai": 4,
+          "h": 0,
+          "p": 350000,
+          "e": 2,
+          "src": "PLFS",
+          "r": "B2B trade relationships, credit decisions, and logistics coordination. AI agents emerging in supplier discovery and pricing, but the trust-based wholesale model holds."
+        },
+        {
+          "n": "Cashiers",
+          "s": "cashiers",
+          "v": 4500000,
+          "ai": 7,
+          "h": -2,
+          "p": 200000,
+          "e": 2,
+          "src": "RAI + NPCI",
+          "r": "UPI ubiquity + self-checkout = direct substitution. Reliance Retail, DMart, Amazon Fresh India are all piloting cashier-less formats. 4.5M jobs structurally exposed within 5 years."
+        },
+        {
+          "n": "Customer service (retail)",
+          "s": "retail-cs",
+          "v": 1800000,
+          "ai": 9,
+          "h": -2,
+          "p": 280000,
+          "e": 4,
+          "src": "NASSCOM",
+          "r": "Customer service is the most directly substituted task category by current LLMs. Indian D2C brands routinely report 60-80% of tier-1 support handled by AI agents."
+        }
+      ]
+    },
+    {
+      "n": "IT Services & Software",
+      "ch": [
+        {
+          "n": "TCS engineers",
+          "s": "tcs-engineers",
+          "v": 607000,
+          "ai": 7,
+          "h": -2,
+          "p": 700000,
+          "e": 4,
+          "src": "TCS Q4 FY25 + Jul 2025 layoff announcement",
+          "r": "Mid-tier offshore code/test/maintain work is the exact task profile AI coding assistants do best. The July 2025 12,000-layoff is the loudest signal yet. Senior architects less exposed."
+        },
+        {
+          "n": "Infosys engineers",
+          "s": "infosys-engineers",
+          "v": 324000,
+          "ai": 7,
+          "h": -1,
+          "p": 750000,
+          "e": 4,
+          "src": "Infosys Q4 FY25",
+          "r": "Same task profile as TCS. Parekh's Jevons-paradox bet (10× productivity → 10× more software → more engineers) is plausible but unverified. Mid-tier engineers most exposed."
+        },
+        {
+          "n": "Wipro engineers",
+          "s": "wipro-engineers",
+          "v": 233000,
+          "ai": 7,
+          "h": -2,
+          "p": 700000,
+          "e": 4,
+          "src": "Wipro SEC 6-K FY25",
+          "r": "Mid-tier offshore application services. Net headcount declined for two consecutive years (FY24 -24K, FY25 -708). Structural exposure is high."
+        },
+        {
+          "n": "HCLTech engineers",
+          "s": "hcltech-engineers",
+          "v": 226000,
+          "ai": 7,
+          "h": 0,
+          "p": 750000,
+          "e": 4,
+          "src": "HCLTech Q4 FY25",
+          "r": "Similar task profile to top-3. CEO Vijayakumar explicitly: 'clients want to double revenue with half the headcount.' Linearity between revenue and headcount is breaking."
+        },
+        {
+          "n": "Tech Mahindra engineers",
+          "s": "techmahindra-engineers",
+          "v": 148000,
+          "ai": 7,
+          "h": -2,
+          "p": 700000,
+          "e": 4,
+          "src": "Tech Mahindra Q4 FY25",
+          "r": "Telecom-heavy IT services with significant network-operations work. Network-ops AI agents are maturing; core engineering work follows the same trajectory as TCS/Infosys."
+        },
+        {
+          "n": "Mid-tier IT services",
+          "s": "midtier-it",
+          "v": 850000,
+          "ai": 7,
+          "h": -1,
+          "p": 700000,
+          "e": 4,
+          "src": "NASSCOM SR 2025",
+          "r": "LTIMindtree, Coforge, Mphasis, Persistent. Same business model as top-5 but less pricing power. More exposed because clients consolidate vendors as productivity rises."
+        },
+        {
+          "n": "Small / regional IT services",
+          "s": "small-it",
+          "v": 1500000,
+          "ai": 8,
+          "h": -2,
+          "p": 500000,
+          "e": 4,
+          "src": "NASSCOM SR 2025",
+          "r": "Tier-2/3 firms compete on price for commoditised work. AI coding tools have eliminated the wage arbitrage that justified their existence. Highest displacement risk in IT services."
+        },
+        {
+          "n": "Indian product startups",
+          "s": "product-startups",
+          "v": 800000,
+          "ai": 5,
+          "h": 2,
+          "p": 1500000,
+          "e": 4,
+          "src": "NASSCOM startup report",
+          "r": "Engineering at Indian unicorns and product startups. AI is a productivity multiplier; firms are hiring AI-native engineers at the senior end, slowing junior hiring. Net effect mixed."
+        },
+        {
+          "n": "Freelance developers",
+          "s": "freelance-devs",
+          "v": 600000,
+          "ai": 6,
+          "h": 0,
+          "p": 600000,
+          "e": 4,
+          "src": "NASSCOM + Upwork India",
+          "r": "Indian freelance developers on Upwork/Toptal compete globally on price. AI coding tools compress that arbitrage; commodity freelance work most exposed."
+        }
+      ]
+    },
+    {
+      "n": "Global Capability Centres",
+      "ch": [
+        {
+          "n": "GCC software engineering",
+          "s": "gcc-software",
+          "v": 950000,
+          "ai": 5,
+          "h": 2,
+          "p": 2000000,
+          "e": 4,
+          "src": "Zinnov GCC report 2025",
+          "r": "In-house engineering at MNCs in India. AI is a productivity tool; the work is closer to product engineering than IT services. Less commoditised, more defensible."
+        },
+        {
+          "n": "GCC engineering R&D",
+          "s": "gcc-rnd",
+          "v": 400000,
+          "ai": 5,
+          "h": 2,
+          "p": 2400000,
+          "e": 4,
+          "src": "Zinnov 2025",
+          "r": "Engineering R&D for global parents (chips, automotive, industrial). AI assists simulation, design exploration, and code generation. Core domain expertise remains scarce."
+        },
+        {
+          "n": "GCC data & analytics",
+          "s": "gcc-data",
+          "v": 250000,
+          "ai": 4,
+          "h": 3,
+          "p": 2200000,
+          "e": 4,
+          "src": "Zinnov 2025",
+          "r": "Data engineering, BI, and analytics. AI is augmentative — AI-native data tooling (Hex, Snowflake Cortex, Databricks AI) makes each analyst 2-3× more productive but demand is rising faster."
+        },
+        {
+          "n": "GCC shared services",
+          "s": "gcc-shared",
+          "v": 280000,
+          "ai": 7,
+          "h": 1,
+          "p": 800000,
+          "e": 4,
+          "src": "Zinnov 2025",
+          "r": "Captive shared-services work (finance ops, HR ops, supply-chain coordination). Same task profile as BPM — high direct exposure to AI agents and document AI."
+        },
+        {
+          "n": "GCC AI/ML specialists",
+          "s": "gcc-aiml",
+          "v": 120000,
+          "ai": 3,
+          "h": 3,
+          "p": 3500000,
+          "e": 5,
+          "src": "Zinnov 2025 - 120K+ AI pros in Indian GCCs",
+          "r": "The occupational layer that *builds* the AI displacing other roles. Demand is growing 25%+ YoY; pay premiums are widening. The Indian AI-talent paradox in one tile."
+        }
+      ]
+    },
+    {
+      "n": "BPM / BPO",
+      "ch": [
+        {
+          "n": "Voice / call centre agents",
+          "s": "bpm-voice",
+          "v": 700000,
+          "ai": 10,
+          "h": -3,
+          "p": 280000,
+          "e": 4,
+          "src": "TeamLease via Reuters Oct 2025; LimeChat case",
+          "r": "The canonical India-specific AI substitution case. LimeChat: 1 bot at ₹1L/mo replaces ~15 agents. Net BPM hiring down 10× since FY22. 700K jobs at direct, near-term risk."
+        },
+        {
+          "n": "Data entry / processing",
+          "s": "bpm-data-entry",
+          "v": 350000,
+          "ai": 10,
+          "h": -3,
+          "p": 220000,
+          "e": 2,
+          "src": "TeamLease Digital",
+          "r": "Document AI (Textract, Document Intelligence, Claude vision) reads forms at higher accuracy than human entry clerks with audit trails. Among the most directly substituted task categories."
+        },
+        {
+          "n": "F&A outsourcing",
+          "s": "bpm-fa",
+          "v": 250000,
+          "ai": 8,
+          "h": -1,
+          "p": 450000,
+          "e": 4,
+          "src": "NASSCOM",
+          "r": "F&A outsourcing — invoice processing, reconciliation, financial close. Genpact discloses ~330 GenAI solutions in production already. Junior F&A work substantially automated."
+        },
+        {
+          "n": "Transaction processing",
+          "s": "bpm-transaction",
+          "v": 200000,
+          "ai": 9,
+          "h": -2,
+          "p": 300000,
+          "e": 4,
+          "src": "NASSCOM",
+          "r": "Transaction processing is rule-based document workflow — the highest-fit task for AI agents. Major Indian BPMs are repricing these engagements as outcome-based, not FTE-based."
+        },
+        {
+          "n": "Medical transcription / coding",
+          "s": "bpm-medical-coding",
+          "v": 150000,
+          "ai": 9,
+          "h": -3,
+          "p": 350000,
+          "e": 4,
+          "src": "NASSCOM HC BPM",
+          "r": "Medical coding maps clinical narrative to ICD/CPT codes — a high-volume document-classification task. AI coders (3M, Optum, AKASA) match human accuracy; Indian medical-coding BPM is at risk."
+        },
+        {
+          "n": "HR outsourcing",
+          "s": "bpm-hr",
+          "v": 100000,
+          "ai": 7,
+          "h": -1,
+          "p": 400000,
+          "e": 4,
+          "src": "NASSCOM",
+          "r": "Payroll processing, benefits admin, compliance filings. AI agents emerging in employee-query handling; payroll calculations already automated. Mid-tier work exposed."
+        }
+      ]
+    },
+    {
+      "n": "Banking, Finance, Insurance",
+      "ch": [
+        {
+          "n": "Insurance agents",
+          "s": "insurance-agents",
+          "v": 3000000,
+          "ai": 7,
+          "h": 0,
+          "p": 250000,
+          "e": 2,
+          "src": "IRDAI",
+          "r": "Indian insurance sales is relationship-driven, but lead qualification, policy comparison, and back-office processing are increasingly AI-driven. PolicyBazaar-style platforms shrink the agent layer."
+        },
+        {
+          "n": "Bank clerks & tellers",
+          "s": "bank-clerks",
+          "v": 1800000,
+          "ai": 9,
+          "h": -2,
+          "p": 400000,
+          "e": 4,
+          "src": "IBA + RBI",
+          "r": "Branch-level transactional banking is the exact task category UPI + AI customer service replaced. Indian PSU banks shrinking branch headcount; 1.8M jobs structurally exposed."
+        },
+        {
+          "n": "Accountants & auditors",
+          "s": "accountants",
+          "v": 1500000,
+          "ai": 7,
+          "h": 0,
+          "p": 700000,
+          "e": 4,
+          "src": "ICAI estimates",
+          "r": "Bookkeeping, GST filings, tax compliance. AI tools handle 60-70% of routine accounting; CA-level judgement, advisory, and audit work remain. Junior accountants most exposed."
+        },
+        {
+          "n": "Financial advisors",
+          "s": "financial-advisors",
+          "v": 600000,
+          "ai": 6,
+          "h": 1,
+          "p": 600000,
+          "e": 4,
+          "src": "AMFI + SEBI",
+          "r": "Robo-advisory platforms (Zerodha, Groww, Smallcase) shrink the routine advisory layer. Higher-touch private-wealth and behavioural advisory remain. Mixed exposure."
+        },
+        {
+          "n": "Loan processors / officers",
+          "s": "loan-officers",
+          "v": 500000,
+          "ai": 8,
+          "h": -1,
+          "p": 500000,
+          "e": 4,
+          "src": "IBA",
+          "r": "Loan underwriting and processing — Indian fintechs (KreditBee, Lendingkart, Paytm) underwrite consumer loans at machine speed. Bank loan officers competing with algorithmic underwriting."
+        },
+        {
+          "n": "NBFC / fintech ops",
+          "s": "fintech-ops",
+          "v": 400000,
+          "ai": 7,
+          "h": 1,
+          "p": 600000,
+          "e": 4,
+          "src": "FACE + NASSCOM",
+          "r": "Operations at Indian fintech firms — KYC, fraud review, dispute handling. AI agents handle the majority of L1 queries; ops teams pivoting to exception handling."
+        },
+        {
+          "n": "Chartered Accountants",
+          "s": "ca",
+          "v": 350000,
+          "ai": 5,
+          "h": 1,
+          "p": 1200000,
+          "e": 5,
+          "src": "ICAI",
+          "r": "Chartered Accountants — audit, tax advisory, M&A. Higher-end CA work (statutory audit, complex tax, deal advisory) requires professional judgment less exposed to AI. Junior CA articleship work substantially exposed."
+        },
+        {
+          "n": "Bank branch managers",
+          "s": "branch-managers",
+          "v": 250000,
+          "ai": 4,
+          "h": -1,
+          "p": 1500000,
+          "e": 4,
+          "src": "IBA",
+          "r": "Branch oversight, local relationship management, compliance supervision. AI assists with dashboards and risk scoring; the people-management and local-trust elements remain human."
+        },
+        {
+          "n": "Investment analysts",
+          "s": "investment-analysts",
+          "v": 180000,
+          "ai": 7,
+          "h": 1,
+          "p": 1500000,
+          "e": 5,
+          "src": "SEBI + AMFI",
+          "r": "Equity research, financial modelling, investment memos. AI tools generate first-draft models and research instantly; senior analysts increasingly review AI output rather than build from scratch."
+        },
+        {
+          "n": "Stock brokers / traders",
+          "s": "stock-brokers",
+          "v": 90000,
+          "ai": 7,
+          "h": 0,
+          "p": 1000000,
+          "e": 4,
+          "src": "BSE + NSE",
+          "r": "Order execution and routine advice are platform-mediated; differentiated brokerages move to algorithmic execution and quantitative research. Retail broking commoditised."
+        }
+      ]
+    },
+    {
+      "n": "Government & Public Sector",
+      "ch": [
+        {
+          "n": "School teachers (govt)",
+          "s": "govt-teachers",
+          "v": 5500000,
+          "ai": 4,
+          "h": 0,
+          "p": 450000,
+          "e": 4,
+          "src": "UDISE+ MoE",
+          "r": "In-person K-12 teaching at government schools. AI tutoring tools augment but cannot substitute classroom management, social-emotional development, and the credentialing function of teachers."
+        },
+        {
+          "n": "Clerical & admin staff (govt)",
+          "s": "govt-clerical",
+          "v": 4500000,
+          "ai": 8,
+          "h": -1,
+          "p": 450000,
+          "e": 4,
+          "src": "DoPT + state estimates",
+          "r": "Government clerical work — file movement, data entry, certificate processing — is highly automatable. Politically protected in India: task exposure high, employment outcome insulated."
+        },
+        {
+          "n": "Police",
+          "s": "police",
+          "v": 2400000,
+          "ai": 3,
+          "h": 0,
+          "p": 400000,
+          "e": 4,
+          "src": "BPRD",
+          "r": "Field policing, investigation, community management. AI assists with surveillance, evidence analysis, and FIR drafting; the core field work is irreducible."
+        },
+        {
+          "n": "Other PSU employees",
+          "s": "psu-employees",
+          "v": 2000000,
+          "ai": 5,
+          "h": 0,
+          "p": 700000,
+          "e": 4,
+          "src": "DPE survey",
+          "r": "Mix of clerical, technical, and field roles across PSUs. Task-level exposure varies widely; employment is heavily protected. Score reflects task-mix, not employment risk."
+        },
+        {
+          "n": "Healthcare staff (govt)",
+          "s": "govt-healthcare",
+          "v": 1800000,
+          "ai": 2,
+          "h": 1,
+          "p": 400000,
+          "e": 4,
+          "src": "MoHFW",
+          "r": "Government doctors, ANMs, ASHAs. India has acute healthcare-worker shortage; demand far exceeds supply. AI assists diagnosis but expands access rather than substitutes labour."
+        },
+        {
+          "n": "Defence personnel",
+          "s": "defence",
+          "v": 1450000,
+          "ai": 3,
+          "h": 0,
+          "p": 500000,
+          "e": 4,
+          "src": "MoD",
+          "r": "Military personnel. AI reshapes intelligence, surveillance, and weapons systems but the field-soldier role remains. Specialised technical roles see higher AI augmentation."
+        },
+        {
+          "n": "Indian Railways staff",
+          "s": "railways",
+          "v": 1200000,
+          "ai": 5,
+          "h": -1,
+          "p": 500000,
+          "e": 4,
+          "src": "Indian Railways annual report",
+          "r": "Indian Railways staff — mix of station ops, train ops, maintenance, clerical. Ticketing largely automated; scheduling and predictive maintenance are AI-augmented; track and signal staff irreducible."
+        },
+        {
+          "n": "Postal workers",
+          "s": "postal",
+          "v": 380000,
+          "ai": 6,
+          "h": -2,
+          "p": 400000,
+          "e": 2,
+          "src": "India Post",
+          "r": "Postal sorting and delivery. Sorting is already heavily automated; last-mile delivery handled by India Post against a shrinking letter-volume backdrop. Office-side roles most exposed."
+        }
+      ]
+    },
+    {
+      "n": "Healthcare (Private)",
+      "ch": [
+        {
+          "n": "Nurses",
+          "s": "nurses",
+          "v": 3300000,
+          "ai": 1,
+          "h": 2,
+          "p": 350000,
+          "e": 4,
+          "src": "INC + MoHFW",
+          "r": "Hands-on patient care, medication administration, physical assessment. AI assists documentation and triage but cannot substitute the bedside role. India has a structural nursing shortage."
+        },
+        {
+          "n": "Doctors",
+          "s": "doctors",
+          "v": 1300000,
+          "ai": 3,
+          "h": 2,
+          "p": 1500000,
+          "e": 5,
+          "src": "NMC registration",
+          "r": "Diagnostic AI (radiology, dermatology, pathology) assists but doctors retain treatment decisions and patient relationships. Specialist work less exposed; general OPD work more so."
+        },
+        {
+          "n": "Pharmacists",
+          "s": "pharmacists",
+          "v": 850000,
+          "ai": 5,
+          "h": 0,
+          "p": 350000,
+          "e": 4,
+          "src": "PCI",
+          "r": "Indian retail pharmacy is largely transactional dispensing — exposed to online pharmacy platforms (Tata 1mg, PharmEasy). Clinical pharmacist roles less exposed."
+        },
+        {
+          "n": "Hospital admin",
+          "s": "hospital-admin",
+          "v": 600000,
+          "ai": 7,
+          "h": 0,
+          "p": 400000,
+          "e": 4,
+          "src": "NSDC HSSC",
+          "r": "Hospital admin — billing, insurance coordination, scheduling, supply management. Document AI and scheduling agents directly substitute most of this work."
+        },
+        {
+          "n": "Lab technicians",
+          "s": "lab-techs",
+          "v": 500000,
+          "ai": 6,
+          "h": 0,
+          "p": 280000,
+          "e": 3,
+          "src": "NSDC HSSC",
+          "r": "Sample handling remains physical; result analysis and image interpretation are AI-augmented. Pathology and radiology technicians see higher exposure than histology lab staff."
+        },
+        {
+          "n": "Diagnostic radiologists",
+          "s": "radiologists",
+          "v": 30000,
+          "ai": 8,
+          "h": 0,
+          "p": 2500000,
+          "e": 5,
+          "src": "Indian Radiological Society",
+          "r": "Radiology AI is among the most mature medical AI domains. India has acute radiologist shortage so AI initially expands access; long-term, demand growth slows as productivity rises 3-5×."
+        }
+      ]
+    },
+    {
+      "n": "Education (Private)",
+      "ch": [
+        {
+          "n": "School teachers (private)",
+          "s": "pvt-teachers",
+          "v": 4500000,
+          "ai": 4,
+          "h": 0,
+          "p": 350000,
+          "e": 4,
+          "src": "UDISE+ MoE",
+          "r": "Private K-12 teaching. AI tutoring tools (Khan Academy, BYJU's, ChatGPT) augment learning but the classroom credentialing function holds."
+        },
+        {
+          "n": "Private tutors",
+          "s": "private-tutors",
+          "v": 1800000,
+          "ai": 8,
+          "h": -1,
+          "p": 250000,
+          "e": 4,
+          "src": "NSDC + ASER",
+          "r": "1-on-1 supplementary tutoring — direct competition from AI tutors at near-zero marginal cost. Top-end tutoring (board exams, IIT-JEE) more defensible than primary-school tuition."
+        },
+        {
+          "n": "College & university faculty",
+          "s": "college-faculty",
+          "v": 1500000,
+          "ai": 5,
+          "h": 0,
+          "p": 800000,
+          "e": 5,
+          "src": "AISHE 2022-23",
+          "r": "Higher-ed teaching, research, and administration. Research work AI-augmented; teaching credentialing and mentorship remain human. Lab-based fields less exposed."
+        },
+        {
+          "n": "Coaching / test prep",
+          "s": "coaching",
+          "v": 1200000,
+          "ai": 8,
+          "h": -1,
+          "p": 400000,
+          "e": 4,
+          "src": "NSDC + industry estimates",
+          "r": "Test-prep coaching (JEE, NEET, UPSC, CAT). ChatGPT-class models solve the majority of objective problems and explain solutions. Test-prep business model under pressure."
+        },
+        {
+          "n": "EdTech roles",
+          "s": "edtech",
+          "v": 200000,
+          "ai": 6,
+          "h": 0,
+          "p": 800000,
+          "e": 4,
+          "src": "NASSCOM EdTech report",
+          "r": "Edtech operations roles — content production, ops, sales. Content authoring increasingly AI-driven; sales remain human. Sector itself contracting since Byju's collapse."
+        }
+      ]
+    },
+    {
+      "n": "Media / Content / Creative",
+      "ch": [
+        {
+          "n": "Influencers & creators",
+          "s": "influencers",
+          "v": 800000,
+          "ai": 4,
+          "h": 3,
+          "p": 600000,
+          "e": 2,
+          "src": "Industry estimates (Inc42, EY)",
+          "r": "Creator economy. AI tools augment content production but the audience attachment is irreducibly human (parasocial). New AI-generated creators emerging but real-creator demand growing."
+        },
+        {
+          "n": "Content writers",
+          "s": "content-writers",
+          "v": 450000,
+          "ai": 10,
+          "h": -3,
+          "p": 400000,
+          "e": 4,
+          "src": "Industry estimates",
+          "r": "Among the most directly substituted occupations by current AI. SEO blog content, marketing collateral, product descriptions are GPT-4-class quality at near-zero marginal cost."
+        },
+        {
+          "n": "Graphic designers",
+          "s": "graphic-designers",
+          "v": 380000,
+          "ai": 8,
+          "h": -1,
+          "p": 450000,
+          "e": 3,
+          "src": "NSDC MESC",
+          "r": "Midjourney, DALL-E, Stable Diffusion already produce design output competitive with mid-level human designers. Brand-specific and senior creative work less exposed."
+        },
+        {
+          "n": "Social media managers",
+          "s": "social-media-managers",
+          "v": 350000,
+          "ai": 7,
+          "h": 0,
+          "p": 500000,
+          "e": 4,
+          "src": "NSDC MESC",
+          "r": "Content calendar planning, copy generation, performance reporting. AI agents handle drafting and scheduling; senior strategy and brand voice remain human."
+        },
+        {
+          "n": "Photographers",
+          "s": "photographers",
+          "v": 290000,
+          "ai": 5,
+          "h": 0,
+          "p": 400000,
+          "e": 2,
+          "src": "NSDC MESC",
+          "r": "Event and product photography remain physical; stock photography substantially substituted by generated images. Wedding/event most defensible; commercial stock photography most exposed."
+        },
+        {
+          "n": "Video editors",
+          "s": "video-editors",
+          "v": 280000,
+          "ai": 6,
+          "h": 0,
+          "p": 500000,
+          "e": 3,
+          "src": "NSDC MESC",
+          "r": "Video editing pipelines have AI features (auto-cut, captioning, b-roll generation) integrated. Long-form storytelling editors less exposed than short-form social-media editors."
+        },
+        {
+          "n": "Animation / VFX",
+          "s": "animation-vfx",
+          "v": 200000,
+          "ai": 7,
+          "h": 1,
+          "p": 600000,
+          "e": 3,
+          "src": "FICCI-EY M&E report",
+          "r": "VFX pipelines are heavily AI-augmented (rotoscoping, in-betweening, upscaling). Indian VFX shops adopting AI tools to compete on cost; junior roles most affected."
+        },
+        {
+          "n": "Translators",
+          "s": "translators",
+          "v": 180000,
+          "ai": 10,
+          "h": -3,
+          "p": 400000,
+          "e": 4,
+          "src": "Industry estimates",
+          "r": "Neural machine translation achieved near-human quality 2-3 years ago. Per-word rates have collapsed 60-80%. Surviving demand is specialised post-editing only."
+        },
+        {
+          "n": "Journalists",
+          "s": "journalists",
+          "v": 95000,
+          "ai": 8,
+          "h": -2,
+          "p": 600000,
+          "e": 4,
+          "src": "PCI + Editors Guild estimates",
+          "r": "News aggregation, summarisation, and basic reporting are heavily AI-augmented. Investigative and feature journalism more defensible. Indian news budgets shrinking independent of AI."
+        }
+      ]
+    },
+    {
+      "n": "Legal & Professional Services",
+      "ch": [
+        {
+          "n": "Lawyers (litigation)",
+          "s": "lawyers",
+          "v": 1300000,
+          "ai": 5,
+          "h": 0,
+          "p": 800000,
+          "e": 5,
+          "src": "Bar Council of India",
+          "r": "Litigation — in-court advocacy, client management, strategic judgment — remains human. Brief preparation, research, and document drafting are AI-augmented (~50% productivity uplift in research)."
+        },
+        {
+          "n": "HR professionals",
+          "s": "hr-professionals",
+          "v": 750000,
+          "ai": 7,
+          "h": 0,
+          "p": 700000,
+          "e": 4,
+          "src": "NHRDN estimates",
+          "r": "Recruitment screening, employee-query handling, policy compliance — substantial AI substitution. HRBP and senior org-design roles less exposed."
+        },
+        {
+          "n": "Paralegals & legal research",
+          "s": "paralegals",
+          "v": 250000,
+          "ai": 9,
+          "h": -2,
+          "p": 400000,
+          "e": 4,
+          "src": "Industry estimates",
+          "r": "Document review, legal research, contract redlining — exactly what current LLMs do at or near attorney quality. Indian legal-process-outsourcing severely exposed."
+        },
+        {
+          "n": "Corporate legal counsel",
+          "s": "corporate-legal",
+          "v": 150000,
+          "ai": 7,
+          "h": 0,
+          "p": 2000000,
+          "e": 5,
+          "src": "GC Counsel estimates",
+          "r": "Contract review, compliance, due-diligence — increasingly AI-assisted. Indian in-house counsel reshaping toward higher-judgement, lower-volume work."
+        },
+        {
+          "n": "Management consultants",
+          "s": "consultants",
+          "v": 80000,
+          "ai": 6,
+          "h": 1,
+          "p": 2500000,
+          "e": 5,
+          "src": "Industry estimates",
+          "r": "Management consulting — research, modelling, deck production are heavily AI-augmented. Client relationships and senior judgement remain. Mid-tier consultants most exposed."
+        }
+      ]
+    },
+    {
+      "n": "Transport & Logistics",
+      "ch": [
+        {
+          "n": "Truck drivers",
+          "s": "truck-drivers",
+          "v": 8500000,
+          "ai": 3,
+          "h": 0,
+          "p": 250000,
+          "e": 2,
+          "src": "AIMTC",
+          "r": "Long-haul driving. Autonomous trucking is far from deployment in Indian conditions (road quality, traffic patterns, regulatory environment). 5-10 year horizon at minimum."
+        },
+        {
+          "n": "Cab / auto drivers",
+          "s": "cab-drivers",
+          "v": 5500000,
+          "ai": 4,
+          "h": 1,
+          "p": 200000,
+          "e": 2,
+          "src": "NSDC TSC",
+          "r": "App-platform driving (Ola, Uber, Rapido). Autonomous vehicles 10+ years out in India. Dispatch and pricing AI optimises but does not substitute the driver."
+        },
+        {
+          "n": "Last-mile delivery",
+          "s": "delivery",
+          "v": 3000000,
+          "ai": 3,
+          "h": 3,
+          "p": 230000,
+          "e": 2,
+          "src": "NASSCOM + industry",
+          "r": "Last-mile delivery — Zomato, Swiggy, Zepto, Blinkit, Amazon, Flipkart. Quick-commerce growth is creating demand far faster than AI substitutes; one of the fastest-growing Indian job categories."
+        },
+        {
+          "n": "Warehouse workers",
+          "s": "warehouse",
+          "v": 2200000,
+          "ai": 5,
+          "h": 0,
+          "p": 200000,
+          "e": 2,
+          "src": "NSDC LSC",
+          "r": "Warehouse operations. Large e-commerce warehouses (Amazon, Flipkart) deploying robotics + AI vision; SME warehouses still manual. Mixed exposure."
+        },
+        {
+          "n": "Logistics coordinators",
+          "s": "logistics-coordinators",
+          "v": 600000,
+          "ai": 7,
+          "h": 0,
+          "p": 400000,
+          "e": 4,
+          "src": "NSDC LSC",
+          "r": "Logistics coordination — load planning, route optimisation, freight matching, customs documentation. Heavy document workflow + agentic optimisation. Direct substitution risk."
+        },
+        {
+          "n": "Pilots & airline crew",
+          "s": "pilots",
+          "v": 70000,
+          "ai": 4,
+          "h": 1,
+          "p": 1500000,
+          "e": 4,
+          "src": "DGCA",
+          "r": "Commercial aviation. AI assists flight management, weather routing, and predictive maintenance; regulatory and trust factors keep the pilot role for 15+ years."
+        }
+      ]
+    },
+    {
+      "n": "Hospitality & Tourism",
+      "ch": [
+        {
+          "n": "Restaurant staff",
+          "s": "restaurant-staff",
+          "v": 4500000,
+          "ai": 4,
+          "h": 0,
+          "p": 220000,
+          "e": 2,
+          "src": "NRAI + NSDC THSC",
+          "r": "Service, kitchen, and front-of-house. Ordering substituted by tablets/apps; service and cooking remain physical. Cloud-kitchens automating prep but the labour pool remains large."
+        },
+        {
+          "n": "Hotel staff",
+          "s": "hotel-staff",
+          "v": 2500000,
+          "ai": 4,
+          "h": 0,
+          "p": 250000,
+          "e": 2,
+          "src": "FHRAI",
+          "r": "Front-desk substantially self-service; housekeeping and F&B service remain. AI assists revenue management and guest queries; physical hospitality holds."
+        },
+        {
+          "n": "Event management",
+          "s": "event-mgmt",
+          "v": 300000,
+          "ai": 5,
+          "h": 1,
+          "p": 500000,
+          "e": 4,
+          "src": "EEMA",
+          "r": "Vendor coordination, logistics, client management. AI assists planning tools and supplier matching; on-the-day execution remains human-intensive."
+        },
+        {
+          "n": "Tour guides",
+          "s": "tour-guides",
+          "v": 250000,
+          "ai": 6,
+          "h": 0,
+          "p": 300000,
+          "e": 4,
+          "src": "Ministry of Tourism",
+          "r": "AI travel companions (apps with multimodal LLMs, AR overlays) substitute the information role; in-person hosting and storytelling remain. Higher-end guided experiences most defensible."
+        },
+        {
+          "n": "Travel agents",
+          "s": "travel-agents",
+          "v": 150000,
+          "ai": 9,
+          "h": -2,
+          "p": 350000,
+          "e": 4,
+          "src": "TAAI",
+          "r": "Online travel platforms (MakeMyTrip, Goibibo, EaseMyTrip) plus AI trip-planning have substantially eliminated routine travel agency. Specialist travel (luxury, niche) survives."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India Job Market Visualizer</title>
+<meta name="description" content="An interactive treemap of India's ~455M-strong workforce, scored for AI exposure by an LLM. 90 occupations, 4 toggleable layers. Inspired by karpathy.ai/jobs.">
+<meta property="og:title" content="India Job Market Visualizer">
+<meta property="og:description" content="455M jobs · 90 occupations · LLM-scored AI exposure · forkable pipeline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+<style>
+:root {
+  --bg: #0d1117;
+  --bg-soft: #161b22;
+  --bg-card: #1c2128;
+  --ink: #e6edf3;
+  --ink-soft: #8b949e;
+  --ink-faint: #484f58;
+  --rule: #30363d;
+  --gold: #d4a04a;
+  --warn: #d64545;
+  --good: #6db17a;
+  --link: #58a6ff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header { margin-bottom: 18px; }
+
+.title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: clamp(20px, 2.5vw, 26px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.gh-link {
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.gh-link:hover { color: var(--link); }
+
+.lede {
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 1100px;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.lede strong { color: var(--ink); font-weight: 600; }
+.lede a { color: var(--link); text-decoration: none; }
+.lede a:hover { text-decoration: underline; }
+
+.caveat {
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 1100px;
+  line-height: 1.55;
+  margin-top: 8px;
+}
+.caveat strong { color: var(--ink); }
+
+details {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 1100px;
+}
+details summary {
+  cursor: pointer;
+  color: var(--ink-soft);
+  user-select: none;
+  padding: 4px 0;
+  font-weight: 500;
+}
+details summary:hover { color: var(--link); }
+details .det-body {
+  margin-top: 8px;
+  padding: 14px 16px;
+  background: var(--bg-soft);
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+  line-height: 1.65;
+}
+details .det-body code {
+  background: var(--bg-card);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--gold);
+}
+
+/* CONTROLS */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 18px 0 14px;
+  flex-wrap: wrap;
+}
+
+.control-group { display: flex; align-items: center; gap: 10px; }
+
+.control-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.btn-group {
+  display: flex;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.btn {
+  background: transparent;
+  color: var(--ink-soft);
+  border: none;
+  border-right: 1px solid var(--rule);
+  padding: 7px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+.btn:last-child { border-right: none; }
+.btn:hover { background: var(--bg-card); color: var(--ink); }
+.btn.active { background: var(--bg-card); color: var(--gold); }
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.legend-grad {
+  width: 200px;
+  height: 8px;
+  border-radius: 3px;
+}
+
+/* STATS BAR — Karpathy-style compact inline */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px 24px;
+  margin: 16px 0 14px;
+  padding: 14px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+.stat { display: flex; flex-direction: column; gap: 2px; }
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.stat-sub {
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+.stat-sub.warn { color: var(--warn); }
+.stat-sub.good { color: var(--good); }
+.stat-sub.gold { color: var(--gold); }
+
+/* TREEMAP */
+#treemap {
+  width: 100%;
+  position: relative;
+  background: #0a0d12;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tile {
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgba(0,0,0,0.5);
+  cursor: pointer;
+  outline: 0 solid rgba(212, 160, 74, 0);
+}
+
+.tile:hover {
+  outline: 2px solid var(--gold);
+  z-index: 10;
+}
+
+.tile-inner {
+  padding: 5px 7px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color: rgba(0,0,0,0.92);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.15;
+}
+
+.tile-inner.light { color: rgba(255,255,255,0.96); }
+
+.tile-name {
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-bottom: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tile-meta {
+  font-size: 10px;
+  opacity: 0.82;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sector-label {
+  position: absolute;
+  font-weight: 600;
+  font-size: 11px;
+  color: rgba(255,255,255,0.95);
+  pointer-events: none;
+  z-index: 6;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Inter', sans-serif;
+}
+
+/* TOOLTIP */
+.tooltip {
+  position: fixed;
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s;
+  z-index: 100;
+  max-width: 360px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.tt-sector {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.tt-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.tt-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 0;
+}
+
+.tt-key { color: var(--ink-soft); }
+.tt-val { color: var(--ink); font-weight: 500; }
+
+.tt-rationale {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.tt-rationale strong {
+  color: var(--ink);
+  font-style: normal;
+  display: block;
+  margin-bottom: 3px;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.tt-source {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+/* FOOTER */
+footer {
+  margin: 28px 0 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+footer a { color: var(--ink-soft); text-decoration: none; }
+footer a:hover { color: var(--link); }
+
+footer .credit { font-weight: 500; color: var(--ink-soft); }
+
+/* LOADING */
+.loading {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 700px) {
+  .shell { padding: 14px; }
+  .controls { gap: 12px; }
+  .stats { grid-template-columns: 1fr 1fr; padding: 10px 12px; }
+  .stat-value { font-size: 17px; }
+  .legend-grad { width: 130px; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<header>
+  <div class="title-row">
+    <h1>India Job Market Visualizer</h1>
+    <a class="gh-link" href="https://github.com/Tonumoy/india-jobs" target="_blank">GitHub</a>
+  </div>
+  <p class="lede" id="lede">Loading…</p>
+  <p class="caveat"><strong>LLM-powered coloring:</strong> The pipeline (<a href="https://github.com/Tonumoy/india-jobs" target="_blank">source code</a>) scrapes structured Indian occupation data and writes a custom LLM prompt that scores each occupation by any criterion you like. The "AI Exposure" layer is one example. You could write a different prompt for any question — humanoid-robotics exposure, offshoring risk, climate exposure — and re-run the pipeline to get a different coloring.</p>
+  <p class="caveat" style="margin-top: 6px;"><strong>Caveat on AI Exposure scores:</strong> These are rough LLM estimates calibrated to a published rubric, not rigorous predictions. A high score does not predict the job will disappear. Software developers score 7/10 because AI is transforming their work — but demand for software could easily <em>grow</em> as each developer becomes more productive. The score does not account for demand elasticity, regulatory barriers, latent demand, or social preferences for human workers. Many high-exposure jobs will be <em>reshaped</em>, not replaced.</p>
+  <details>
+    <summary>▸ How this works (data pipeline)</summary>
+    <div class="det-body">
+      Data is aggregated from <strong>PLFS 2023–24</strong> (MOSPI), <strong>NASSCOM Strategic Review 2025</strong>, <strong>NASSCOM-Zinnov GCC Landscape Report</strong>, company FY25 filings, and <strong>NSDC Sector Skill Council</strong> reports. The pipeline scripts (<code>pipeline/</code>) tabulate sources into <code>data/occupations.json</code>, write rich markdown descriptions to <code>pages/</code>, send each to an LLM via OpenRouter with the rubric in <code>pipeline/make_prompt.py</code>, and merge into <code>site/data.json</code> which this page reads.<br><br>
+      Inspired by Andrej Karpathy's <a href="https://karpathy.ai/jobs/" target="_blank">US Job Market Visualizer</a>. Same idea, India-localized data, India-specific rubric (factoring wage arbitrage erosion, service-export composition, and informal-sector dynamics).
+    </div>
+  </details>
+</header>
+
+<div class="controls">
+  <div class="control-group">
+    <span class="control-label">Layer</span>
+    <div class="btn-group" id="layer-buttons">
+      <button class="btn active" data-layer="ai">AI Exposure</button>
+      <button class="btn" data-layer="hire">Hiring Trend</button>
+      <button class="btn" data-layer="pay">Median Pay</button>
+      <button class="btn" data-layer="edu">Education</button>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span id="legend-min">Low</span>
+    <div class="legend-grad" id="legend-grad"></div>
+    <span id="legend-max">High</span>
+  </div>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div id="treemap"><div class="loading">Loading data.json…</div></div>
+
+<footer>
+  <div class="credit">Built by <a href="https://www.linkedin.com/in/tonumoy-mukherjee/" target="_blank">Tonumoy Mukherjee</a> — Data Scientist, Kolkata · 2026</div>
+  <div>
+    <a href="https://github.com/Tonumoy/india-jobs" target="_blank">GitHub</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/tonumoy-mukherjee/" target="_blank">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/@cosmoscoded" target="_blank">Coded Cosmos</a>
+  </div>
+</footer>
+
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ============================================================================
+// COLOR SCALES
+// ============================================================================
+
+function colorAI(s) {
+  if (s === null || s === undefined) return '#3a3a3a';
+  const t = Math.max(0, Math.min(1, s / 10));
+  if (t < 0.25) return d3.interpolateRgb("#3a7a4a", "#9ca94a")(t / 0.25);
+  if (t < 0.5)  return d3.interpolateRgb("#9ca94a", "#d4a04a")((t - 0.25) / 0.25);
+  if (t < 0.75) return d3.interpolateRgb("#d4a04a", "#c75a3c")((t - 0.5) / 0.25);
+  return d3.interpolateRgb("#c75a3c", "#8b1a1a")((t - 0.75) / 0.25);
+}
+
+function colorHire(s) {
+  const t = (Math.max(-3, Math.min(3, s)) + 3) / 6;
+  if (t < 0.33) return d3.interpolateRgb("#8b1a1a", "#d4a04a")(t / 0.33);
+  if (t < 0.66) return d3.interpolateRgb("#d4a04a", "#9ca94a")((t - 0.33) / 0.33);
+  return d3.interpolateRgb("#9ca94a", "#3a7a4a")((t - 0.66) / 0.34);
+}
+
+function colorPay(pay) {
+  const lp = Math.log10(Math.max(50000, pay));
+  const t = Math.max(0, Math.min(1, (lp - Math.log10(50000)) / (Math.log10(4000000) - Math.log10(50000))));
+  if (t < 0.33) return d3.interpolateRgb("#8b1a1a", "#d4a04a")(t / 0.33);
+  if (t < 0.66) return d3.interpolateRgb("#d4a04a", "#9ca94a")((t - 0.33) / 0.33);
+  return d3.interpolateRgb("#9ca94a", "#3a7a4a")((t - 0.66) / 0.34);
+}
+
+function colorEdu(level) {
+  const t = (level - 1) / 5;
+  return d3.interpolateRgb.gamma(2.2)("#5c3a5c", "#3a7a8a")(t);
+}
+
+const LAYERS = {
+  ai: {
+    label: "AI Exposure",
+    legendMin: "0 · Low", legendMax: "10 · Very high",
+    stops: [0, 2.5, 5, 7.5, 10].map(colorAI),
+    color: d => colorAI(d.ai),
+    metric: d => (d.ai !== null && d.ai !== undefined) ? d.ai + "/10" : "—"
+  },
+  hire: {
+    label: "Hiring Trend",
+    legendMin: "−3 · Falling", legendMax: "+3 · Booming",
+    stops: [-3, -1.5, 0, 1.5, 3].map(colorHire),
+    color: d => colorHire(d.h),
+    metric: d => {
+      const labels = {[-3]:"−3 strong fall",[-2]:"−2 falling",[-1]:"−1 slow fall",[0]:"0 flat",[1]:"+1 growing",[2]:"+2 strong",[3]:"+3 booming"};
+      return labels[d.h];
+    }
+  },
+  pay: {
+    label: "Median Pay",
+    legendMin: "<₹2L", legendMax: "₹40L+",
+    stops: [80000, 300000, 800000, 2000000, 4000000].map(colorPay),
+    color: d => colorPay(d.p),
+    metric: d => "₹" + (d.p >= 100000 ? (d.p/100000).toFixed(1) + "L" : (d.p/1000).toFixed(0) + "K")
+  },
+  edu: {
+    label: "Education",
+    legendMin: "None", legendMax: "PhD",
+    stops: [1,2,3,4,5,6].map(colorEdu),
+    color: d => colorEdu(d.e),
+    metric: d => EDU_LABELS[d.e]
+  }
+};
+
+let EDU_LABELS = {};
+let HIRE_LABELS = {};
+let DATA = null;
+let currentLayer = 'ai';
+
+const treemapEl = document.getElementById('treemap');
+const tooltip = document.getElementById('tooltip');
+
+function formatJobs(n) {
+  if (n >= 10000000) return (n/10000000).toFixed(1) + " Cr";
+  if (n >= 100000)   return (n/100000).toFixed(1) + " L";
+  if (n >= 1000)     return (n/1000).toFixed(0) + "K";
+  return n.toString();
+}
+
+function pickTextColor(bgHex) {
+  const rgb = d3.rgb(bgHex);
+  const lum = 0.299*rgb.r + 0.587*rgb.g + 0.114*rgb.b;
+  return lum < 130 ? 'light' : 'dark';
+}
+
+// Transform data.json into d3.hierarchy-compatible structure
+function toHierarchy(data) {
+  return {
+    name: "India",
+    children: data.sectors.map(s => ({
+      name: s.n,
+      children: s.ch.map(o => ({ ...o, name: o.n, value: o.v, sector: s.n }))
+    }))
+  };
+}
+
+function render() {
+  const w = treemapEl.clientWidth;
+  const h = Math.max(720, window.innerHeight * 0.78);
+  treemapEl.style.height = h + 'px';
+  treemapEl.innerHTML = '';
+
+  const root = d3.hierarchy(toHierarchy(DATA))
+    .sum(d => d.value)
+    .sort((a,b) => b.value - a.value);
+
+  d3.treemap()
+    .size([w, h])
+    .paddingTop(d => d.depth === 1 ? 18 : 0)
+    .paddingInner(1)
+    .paddingOuter(2)
+    .round(true)(root);
+
+  const layer = LAYERS[currentLayer];
+
+  // Sector labels INSIDE each sector at the top — like Karpathy's
+  root.children.forEach(sector => {
+    const sw = sector.x1 - sector.x0, sh = sector.y1 - sector.y0;
+    if (sw < 60 || sh < 18) return;
+    // Background strip for sector label
+    const strip = document.createElement('div');
+    strip.style.position = 'absolute';
+    strip.style.left = sector.x0 + 'px';
+    strip.style.top = sector.y0 + 'px';
+    strip.style.width = sw + 'px';
+    strip.style.height = '18px';
+    strip.style.background = 'rgba(0,0,0,0.45)';
+    strip.style.pointerEvents = 'none';
+    strip.style.zIndex = '4';
+    treemapEl.appendChild(strip);
+    // Label text
+    const lbl = document.createElement('div');
+    lbl.className = 'sector-label';
+    lbl.style.left = sector.x0 + 'px';
+    lbl.style.top = sector.y0 + 'px';
+    lbl.style.width = sw + 'px';
+    lbl.style.height = '18px';
+    lbl.style.lineHeight = '18px';
+    lbl.style.padding = '0 6px';
+    lbl.textContent = sector.data.name;
+    treemapEl.appendChild(lbl);
+  });
+
+  root.leaves().forEach(leaf => {
+    const d = leaf.data;
+    const w = leaf.x1 - leaf.x0, h = leaf.y1 - leaf.y0;
+    if (w < 2 || h < 2) return;
+
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.style.left = leaf.x0 + 'px';
+    tile.style.top = leaf.y0 + 'px';
+    tile.style.width = w + 'px';
+    tile.style.height = h + 'px';
+    const fill = layer.color(d);
+    tile.style.background = fill;
+
+    const inner = document.createElement('div');
+    inner.className = 'tile-inner ' + pickTextColor(fill);
+    if (w > 50 && h > 22) {
+      const name = document.createElement('div');
+      name.className = 'tile-name';
+      name.textContent = d.n;
+      inner.appendChild(name);
+      if (h > 38 && w > 70) {
+        const meta = document.createElement('div');
+        meta.className = 'tile-meta';
+        meta.textContent = formatJobs(d.v) + " · " + layer.metric(d);
+        inner.appendChild(meta);
+      }
+    }
+    tile.appendChild(inner);
+
+    tile.addEventListener('mousemove', (e) => showTooltip(e, d, leaf.parent.data.name));
+    tile.addEventListener('mouseleave', hideTooltip);
+
+    treemapEl.appendChild(tile);
+  });
+
+  updateStats();
+  updateLegend();
+}
+
+function showTooltip(e, d, sector) {
+  let html = `<div class="tt-sector">${sector}</div>`;
+  html += `<div class="tt-title">${d.n}</div>`;
+  html += `<div class="tt-row"><span class="tt-key">Employment</span><span class="tt-val">${d.v.toLocaleString('en-IN')}</span></div>`;
+  if (d.ai !== null && d.ai !== undefined) {
+    html += `<div class="tt-row"><span class="tt-key">AI exposure</span><span class="tt-val">${d.ai}/10</span></div>`;
+  }
+  html += `<div class="tt-row"><span class="tt-key">Hiring trend</span><span class="tt-val">${HIRE_LABELS[d.h]}</span></div>`;
+  const payStr = d.p >= 100000 ? "₹" + (d.p/100000).toFixed(1) + " lakh/yr" : "₹" + d.p.toLocaleString('en-IN') + "/yr";
+  html += `<div class="tt-row"><span class="tt-key">Median pay</span><span class="tt-val">${payStr}</span></div>`;
+  html += `<div class="tt-row"><span class="tt-key">Education</span><span class="tt-val">${EDU_LABELS[d.e]}</span></div>`;
+  if (d.r) html += `<div class="tt-rationale"><strong>LLM rationale</strong>${d.r}</div>`;
+  if (d.src) html += `<div class="tt-source">Source: ${d.src}</div>`;
+  tooltip.innerHTML = html;
+  tooltip.style.opacity = 1;
+  const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+  let left = e.clientX + 14, top = e.clientY + 14;
+  if (left + tw > window.innerWidth - 16) left = e.clientX - tw - 14;
+  if (top + th > window.innerHeight - 16) top = e.clientY - th - 14;
+  tooltip.style.left = left + 'px';
+  tooltip.style.top = top + 'px';
+}
+
+function hideTooltip() { tooltip.style.opacity = 0; }
+
+function updateStats() {
+  const statsEl = document.getElementById('stats');
+  const allOccs = DATA.sectors.flatMap(s => s.ch);
+  const total = allOccs.reduce((a, o) => a + o.v, 0);
+
+  let html = `<div class="stat"><span class="stat-label">Total jobs</span><span class="stat-value">${(total/10000000).toFixed(1)} Cr</span><span class="stat-sub">${(total/1000000).toFixed(0)}M workforce</span></div>`;
+
+  if (currentLayer === 'ai') {
+    const scored = allOccs.filter(o => o.ai !== null && o.ai !== undefined);
+    const sTot = scored.reduce((a, o) => a + o.v, 0);
+    const highAI = scored.filter(o => o.ai >= 7).reduce((a, o) => a + o.v, 0);
+    const lowAI = scored.filter(o => o.ai <= 3).reduce((a, o) => a + o.v, 0);
+    const wgtAvg = sTot > 0 ? scored.reduce((a, o) => a + o.ai * o.v, 0) / sTot : 0;
+    html += `<div class="stat"><span class="stat-label">High AI exposure</span><span class="stat-value">${(highAI/10000000).toFixed(1)} Cr</span><span class="stat-sub warn">${(highAI/sTot*100).toFixed(1)}% · score 7+</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Low AI exposure</span><span class="stat-value">${(lowAI/10000000).toFixed(1)} Cr</span><span class="stat-sub good">${(lowAI/sTot*100).toFixed(1)}% · score ≤3</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Weighted avg</span><span class="stat-value">${wgtAvg.toFixed(2)}</span><span class="stat-sub">out of 10</span></div>`;
+  } else if (currentLayer === 'hire') {
+    const declining = allOccs.filter(o => o.h < 0).reduce((a, o) => a + o.v, 0);
+    const growing = allOccs.filter(o => o.h > 0).reduce((a, o) => a + o.v, 0);
+    const flat = allOccs.filter(o => o.h === 0).reduce((a, o) => a + o.v, 0);
+    html += `<div class="stat"><span class="stat-label">Declining jobs</span><span class="stat-value">${(declining/10000000).toFixed(1)} Cr</span><span class="stat-sub warn">${(declining/total*100).toFixed(1)}% shrinking</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Flat hiring</span><span class="stat-value">${(flat/10000000).toFixed(1)} Cr</span><span class="stat-sub">${(flat/total*100).toFixed(1)}% stable</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Growing jobs</span><span class="stat-value">${(growing/10000000).toFixed(1)} Cr</span><span class="stat-sub good">${(growing/total*100).toFixed(1)}% rising</span></div>`;
+  } else if (currentLayer === 'pay') {
+    const above10L = allOccs.filter(o => o.p >= 1000000).reduce((a, o) => a + o.v, 0);
+    const below3L = allOccs.filter(o => o.p < 300000).reduce((a, o) => a + o.v, 0);
+    const wgtPay = allOccs.reduce((a, o) => a + o.p * o.v, 0) / total;
+    html += `<div class="stat"><span class="stat-label">Earning ≥₹10L</span><span class="stat-value">${(above10L/10000000).toFixed(2)} Cr</span><span class="stat-sub good">${(above10L/total*100).toFixed(1)}%</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Earning &lt;₹3L</span><span class="stat-value">${(below3L/10000000).toFixed(1)} Cr</span><span class="stat-sub warn">${(below3L/total*100).toFixed(1)}%</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Weighted median</span><span class="stat-value">₹${(wgtPay/100000).toFixed(1)}L</span><span class="stat-sub">per year</span></div>`;
+  } else if (currentLayer === 'edu') {
+    const grads = allOccs.filter(o => o.e >= 4).reduce((a, o) => a + o.v, 0);
+    const lowedu = allOccs.filter(o => o.e <= 2).reduce((a, o) => a + o.v, 0);
+    const advanced = allOccs.filter(o => o.e >= 5).reduce((a, o) => a + o.v, 0);
+    html += `<div class="stat"><span class="stat-label">Bachelor's+</span><span class="stat-value">${(grads/10000000).toFixed(1)} Cr</span><span class="stat-sub gold">${(grads/total*100).toFixed(1)}% of jobs</span></div>`;
+    html += `<div class="stat"><span class="stat-label">≤12th class</span><span class="stat-value">${(lowedu/10000000).toFixed(1)} Cr</span><span class="stat-sub">${(lowedu/total*100).toFixed(1)}% of jobs</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Master's+</span><span class="stat-value">${(advanced/10000000).toFixed(2)} Cr</span><span class="stat-sub">${(advanced/total*100).toFixed(1)}% of jobs</span></div>`;
+  }
+  statsEl.innerHTML = html;
+}
+
+function updateLegend() {
+  const layer = LAYERS[currentLayer];
+  document.getElementById('legend-min').textContent = layer.legendMin;
+  document.getElementById('legend-max').textContent = layer.legendMax;
+  const stops = layer.stops.map((c, i) => `${c} ${i * 100 / (layer.stops.length - 1)}%`).join(', ');
+  document.getElementById('legend-grad').style.background = `linear-gradient(to right, ${stops})`;
+}
+
+document.querySelectorAll('#layer-buttons .btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#layer-buttons .btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentLayer = btn.dataset.layer;
+    render();
+  });
+});
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(render, 120);
+});
+
+// Load and render
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    DATA = data;
+    EDU_LABELS = data.meta.edu_codes;
+    HIRE_LABELS = data.meta.hire_codes;
+
+    document.getElementById('lede').innerHTML =
+      `A visual exploration of <strong>~${(data.meta.total_workforce_covered/10000000).toFixed(1)} crore</strong> jobs across India's economy, mapped to <strong>${data.meta.total_occupations} occupations</strong> in <strong>${data.meta.total_sectors} sectors</strong>. Each rectangle's <strong>area</strong> is proportional to total employment. <strong>Color</strong> shows the selected metric — toggle between AI exposure, hiring trend, median pay, and education. Hover any tile for the LLM-generated rationale and source.`;
+
+    render();
+  })
+  .catch(err => {
+    document.getElementById('treemap').innerHTML =
+      '<div class="loading">Failed to load data.json. Run <code>uv run python pipeline/build_site_data.py</code> from the repo root.</div>';
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>
