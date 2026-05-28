@@ -6,8 +6,46 @@
 <meta name="theme-color" content="#0d1117">
 <title>India Job Market Visualizer — AI Exposure across 244 occupations</title>
 <meta name="description" content="An interactive treemap of India's ~565M-strong workforce, scored for AI exposure by an LLM. 244 occupations across 26 sectors. Click any tile to open the original source.">
+<link rel="canonical" href="https://tonumoy.github.io/India-Jobs/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tonumoy.github.io/India-Jobs/">
 <meta property="og:title" content="India Job Market — AI Exposure Visualizer">
 <meta property="og:description" content="565M jobs · 244 occupations · 26 sectors · LLM-scored AI exposure · clickable sources · weekly auto-refresh.">
+<meta property="og:image" content="https://tonumoy.github.io/India-Jobs/jobs.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="India Job Market — AI Exposure Visualizer">
+<meta name="twitter:description" content="565M jobs · 244 occupations · 26 sectors · LLM-scored AI exposure · weekly auto-refresh.">
+<meta name="twitter:image" content="https://tonumoy.github.io/India-Jobs/jobs.png">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "India Job Market — AI Exposure",
+  "description": "A treemap of 244 Indian occupations across 26 economic sectors, sized by employment and colour-coded by AI exposure score (0-10) generated weekly by an LLM against an India-specific rubric.",
+  "url": "https://tonumoy.github.io/India-Jobs/",
+  "creator": {
+    "@type": "Person",
+    "name": "Tonumoy Mukherjee",
+    "url": "https://www.linkedin.com/in/bodhi108/"
+  },
+  "license": "https://opensource.org/licenses/MIT",
+  "keywords": ["India", "job market", "AI exposure", "labor market", "PLFS", "NASSCOM", "NSDC", "automation", "treemap", "data visualization"],
+  "isAccessibleForFree": true,
+  "distribution": [
+    { "@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://tonumoy.github.io/India-Jobs/data.json" },
+    { "@type": "DataDownload", "encodingFormat": "text/csv", "contentUrl": "https://raw.githubusercontent.com/Tonumoy/India-Jobs/main/data/occupations.csv" }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -842,19 +880,19 @@ footer a:hover { color: var(--link); }
 <div class="controls">
   <div class="control-group">
     <span class="control-label">View</span>
-    <div class="pill-group" id="layer-buttons">
-      <button class="pill active" data-layer="ai"><span class="pill-icon">🤖</span>AI Exposure</button>
-      <button class="pill" data-layer="hire"><span class="pill-icon">📈</span>Hiring</button>
-      <button class="pill" data-layer="pay"><span class="pill-icon">💵</span>Pay</button>
-      <button class="pill" data-layer="edu"><span class="pill-icon">🎓</span>Education</button>
+    <div class="pill-group" id="layer-buttons" role="group" aria-label="Colour the treemap by">
+      <button class="pill active" data-layer="ai" aria-pressed="true"><span class="pill-icon">🤖</span>AI Exposure</button>
+      <button class="pill" data-layer="hire" aria-pressed="false"><span class="pill-icon">📈</span>Hiring</button>
+      <button class="pill" data-layer="pay" aria-pressed="false"><span class="pill-icon">💵</span>Pay</button>
+      <button class="pill" data-layer="edu" aria-pressed="false"><span class="pill-icon">🎓</span>Education</button>
     </div>
   </div>
 
   <div class="control-group">
     <span class="control-label">Layout</span>
-    <div class="pill-group" id="layout-buttons">
-      <button class="pill active" data-layout="grid"><span class="pill-icon">⬛</span>Grid</button>
-      <button class="pill" data-layout="organic"><span class="pill-icon">🧬</span>Organic</button>
+    <div class="pill-group" id="layout-buttons" role="group" aria-label="Treemap layout">
+      <button class="pill active" data-layout="grid" aria-pressed="true"><span class="pill-icon">⬛</span>Grid</button>
+      <button class="pill" data-layout="organic" aria-pressed="false"><span class="pill-icon">🧬</span>Organic</button>
     </div>
   </div>
 
@@ -1365,7 +1403,9 @@ function truncate(s, n) { return s.length > n ? s.slice(0, n - 1) + '…' : s; }
 
 function syncLayoutButtons() {
   document.querySelectorAll('#layout-buttons .pill').forEach(b => {
-    b.classList.toggle('active', b.dataset.layout === currentLayout);
+    const on = b.dataset.layout === currentLayout;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
 }
 
@@ -1538,10 +1578,18 @@ document.getElementById('search-clear').addEventListener('click', () => {
 // ============================================================================
 // LAYERS
 // ============================================================================
+function activatePill(group, btn) {
+  document.querySelectorAll(group + ' .pill').forEach(b => {
+    const on = b === btn;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+}
+
 document.querySelectorAll('#layer-buttons .pill').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('#layer-buttons .pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    if (btn.dataset.layer === currentLayer) return;
+    activatePill('#layer-buttons', btn);
     currentLayer = btn.dataset.layer;
     render();
   });
@@ -1550,8 +1598,7 @@ document.querySelectorAll('#layer-buttons .pill').forEach(btn => {
 document.querySelectorAll('#layout-buttons .pill').forEach(btn => {
   btn.addEventListener('click', () => {
     if (btn.dataset.layout === currentLayout) return;
-    document.querySelectorAll('#layout-buttons .pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    activatePill('#layout-buttons', btn);
     currentLayout = btn.dataset.layout;
     render();
   });

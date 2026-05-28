@@ -62,7 +62,7 @@ async def scrape_nsdc(skill_council: str | None = None):
       6.    For each SSC: scrape its occupations table + download report PDF
     """
     print("NSDC scraping: not implemented in seed release.")
-    print("The seed dataset already covers ~90 occupations across 15 NSDC sectors.")
+    print("The seed dataset already covers 244 occupations across 26 sectors.")
     print("To extend: implement the Playwright workflow described in the docstring.")
 
 
