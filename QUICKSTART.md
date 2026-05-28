@@ -33,6 +33,8 @@ The "I just want to get it running" guide. The full [README.md](README.md) has t
 
 **Real LLM output.** Every one of the 244 occupations was scored by an OpenRouter model (primary: `nvidia/nemotron-3-super-120b-a12b:free`, fallback: `openai/gpt-oss-120b:free`). Each entry has `score`, `rationale`, and `model`.
 
+The site renders the same data two ways: **Grid** (fast rectangular treemap, default) and **Organic** (Voronoi treemap — irregular polygons sized exactly to employment). Toggle in the controls bar. The Voronoi view computes on first switch (~3–6 seconds) then caches per viewport.
+
 The full pipeline re-runs automatically every Monday at 04:00 IST via [.github/workflows/rescore.yml](.github/workflows/rescore.yml), so the live site stays current as model quality improves. All scoring uses **free OpenRouter models — $0 cost per re-score**.
 
 ---

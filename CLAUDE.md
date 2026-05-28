@@ -273,21 +273,74 @@ DEPLOYS ON        any push to main, via Pages, ~30s
 TOTAL OCCS        244 across 26 sectors, ~566M workers
 ```
 
-## Frontend UI patterns (added Phase D)
+## Frontend UI patterns (Phases D + E)
 
-The `index.html` redesign added several patterns worth knowing:
+The `index.html` redesign + Voronoi rollout established the following patterns. Preserve them when extending.
 
-- **Sector icons.** `SECTOR_ICONS` is a map from sector name → emoji. When adding a new sector, **add an entry here too** or its strip will have no icon. Keep the icon emoji-only (no external icon font) so the site stays a single-file static deploy.
-- **Detail card (was: tooltip).** One `<div id="card">` serves both desktop hover-floating and mobile bottom-sheet roles. On desktop without a pinned tile, it follows cursor and clamps to viewport. On a touch device or after `click`, it becomes "pinned" → on mobile that means full-width bottom sheet with backdrop and drag-handle visual. Don't fork into separate desktop/mobile components.
-- **Touch detection.** `IS_TOUCH = matchMedia('(hover: none)').matches || 'ontouchstart' in window`. Use this rather than `userAgent` sniffing.
-- **Card behaviour on click.** First click pins the card (mobile or desktop). Second click on the same tile opens the source URL. The card's "Open source ↗" button is the primary CTA inside the card itself.
-- **Search.** Top-level search input dims non-matching tiles and gives matching tiles an `.match` outline + glow. Substring match against occupation name OR sector name, case-insensitive.
-- **Onboarding hint.** Pill at bottom-center, shown once per browser (localStorage key `indiajobs-onboarded-v2`). Bump the suffix when copy materially changes so returning visitors see it again.
-- **Help modal.** Triggered by header `?` button OR the `Click here` link in the lede. Keyboard `Esc` closes both card and modal.
-- **Glassmorphism.** `backdrop-filter: blur(18px) saturate(1.15)` on `.card`. Safari support is via `-webkit-backdrop-filter`. Don't add more layers of blur — the GPU cost on lower-end devices stacks badly.
+### Layout system
 
-When adding a new layer or feature, the conventions to preserve:
-- Pill-style controls (`.pill` class) — never go back to square buttons.
-- Layer toggle button has an emoji-prefixed label.
-- Stats use the seven-column grid; add new stats by appending to `updateStats()` per current layer.
-- Don't use any framework or bundler — the site is one HTML file, period.
+- **Two layouts via the `currentLayout` state**: `'grid'` (default, rectangular `d3.treemap()`) or `'organic'` (Voronoi treemap from `d3-voronoi-treemap`). `render()` dispatches to `renderGrid()` or `renderOrganic()` accordingly.
+- **Voronoi compute is heavy** (~3–6s for 244 leaves). Always show the `.organic-loading` overlay before computing, and `setTimeout(..., 50)` the compute so the loading paint fires.
+- **Voronoi cache**: `voronoiCache` + `voronoiCacheSize` (key = `width + 'x' + height`). Invalidated on `resize`. Switching colour layer reuses the cached polygons.
+- **Convergence settings**: `convergenceRatio(0.005).maxIterationCount(60)`. Raise the ratio to make it faster but less precise; lower for sharper cells. 0.005 is the sweet spot tested.
+- **Polygon helpers** at the bottom of the script (`polygonArea`, `polygonCentroid`, `polygonExtent`, `truncate`) — reuse these rather than re-implementing.
+- **Label visibility** in Organic mode is gated by polygon area: name only if area > 5500 px², name + meta if > 9000 px², longer name (24 chars) if > 14000 px². If you add a new label type, follow the same area-gated pattern.
+- **SVG vs DOM**: Grid uses absolutely-positioned `<div>`s, Organic uses `<svg>` polygons. Hover/click handlers are wired separately in each render path. Don't try to unify into one DOM model.
+
+### Detail card
+
+- **One `<div id="card">`** serves both desktop hover-floating and mobile bottom-sheet roles.
+- Desktop, not pinned: follows cursor, clamped to viewport via `positionHoverCard`.
+- Desktop, pinned (click): centred horizontally near top.
+- Mobile (any pinned OR `IS_TOUCH`): full-width bottom sheet via `@media (max-width: 700px)` rule on `.card.pinned`.
+- Card always includes an **"Open source ↗"** CTA button when `d.u` is set.
+- Card closes via `×` button, backdrop click, or `Esc`.
+
+### Touch / hover detection
+
+- `IS_TOUCH = matchMedia('(hover: none)').matches || 'ontouchstart' in window`.
+- `IS_SMALL = () => window.innerWidth <= 700`.
+- Don't `userAgent`-sniff.
+
+### Sector icons
+
+- `SECTOR_ICONS` is the single source of truth — pure-emoji values, no SVG/icon font.
+- **When you add a new sector, add an entry here.** Without one, the sector strip in Grid mode and the Voronoi sector label both render with no icon.
+
+### Search
+
+- Substring match against occupation name OR sector name, lowercased.
+- Non-matching tiles get `.dimmed`; matching tiles get `.match` (gold outline + glow).
+- Applies to both Grid and Organic — the match-class CSS rules exist for both `.tile` (div) and `.v-leaf` (svg polygon).
+
+### AI Exposure stats — the three-bucket invariant
+
+The stats panel in the AI Exposure layer must show three buckets that sum to 100% of scored workers:
+- **Low** (score ≤ 3)
+- **Moderate** (score 4–6)
+- **High** (score ≥ 7)
+
+Plus the employment-weighted average. Don't drop the Moderate bucket — without it the totals don't reconcile and the visualization is silently misleading.
+
+### Onboarding hint
+
+- Pill at bottom-center, shown once per browser (`localStorage` key `indiajobs-onboarded-v2`).
+- Bump the suffix when copy materially changes so returning visitors see it again.
+
+### Help modal
+
+- Triggered by header `?` button OR the `Click here` link in the lede.
+- `Esc` closes both card and modal.
+
+### Glassmorphism
+
+- `backdrop-filter: blur(18px) saturate(1.15)` on `.card`. Safari needs `-webkit-backdrop-filter`.
+- Don't stack more blur layers — GPU cost on lower-end devices accumulates badly.
+
+### Conventions to preserve
+
+- Pill-style controls (`.pill` class) — don't revert to square buttons.
+- Layer / Layout toggle buttons have emoji-prefixed labels.
+- Stats use the responsive grid; add new stats by appending to `updateStats()` per current layer.
+- Don't use any framework / bundler — `index.html` is one static file.
+- **CDN-loaded JS**: D3 7.8.5, plus `d3-weighted-voronoi@1.0.0`, `d3-voronoi-map@2.1.1`, `d3-voronoi-treemap@1.1.2` (in that order — they're a dep chain). All from `cdn.jsdelivr.net`. Don't switch CDNs without first verifying the versions still resolve.

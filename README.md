@@ -14,10 +14,14 @@ Inspired by Andrej Karpathy's [US Job Market Visualizer](https://karpathy.ai/job
 
 India has no single equivalent of the US Bureau of Labor Statistics' Occupational Outlook Handbook. So this repo merges multiple Indian sources into a unified dataset of **244 occupations covering ~566 million workers across 26 sectors**, scores each one's AI exposure using an LLM with an India-specific rubric, and renders the result as an interactive treemap.
 
-- **Area** of each tile = total employment in that occupation.
+- **Area** of each tile = total employment in that occupation. (True in both layouts — see below.)
 - **Color** = the selected metric (AI exposure / hiring trend / median pay / education).
 - **Hover** any tile for the LLM-written rationale and the underlying numbers.
 - **Click** any tile to open the original report (PLFS / NASSCOM / NSDC / ministry / regulator).
+- **Search** the occupation list by name or sector via the search bar.
+- **Two layouts:** `⬛ Grid` (fast rectangular treemap) and `🧬 Organic` (Voronoi treemap — irregular polygons, area-proportional, stained-glass look).
+
+For AI Exposure specifically, the stats panel shows three buckets that sum to 100% of scored workers: **Low (score ≤ 3)**, **Moderate (4–6)**, **High (≥ 7)**, plus the employment-weighted average.
 
 ## How the scores are produced
 
