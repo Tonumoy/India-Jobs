@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total_occupations": 214,
-    "total_sectors": 22,
-    "total_workforce_covered": 554368000,
-    "last_updated": "2026-05-28",
+    "total_occupations": 244,
+    "total_sectors": 26,
+    "total_workforce_covered": 565585000,
+    "last_updated": "2026-05-29",
     "scoring_model": "seed/expert-calibrated",
     "edu_codes": {
       "1": "None / Primary",
@@ -2699,6 +2699,386 @@
           "src": "ICPS + Ministry of WCD",
           "u": "https://wcd.nic.in/",
           "r": "The role is centered on in‑person assessments, counseling, and safeguarding children, requiring nuanced human judgment and trust. AI can aid paperwork and data tracking, but cannot replace the core relational and field‑based tasks, leading to low overall exposure."
+        }
+      ]
+    },
+    {
+      "n": "Mining & Petroleum",
+      "ch": [
+        {
+          "n": "Coal mine workers",
+          "s": "coal-miners",
+          "v": 600000,
+          "ai": 1,
+          "h": -1,
+          "p": 360000,
+          "e": 2,
+          "src": "Ministry of Coal + Coal India Ltd annual report",
+          "u": "https://coal.nic.in/",
+          "r": "Work is physically intensive, underground, and requires manual dexterity and real‑time human judgment; AI tools can aid monitoring but cannot replace core tasks. Limited digitality and high capital constraints keep automation exposure low in India."
+        },
+        {
+          "n": "Metal & iron ore miners",
+          "s": "metal-ore-miners",
+          "v": 350000,
+          "ai": 1,
+          "h": 0,
+          "p": 320000,
+          "e": 2,
+          "src": "Indian Bureau of Mines",
+          "u": "https://ibm.gov.in/",
+          "r": "Mining involves physical extraction, heavy equipment operation, and on‑site decision‑making in unpredictable environments, tasks that are not digit‑centric. AI can assist with predictive maintenance or exploration data, but core labor remains manual, limiting exposure."
+        },
+        {
+          "n": "Stone & limestone quarry workers",
+          "s": "stone-quarry-workers",
+          "v": 800000,
+          "ai": 1,
+          "h": -1,
+          "p": 180000,
+          "e": 1,
+          "src": "FIMI + state mines departments",
+          "u": "https://fedmin.com/",
+          "r": "Quarry work is physically intensive, requiring manual extraction, loading, and transport of stone with minimal digital interaction. AI tools have limited relevance to core tasks, and low wage arbitrage or export potential does not increase exposure."
+        },
+        {
+          "n": "Oil & gas field workers (upstream)",
+          "s": "oil-gas-field-workers",
+          "v": 145000,
+          "ai": 1,
+          "h": 0,
+          "p": 720000,
+          "e": 3,
+          "src": "DGH + ONGC/OIL annual reports",
+          "u": "https://dghindia.gov.in/",
+          "r": "Upstream oil & gas field work is primarily physical, involving equipment operation, maintenance, and on‑site troubleshooting in remote locations. Tasks are not digit‑centric, and AI tools can only assist with monitoring or data analysis, not replace the hands‑on labor. Indian infrastructure and wage dynamics further limit automation impact."
+        },
+        {
+          "n": "Petroleum refinery & petrochemical workers",
+          "s": "petroleum-refinery-workers",
+          "v": 95000,
+          "ai": 2,
+          "h": 0,
+          "p": 950000,
+          "e": 3,
+          "src": "Petroleum Federation of India + IOCL/BPCL/HPCL filings",
+          "u": "https://www.petrofed.org/",
+          "r": "Petroleum refinery & petrochemical work centers on physical plant operation, equipment monitoring, maintenance, and safety tasks that require manual dexterity and on‑site presence. AI can support predictive maintenance and process optimization but cannot replace the hands‑on, real‑world interventions, keeping exposure low."
+        },
+        {
+          "n": "Mining engineers",
+          "s": "mining-engineers",
+          "v": 25000,
+          "ai": 3,
+          "h": 0,
+          "p": 1100000,
+          "e": 4,
+          "src": "Mining Engineers Association of India",
+          "u": "https://meai.in/",
+          "r": "Mining engineering combines field supervision, equipment operation, and safety-critical decisions with some CAD and simulation work. AI can augment design and autonomous drilling, but the role remains heavily physical and site‑based, limiting full digital replacement in the near term."
+        },
+        {
+          "n": "Geologists & exploration scientists",
+          "s": "geologists-explorers",
+          "v": 18000,
+          "ai": 6,
+          "h": 0,
+          "p": 950000,
+          "e": 5,
+          "src": "Geological Survey of India",
+          "u": "https://www.gsi.gov.in/",
+          "r": "Geologists rely heavily on digital data (seismic, GIS, modeling) where AI can automate interpretation and accelerate analysis, boosting productivity. However, field sampling, on‑site judgment, and regulatory approvals require human expertise, limiting full replacement. In India, the role is not export‑driven and wages are modest, so AI‑driven productivity gains are the main exposure."
+        },
+        {
+          "n": "Petroleum engineers",
+          "s": "petroleum-engineers",
+          "v": 22000,
+          "ai": 7,
+          "h": 0,
+          "p": 1500000,
+          "e": 4,
+          "src": "DGH + Society of Petroleum Engineers India",
+          "u": "https://dghindia.gov.in/",
+          "r": "Petroleum engineering relies heavily on digital simulation, data analysis, and modeling, which AI can augment and accelerate, potentially reducing the number of engineers needed for routine reservoir studies. However, field decision‑making, on‑site supervision, and complex problem‑solving remain human‑centric, limiting full replacement."
+        }
+      ]
+    },
+    {
+      "n": "Utilities & Power",
+      "ch": [
+        {
+          "n": "Power plant operators",
+          "s": "power-plant-operators",
+          "v": 280000,
+          "ai": 4,
+          "h": 0,
+          "p": 480000,
+          "e": 3,
+          "src": "Central Electricity Authority + NTPC/state genco filings",
+          "u": "https://cea.nic.in/",
+          "r": "Operators monitor and control plant equipment via SCADA systems; AI can augment monitoring and predictive maintenance but core safety decisions and real‑time human judgment remain essential. Digital tasks are present but physical oversight and regulatory constraints limit full automation, placing exposure in the mixed physical/cognitive range."
+        },
+        {
+          "n": "Electricity distribution (DISCOM) staff",
+          "s": "discom-staff",
+          "v": 850000,
+          "ai": 3,
+          "h": 0,
+          "p": 380000,
+          "e": 2,
+          "src": "Power Finance Corporation + state DISCOMs",
+          "u": "https://www.pfcindia.com/",
+          "r": "DISCOM staff perform largely physical tasks—meter reading, line inspection, fault repair—and rely on on‑site judgment. AI can aid scheduling, outage prediction, and remote monitoring, but core work remains hands‑on and low‑digital, limiting exposure to moderate levels."
+        },
+        {
+          "n": "Water utility & treatment workers",
+          "s": "water-utility-workers",
+          "v": 320000,
+          "ai": 2,
+          "h": 0,
+          "p": 230000,
+          "e": 2,
+          "src": "Ministry of Jal Shakti + Central Public Health Engineering",
+          "u": "https://jalshakti-ddws.gov.in/",
+          "r": "Work involves physical operation and maintenance of water treatment plants, field inspections, and manual valve control, tasks that require on‑site presence and dexterity. AI can assist with monitoring and predictive maintenance but cannot replace the hands‑on labor. Hence exposure is low, around the lower end of the scale."
+        },
+        {
+          "n": "Sanitation & sewage workers",
+          "s": "sanitation-workers",
+          "v": 5000000,
+          "ai": 1,
+          "h": 0,
+          "p": 130000,
+          "e": 1,
+          "src": "Swachh Bharat Mission + NCSK estimates",
+          "u": "https://swachhbharatmission.gov.in/",
+          "r": "Sanitation and sewage work is primarily physical, outdoors, and requires manual dexterity in unpredictable environments, leaving little room for AI to perform core tasks. AI may support monitoring or route optimization but does not replace the hands‑on labor involved. In India, low wages and the informal nature of the work further limit automation adoption."
+        },
+        {
+          "n": "Gas pipeline & CGD workers",
+          "s": "gas-pipeline-workers",
+          "v": 65000,
+          "ai": 2,
+          "h": 1,
+          "p": 520000,
+          "e": 3,
+          "src": "PNGRB + CGD operators",
+          "u": "https://www.pngrb.gov.in/",
+          "r": "Work is largely physical—installing, inspecting, and maintaining gas pipelines and CGD infrastructure—with limited digital output. AI can aid monitoring and diagnostics, but core tasks require on‑site dexterity and safety judgment, keeping exposure low."
+        },
+        {
+          "n": "Electrical lineworkers (utility)",
+          "s": "utility-lineworkers",
+          "v": 380000,
+          "ai": 1,
+          "h": 0,
+          "p": 280000,
+          "e": 2,
+          "src": "PSSC + Power Finance Corporation",
+          "u": "https://www.skillpower.in/",
+          "r": "Electrical linework is a physically demanding, outdoor job requiring manual dexterity, real‑time safety judgments, and minimal digital interaction. AI can aid planning or inspection via drones, but core tasks remain non‑digital and hard to automate, especially given India's capital constraints in utilities."
+        },
+        {
+          "n": "Energy engineers (utilities)",
+          "s": "energy-engineers",
+          "v": 110000,
+          "ai": 7,
+          "h": 1,
+          "p": 850000,
+          "e": 4,
+          "src": "CEA + Bureau of Energy Efficiency",
+          "u": "https://beeindia.gov.in/",
+          "r": "Energy engineers rely heavily on simulation, data analytics, and optimization software, all of which are increasingly AI‑augmented, making core tasks highly digital. While field inspections and regulatory compliance require physical presence, AI can boost productivity enough to reshape hiring demand, especially given India's export‑oriented engineering services."
+        },
+        {
+          "n": "Utility billing & meter readers",
+          "s": "meter-readers-billing",
+          "v": 220000,
+          "ai": 7,
+          "h": -2,
+          "p": 200000,
+          "e": 2,
+          "src": "PFC DISCOM operational data",
+          "u": "https://www.pfcindia.com/",
+          "r": "Meter reading is increasingly replaceable by smart meters and AI‑driven remote data capture, while billing is a digital process that AI can automate and accelerate. The role’s core tasks are largely data‑centric and digital, making it highly vulnerable to AI‑driven productivity gains, though some on‑site verification may persist."
+        }
+      ]
+    },
+    {
+      "n": "Telecom & Communications",
+      "ch": [
+        {
+          "n": "Telecom tower & site technicians",
+          "s": "telecom-tower-techs",
+          "v": 380000,
+          "ai": 2,
+          "h": 0,
+          "p": 280000,
+          "e": 3,
+          "src": "TSSC + DIPA",
+          "u": "https://www.tsscindia.com/",
+          "r": "The role is primarily physical, involving installation, maintenance, and troubleshooting of telecom towers, which requires on‑site dexterity and judgment. AI can assist with predictive maintenance analytics, but core tasks remain hands‑on and location‑bound, limiting automation potential."
+        },
+        {
+          "n": "Telecom network engineers",
+          "s": "telecom-network-engineers",
+          "v": 220000,
+          "ai": 6,
+          "h": 1,
+          "p": 850000,
+          "e": 4,
+          "src": "COAI + TSSC",
+          "u": "https://coai.com/",
+          "r": "Network engineers handle largely digital tasks—network design, configuration, monitoring—where AI-driven automation and analytics can boost productivity and reduce staffing needs. However, significant on‑site hardware installation and troubleshooting remain, limiting full replacement. In India, growing telecom demand sustains hiring despite AI gains."
+        },
+        {
+          "n": "Telecom field sales & retention",
+          "s": "telecom-field-sales",
+          "v": 350000,
+          "ai": 5,
+          "h": -1,
+          "p": 240000,
+          "e": 2,
+          "src": "TRAI subscriber report + COAI",
+          "u": "https://www.trai.gov.in/",
+          "r": "The role blends physical, in‑person sales visits with data‑driven retention tasks; AI can automate prospect scoring, churn prediction, and digital upselling, reducing the need for many field agents. However, relationship building and on‑site service still require human presence, limiting full digital replacement."
+        },
+        {
+          "n": "Optical fibre installers (FTTH)",
+          "s": "optical-fibre-installers",
+          "v": 280000,
+          "ai": 2,
+          "h": 2,
+          "p": 240000,
+          "e": 2,
+          "src": "BBNL + private ISP rollouts",
+          "u": "https://bbnl.nic.in/",
+          "r": "The role is primarily physical, requiring manual dexterity to lay and splice fibre in diverse field conditions. AI can aid planning, route optimization, and provide AR guidance, but cannot perform the hands‑on installation, keeping exposure low (2)."
+        },
+        {
+          "n": "RF / Spectrum engineers",
+          "s": "spectrum-rf-engineers",
+          "v": 35000,
+          "ai": 7,
+          "h": 1,
+          "p": 1200000,
+          "e": 4,
+          "src": "WPC + DoT",
+          "u": "https://dot.gov.in/",
+          "r": "RF/Spectrum engineering is a highly digital knowledge role involving simulation, data analysis, and regulatory planning, which AI can automate and accelerate. AI-driven optimization tools can markedly boost productivity, potentially reducing demand, though human expertise for complex spectrum policy and on‑site troubleshooting remains essential."
+        },
+        {
+          "n": "Broadcast & cable engineers",
+          "s": "broadcast-engineers",
+          "v": 28000,
+          "ai": 5,
+          "h": -1,
+          "p": 520000,
+          "e": 4,
+          "src": "Ministry of I&B + BECIL",
+          "u": "https://mib.gov.in/",
+          "r": "Broadcast & cable engineers handle RF hardware, transmission networks, and field installations, tasks that are partly digital (monitoring, configuration) but also require physical setup and real‑time troubleshooting. AI can automate diagnostics, optimize spectrum use, and aid design, reshaping parts of the role, yet core on‑site work remains human‑centric."
+        },
+        {
+          "n": "Submarine & undersea cable operations",
+          "s": "submarine-cable-ops",
+          "v": 4000,
+          "ai": 3,
+          "h": 1,
+          "p": 1500000,
+          "e": 4,
+          "src": "TRAI Submarine Cable Report",
+          "u": "https://www.trai.gov.in/",
+          "r": "The role combines physical field work (cable laying, repairs, ship operations) with network monitoring. AI can augment monitoring and fault prediction, but core tasks require hands‑on expertise and cannot be digitized, keeping exposure modest."
+        }
+      ]
+    },
+    {
+      "n": "Renewable Energy & Green Tech",
+      "ch": [
+        {
+          "n": "Solar PV installers & technicians",
+          "s": "solar-pv-installers",
+          "v": 410000,
+          "ai": 2,
+          "h": 3,
+          "p": 260000,
+          "e": 3,
+          "src": "MNRE + Skill Council for Green Jobs",
+          "u": "https://mnre.gov.in/",
+          "r": "Work is primarily physical installation and maintenance of solar panels on site, requiring manual dexterity and on‑site judgment. AI can aid design, site analysis, and predictive maintenance, but cannot replace the hands‑on tasks, keeping exposure low despite modest digital assistance."
+        },
+        {
+          "n": "Wind turbine technicians",
+          "s": "wind-turbine-techs",
+          "v": 32000,
+          "ai": 2,
+          "h": 2,
+          "p": 450000,
+          "e": 3,
+          "src": "MNRE + Indian Wind Energy Association",
+          "u": "https://inwea.org/",
+          "r": "Wind turbine technicians perform on‑site maintenance, inspections, and repairs that require physical dexterity, safety judgments, and real‑time problem solving in harsh environments. AI can aid diagnostics and training, but core tasks remain non‑digital and hands‑on, limiting automation potential in the near term."
+        },
+        {
+          "n": "EV battery manufacturing workers",
+          "s": "ev-battery-mfg",
+          "v": 85000,
+          "ai": 3,
+          "h": 3,
+          "p": 320000,
+          "e": 3,
+          "src": "ARAI + Society of Manufacturers of Electric Vehicles",
+          "u": "https://www.smev.in/",
+          "r": "The role is primarily physical assembly and quality checks in battery plants, with limited digital work product. AI can aid process monitoring and predictive maintenance, but core manual tasks and dexterity requirements keep automation potential modest. Indian labor cost advantage and capital constraints further limit rapid AI-driven replacement."
+        },
+        {
+          "n": "EV charging station operators",
+          "s": "ev-charging-ops",
+          "v": 18000,
+          "ai": 3,
+          "h": 3,
+          "p": 220000,
+          "e": 2,
+          "src": "Power Ministry EV-charging guidelines + state DISCOMs",
+          "u": "https://powermin.gov.in/",
+          "r": "The job is primarily physical, requiring on‑site presence to manage hardware, handle cash/card payments and perform basic troubleshooting. AI can augment monitoring and remote diagnostics, but cannot replace the manual interaction with charging equipment, so exposure remains modest."
+        },
+        {
+          "n": "Solar PV engineers & designers",
+          "s": "solar-pv-engineers",
+          "v": 65000,
+          "ai": 6,
+          "h": 2,
+          "p": 720000,
+          "e": 4,
+          "src": "MNRE + Skill Council for Green Jobs",
+          "u": "https://sscgj.in/",
+          "r": "The role relies heavily on digital design tools and simulation, which AI can augment or partially automate, especially for layout optimization and performance modeling. However, substantial on‑site engineering, site assessment, and installation oversight remain physical and judgment‑heavy, limiting full replacement."
+        },
+        {
+          "n": "Sustainability & ESG analysts",
+          "s": "esg-sustainability-analysts",
+          "v": 25000,
+          "ai": 8,
+          "h": 3,
+          "p": 1100000,
+          "e": 4,
+          "src": "SEBI BRSR + NSE-listed company filings",
+          "u": "https://www.sebi.gov.in/legal/circulars/may-2021/business-responsibility-and-sustainability-reporting-by-listed-entities_50096.html",
+          "r": "ESG analysts work primarily with digital data, regulatory filings, and produce written assessments, all of which AI can extract, analyze, and draft at scale. Large language models already generate ESG reports and score companies, reducing demand for junior analysts, especially in export‑oriented Indian research firms. Human judgment on nuanced materiality and stakeholder engagement remains a barrier, keeping the role partially defensible."
+        },
+        {
+          "n": "Green hydrogen technologists",
+          "s": "green-hydrogen-techs",
+          "v": 5000,
+          "ai": 6,
+          "h": 3,
+          "p": 1500000,
+          "e": 5,
+          "src": "National Green Hydrogen Mission + MNRE",
+          "u": "https://mnre.gov.in/national-green-hydrogen-mission/",
+          "r": "Green hydrogen technologists work on process design, simulation, and plant optimization, which are highly digital tasks. AI can significantly boost modeling, predictive maintenance, and data analysis, reducing labor demand, but physical plant work and regulatory expertise remain essential."
         }
       ]
     }

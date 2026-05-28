@@ -2,80 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>India Job Market Visualizer</title>
-<meta name="description" content="An interactive treemap of India's ~455M-strong workforce, scored for AI exposure by an LLM. 90 occupations, 4 toggleable layers. Inspired by karpathy.ai/jobs.">
-<meta property="og:title" content="India Job Market Visualizer">
-<meta property="og:description" content="455M jobs · 90 occupations · LLM-scored AI exposure · forkable pipeline.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1117">
+<title>India Job Market Visualizer — AI Exposure across 244 occupations</title>
+<meta name="description" content="An interactive treemap of India's ~565M-strong workforce, scored for AI exposure by an LLM. 244 occupations across 26 sectors. Click any tile to open the original source.">
+<meta property="og:title" content="India Job Market — AI Exposure Visualizer">
+<meta property="og:description" content="565M jobs · 244 occupations · 26 sectors · LLM-scored AI exposure · clickable sources · weekly auto-refresh.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
 <style>
 :root {
-  --bg: #0d1117;
-  --bg-soft: #161b22;
-  --bg-card: #1c2128;
-  --ink: #e6edf3;
-  --ink-soft: #8b949e;
-  --ink-faint: #484f58;
-  --rule: #30363d;
-  --gold: #d4a04a;
-  --warn: #d64545;
-  --good: #6db17a;
-  --link: #58a6ff;
+  /* Surfaces */
+  --bg: #0a0d12;
+  --bg-soft: #11161e;
+  --bg-card: #1a2029;
+  --bg-glass: rgba(26, 32, 41, 0.78);
+
+  /* Ink */
+  --ink: #f0f6fc;
+  --ink-soft: #9aa4b2;
+  --ink-faint: #5b6471;
+
+  /* Lines */
+  --rule: #2a323e;
+  --rule-soft: #1f2630;
+
+  /* Accents */
+  --accent: #f5c563;   /* warm gold */
+  --accent-2: #6ec1e4; /* cool blue */
+  --warn: #ef4444;
+  --good: #4ade80;
+  --link: #79b8ff;
+
+  /* Layout */
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow-tile: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-card: 0 20px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-hover: 0 0 0 2px var(--accent), 0 14px 32px rgba(0,0,0,0.55);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background: radial-gradient(ellipse at top, #131822 0%, var(--bg) 60%);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 14px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
 }
 
 .shell {
   max-width: 1600px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 28px 24px;
 }
 
-header { margin-bottom: 18px; }
+/* ========== HEADER ========== */
+header { margin-bottom: 22px; }
 
 .title-row {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--accent) 0%, #d97e3a 100%);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  box-shadow: 0 4px 14px rgba(245, 197, 99, 0.25);
 }
 
 h1 {
-  font-weight: 600;
-  font-size: clamp(20px, 2.5vw, 26px);
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 26px);
+  letter-spacing: -0.018em;
   color: var(--ink);
 }
 
-.gh-link {
-  font-size: 13px;
+.title-meta {
+  font-size: 12.5px;
   color: var(--ink-soft);
-  text-decoration: none;
+  margin-top: 2px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
-.gh-link:hover { color: var(--link); }
+
+.title-actions { display: flex; gap: 8px; }
+
+.icon-btn {
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  font-size: 16px;
+}
+.icon-btn:hover { background: var(--bg-card); color: var(--ink); border-color: var(--accent); transform: translateY(-1px); }
+.icon-btn svg { width: 17px; height: 17px; }
 
 .lede {
-  font-size: 14px;
+  font-size: 14.5px;
   color: var(--ink-soft);
   max-width: 1100px;
-  line-height: 1.55;
-  margin-bottom: 8px;
+  line-height: 1.6;
+  margin-bottom: 4px;
 }
-
 .lede strong { color: var(--ink); font-weight: 600; }
 .lede a { color: var(--link); text-decoration: none; }
 .lede a:hover { text-decoration: underline; }
@@ -85,46 +139,20 @@ h1 {
   color: var(--ink-soft);
   max-width: 1100px;
   line-height: 1.55;
-  margin-top: 8px;
+  margin-top: 10px;
+  padding: 11px 14px;
+  background: rgba(245, 197, 99, 0.05);
+  border-left: 2px solid var(--accent);
+  border-radius: 4px;
 }
 .caveat strong { color: var(--ink); }
+.caveat em { color: var(--ink); font-style: normal; font-weight: 500; }
 
-details {
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--ink-soft);
-  max-width: 1100px;
-}
-details summary {
-  cursor: pointer;
-  color: var(--ink-soft);
-  user-select: none;
-  padding: 4px 0;
-  font-weight: 500;
-}
-details summary:hover { color: var(--link); }
-details .det-body {
-  margin-top: 8px;
-  padding: 14px 16px;
-  background: var(--bg-soft);
-  border-radius: 6px;
-  border-left: 3px solid var(--gold);
-  line-height: 1.65;
-}
-details .det-body code {
-  background: var(--bg-card);
-  padding: 1px 6px;
-  border-radius: 3px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  color: var(--gold);
-}
-
-/* CONTROLS */
+/* ========== CONTROLS BAR ========== */
 .controls {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
   margin: 18px 0 14px;
   flex-wrap: wrap;
 }
@@ -133,265 +161,576 @@ details .det-body code {
 
 .control-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.12em;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
   color: var(--ink-faint);
   text-transform: uppercase;
+  font-weight: 600;
 }
 
-.btn-group {
+/* Pill switcher */
+.pill-group {
   display: flex;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  overflow: hidden;
   background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+  position: relative;
 }
 
-.btn {
+.pill {
   background: transparent;
   color: var(--ink-soft);
   border: none;
-  border-right: 1px solid var(--rule);
   padding: 7px 14px;
   font-family: inherit;
   font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.12s, color 0.12s;
+  border-radius: 999px;
+  transition: color 0.18s ease, background 0.18s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.btn:last-child { border-right: none; }
-.btn:hover { background: var(--bg-card); color: var(--ink); }
-.btn.active { background: var(--bg-card); color: var(--gold); }
+.pill:hover { color: var(--ink); }
+.pill.active {
+  background: linear-gradient(135deg, var(--accent) 0%, #d97e3a 100%);
+  color: #1a1a1a;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(245, 197, 99, 0.25);
+}
+.pill-icon { font-size: 14px; line-height: 1; }
 
+/* Search */
+.search-wrap {
+  position: relative;
+  flex: 0 1 320px;
+  min-width: 200px;
+}
+.search-wrap input {
+  width: 100%;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13.5px;
+  padding: 9px 14px 9px 36px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.search-wrap input::placeholder { color: var(--ink-faint); }
+.search-wrap input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245, 197, 99, 0.15);
+}
+.search-wrap::before {
+  content: '🔍';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+.search-clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-card);
+  border: none;
+  color: var(--ink-soft);
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 13px;
+  display: none;
+}
+.search-clear.visible { display: grid; place-items: center; }
+
+/* Legend */
 .legend {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--ink-soft);
+  margin-left: auto;
 }
 .legend-grad {
   width: 200px;
-  height: 8px;
-  border-radius: 3px;
-}
-
-/* STATS BAR — Karpathy-style compact inline */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px 24px;
-  margin: 16px 0 14px;
-  padding: 14px 16px;
-  background: var(--bg-soft);
-  border: 1px solid var(--rule);
+  height: 9px;
   border-radius: 6px;
 }
 
-.stat { display: flex; flex-direction: column; gap: 2px; }
-
+/* ========== STATS ========== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  margin: 14px 0;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.stat {
+  background: var(--bg-soft);
+  padding: 14px 18px;
+  display: flex; flex-direction: column; gap: 3px;
+}
 .stat-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   color: var(--ink-faint);
   text-transform: uppercase;
-}
-
-.stat-value {
-  font-size: 20px;
   font-weight: 600;
+}
+.stat-value {
+  font-size: 21px;
+  font-weight: 700;
   color: var(--ink);
-  line-height: 1.15;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
-
-.stat-sub {
-  font-size: 11px;
-  color: var(--ink-soft);
-}
+.stat-sub { font-size: 11.5px; color: var(--ink-soft); }
 .stat-sub.warn { color: var(--warn); }
 .stat-sub.good { color: var(--good); }
-.stat-sub.gold { color: var(--gold); }
+.stat-sub.gold { color: var(--accent); }
 
-/* TREEMAP */
+/* ========== TREEMAP ========== */
 #treemap {
   width: 100%;
   position: relative;
-  background: #0a0d12;
+  background: #06080c;
   border: 1px solid var(--rule);
-  border-radius: 6px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
 .tile {
   position: absolute;
   overflow: hidden;
   box-sizing: border-box;
-  border: 1px solid rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.4);
   cursor: pointer;
-  outline: 0 solid rgba(212, 160, 74, 0);
+  transition: filter 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+  outline: none;
+  z-index: 1;
 }
-
 .tile:hover {
-  outline: 2px solid var(--gold);
-  z-index: 10;
+  filter: brightness(1.18) saturate(1.1);
+  z-index: 12;
+  box-shadow: var(--shadow-hover);
+}
+.tile.dimmed {
+  filter: brightness(0.35) saturate(0.5);
+  opacity: 0.6;
+}
+.tile.match {
+  z-index: 11;
+  box-shadow: 0 0 0 2px var(--accent), 0 0 22px rgba(245,197,99,0.45);
 }
 
 .tile-inner {
-  padding: 5px 7px;
+  padding: 6px 8px;
   height: 100%;
   width: 100%;
   overflow: hidden;
   color: rgba(0,0,0,0.92);
   font-family: 'Inter', sans-serif;
-  line-height: 1.15;
+  line-height: 1.18;
 }
-
-.tile-inner.light { color: rgba(255,255,255,0.96); }
+.tile-inner.light { color: rgba(255,255,255,0.97); }
 
 .tile-name {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
   margin-bottom: 1px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: -0.005em;
 }
-
 .tile-meta {
-  font-size: 10px;
+  font-size: 10.5px;
   opacity: 0.82;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.sector-label {
+/* Sector label strip */
+.sector-strip {
   position: absolute;
-  font-weight: 600;
-  font-size: 11px;
-  color: rgba(255,255,255,0.95);
+  background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.45) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   pointer-events: none;
-  z-index: 6;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sector-icon { font-size: 13px; line-height: 1; }
+.sector-label {
+  font-weight: 600;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.97);
   letter-spacing: -0.005em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: 'Inter', sans-serif;
+  flex: 1;
 }
 
-/* TOOLTIP */
-.tooltip {
+/* ========== CARD (tooltip / bottom sheet) ========== */
+.card {
   position: fixed;
-  background: var(--bg-card);
-  border: 1px solid var(--rule);
-  border-left: 3px solid var(--gold);
-  border-radius: 6px;
-  padding: 14px 16px;
-  font-size: 12.5px;
-  line-height: 1.5;
-  pointer-events: none;
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  font-size: 13px;
+  line-height: 1.55;
+  z-index: 200;
   opacity: 0;
-  transition: opacity 0.12s;
-  z-index: 100;
-  max-width: 360px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(.2,.9,.3,1.2);
+  max-width: 380px;
+  box-shadow: var(--shadow-card);
+  transform: translateY(6px);
 }
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Desktop: hover follow, no pointer events when not pinned */
+.card.hover { pointer-events: none; }
+/* Mobile / pinned: full interactive */
+.card.pinned { pointer-events: auto; }
 
-.tt-sector {
+.card-close {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: var(--ink-soft);
+  cursor: pointer;
+  display: none;
+  align-items: center; justify-content: center;
+  font-size: 16px; line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+.card-close:hover { background: rgba(255,255,255,0.12); color: var(--ink); }
+.card.pinned .card-close { display: flex; }
+
+.c-sector {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 4px;
-}
-
-.tt-title {
+  color: var(--accent);
+  margin-bottom: 5px;
   font-weight: 600;
-  font-size: 15px;
-  color: var(--ink);
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.tt-row {
+.c-title {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+  padding-right: 30px;
+  line-height: 1.3;
+}
+
+.c-row {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  padding: 2px 0;
+  gap: 14px;
+  padding: 4px 0;
+  font-size: 12.5px;
 }
+.c-key { color: var(--ink-soft); }
+.c-val { color: var(--ink); font-weight: 500; text-align: right; }
 
-.tt-key { color: var(--ink-soft); }
-.tt-val { color: var(--ink); font-weight: 500; }
-
-.tt-rationale {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--rule);
-  color: var(--ink-soft);
-  font-style: italic;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.tt-rationale strong {
-  color: var(--ink);
-  font-style: normal;
-  display: block;
-  margin-bottom: 3px;
-  font-size: 10px;
+.c-score-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: 999px;
   font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 11.5px;
 }
 
-.tt-source {
+.c-rationale {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.c-rationale-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 9.5px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+
+.c-source-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, var(--accent) 0%, #d97e3a 100%);
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 12.5px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.12s, box-shadow 0.15s;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  box-shadow: 0 2px 10px rgba(245, 197, 99, 0.2);
+}
+.c-source-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(245, 197, 99, 0.35); }
+.c-source-btn:active { transform: translateY(0); }
+.c-source-text {
   margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px solid var(--rule);
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   color: var(--ink-faint);
-}
-.tt-hint {
-  color: var(--accent);
-  font-style: italic;
+  text-align: center;
 }
 
-/* FOOTER */
+/* ========== MOBILE — bottom sheet ========== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(2px);
+  z-index: 190;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+.backdrop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 700px) {
+  .card.pinned {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    border-radius: 18px 18px 0 0;
+    padding: 18px 18px calc(20px + env(safe-area-inset-bottom));
+    transform: translateY(0);
+  }
+  .card:not(.visible).pinned {
+    transform: translateY(100%);
+  }
+  .card.pinned::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 50%;
+    transform: translateX(-50%);
+    width: 38px; height: 4px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 4px;
+  }
+  .card.pinned .card-close { top: 14px; right: 14px; }
+  .c-title { padding-right: 38px; }
+}
+
+/* ========== ONBOARDING HINT ========== */
+.onboarding {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 10px 16px 10px 14px;
+  font-size: 13px;
+  color: var(--ink);
+  z-index: 150;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: pulseUp 0.5s ease both;
+}
+.onboarding-icon {
+  width: 22px; height: 22px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+.onboarding-close {
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  margin-left: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 6px;
+}
+.onboarding-close:hover { color: var(--ink); }
+@keyframes pulseUp {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ========== HELP MODAL ========== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.modal-backdrop.visible { display: flex; opacity: 1; }
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 26px 28px;
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+.modal h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.modal h3 {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+.modal p { color: var(--ink-soft); font-size: 13.5px; line-height: 1.6; margin-bottom: 8px; }
+.modal ul { margin-left: 18px; color: var(--ink-soft); font-size: 13.5px; line-height: 1.7; }
+.modal code {
+  background: var(--bg-soft);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+}
+.modal-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: var(--ink-soft);
+  font-size: 18px;
+  cursor: pointer;
+}
+.modal-close:hover { background: rgba(255,255,255,0.12); color: var(--ink); }
+
+/* ========== FOOTER ========== */
 footer {
-  margin: 28px 0 16px;
-  padding-top: 16px;
+  margin: 28px 0 18px;
+  padding-top: 18px;
   border-top: 1px solid var(--rule);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  font-size: 12px;
+  gap: 14px;
+  font-size: 12.5px;
   color: var(--ink-faint);
 }
-
 footer a { color: var(--ink-soft); text-decoration: none; }
 footer a:hover { color: var(--link); }
+.credit { font-weight: 500; color: var(--ink-soft); }
 
-footer .credit { font-weight: 500; color: var(--ink-soft); }
-
-/* LOADING */
+/* ========== LOADING ========== */
 .loading {
   text-align: center;
-  padding: 80px 24px;
+  padding: 90px 24px;
   color: var(--ink-soft);
 }
+.shimmer {
+  background: linear-gradient(90deg, var(--bg-soft) 0%, var(--bg-card) 50%, var(--bg-soft) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
+  border-radius: 6px;
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
+/* ========== MOBILE TWEAKS ========== */
 @media (max-width: 700px) {
-  .shell { padding: 14px; }
-  .controls { gap: 12px; }
-  .stats { grid-template-columns: 1fr 1fr; padding: 10px 12px; }
+  .shell { padding: 16px 14px; }
+  .controls { gap: 10px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat { padding: 10px 12px; }
   .stat-value { font-size: 17px; }
-  .legend-grad { width: 130px; }
+  .legend { margin-left: 0; flex-basis: 100%; }
+  .legend-grad { width: 100%; max-width: 240px; }
+  .pill { padding: 6px 11px; font-size: 12px; }
+  .search-wrap { flex-basis: 100%; }
+  h1 { font-size: 19px; }
+  .title-actions { gap: 6px; }
+  .modal { padding: 20px 18px; }
 }
 </style>
 </head>
@@ -401,33 +740,44 @@ footer .credit { font-weight: 500; color: var(--ink-soft); }
 
 <header>
   <div class="title-row">
-    <h1>India Job Market Visualizer</h1>
-    <a class="gh-link" href="https://github.com/Tonumoy/india-jobs" target="_blank">GitHub</a>
-  </div>
-  <p class="lede" id="lede">Loading…</p>
-  <p class="caveat"><strong>LLM-powered coloring:</strong> The pipeline (<a href="https://github.com/Tonumoy/india-jobs" target="_blank">source code</a>) scrapes structured Indian occupation data and writes a custom LLM prompt that scores each occupation by any criterion you like. The "AI Exposure" layer is one example. You could write a different prompt for any question — humanoid-robotics exposure, offshoring risk, climate exposure — and re-run the pipeline to get a different coloring.</p>
-  <p class="caveat" style="margin-top: 6px;"><strong>Caveat on AI Exposure scores:</strong> These are rough LLM estimates calibrated to a published rubric, not rigorous predictions. A high score does not predict the job will disappear. Software developers score 7/10 because AI is transforming their work — but demand for software could easily <em>grow</em> as each developer becomes more productive. The score does not account for demand elasticity, regulatory barriers, latent demand, or social preferences for human workers. Many high-exposure jobs will be <em>reshaped</em>, not replaced.</p>
-  <details>
-    <summary>▸ How this works (data pipeline)</summary>
-    <div class="det-body">
-      Data is aggregated from <strong>PLFS 2023–24</strong> (MOSPI), <strong>NASSCOM Strategic Review 2025</strong>, <strong>NASSCOM-Zinnov GCC Landscape Report</strong>, company FY25 filings, and <strong>NSDC Sector Skill Council</strong> reports. The pipeline scripts (<code>pipeline/</code>) tabulate sources into <code>data/occupations.json</code>, write rich markdown descriptions to <code>pages/</code>, send each to an LLM via OpenRouter with the rubric in <code>pipeline/make_prompt.py</code>, and merge into <code>data.json</code> which this page reads.<br><br>
-      Inspired by Andrej Karpathy's <a href="https://karpathy.ai/jobs/" target="_blank">US Job Market Visualizer</a>. Same idea, India-localized data, India-specific rubric (factoring wage arbitrage erosion, service-export composition, and informal-sector dynamics).
+    <div class="brand">
+      <div class="brand-logo">📊</div>
+      <div>
+        <h1>India Job Market — AI Exposure</h1>
+        <div class="title-meta" id="title-meta">Loading…</div>
+      </div>
     </div>
-  </details>
+    <div class="title-actions">
+      <button class="icon-btn" id="help-btn" aria-label="How this works" title="How this works">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2-3 4M12 17.5h0"/></svg>
+      </button>
+      <a class="icon-btn" href="https://github.com/Tonumoy/India-Jobs" target="_blank" rel="noopener" aria-label="View source on GitHub" title="GitHub repo">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.27-5.24-5.67 0-1.25.45-2.28 1.19-3.08-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.06 11.06 0 0 1 5.78 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.66.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.56C20.21 21.38 23.5 17.08 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <p class="lede" id="lede">Loading…</p>
+  <p class="caveat"><strong>Read this first:</strong> AI Exposure scores are LLM estimates against a published rubric, not predictions of job loss. A high score means AI is changing how the work is done — not that the job disappears. Many high-exposure roles will be <em>reshaped</em>, not replaced.</p>
 </header>
 
 <div class="controls">
   <div class="control-group">
-    <span class="control-label">Layer</span>
-    <div class="btn-group" id="layer-buttons">
-      <button class="btn active" data-layer="ai">AI Exposure</button>
-      <button class="btn" data-layer="hire">Hiring Trend</button>
-      <button class="btn" data-layer="pay">Median Pay</button>
-      <button class="btn" data-layer="edu">Education</button>
+    <span class="control-label">View</span>
+    <div class="pill-group" id="layer-buttons">
+      <button class="pill active" data-layer="ai"><span class="pill-icon">🤖</span>AI Exposure</button>
+      <button class="pill" data-layer="hire"><span class="pill-icon">📈</span>Hiring</button>
+      <button class="pill" data-layer="pay"><span class="pill-icon">💵</span>Pay</button>
+      <button class="pill" data-layer="edu"><span class="pill-icon">🎓</span>Education</button>
     </div>
   </div>
 
-  <div class="legend">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search 244 occupations…" autocomplete="off" aria-label="Search occupations">
+    <button class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+  </div>
+
+  <div class="legend" id="legend">
     <span id="legend-min">Low</span>
     <div class="legend-grad" id="legend-grad"></div>
     <span id="legend-max">High</span>
@@ -436,53 +786,124 @@ footer .credit { font-weight: 500; color: var(--ink-soft); }
 
 <div class="stats" id="stats"></div>
 
-<div id="treemap"><div class="loading">Loading data.json…</div></div>
+<div id="treemap"><div class="loading">Loading workforce data…</div></div>
 
 <footer>
-  <div class="credit">Built by <a href="https://www.linkedin.com/in/bodhi108/" target="_blank">Tonumoy Mukherjee</a> · 2026</div>
+  <div class="credit">Built by <a href="https://www.linkedin.com/in/bodhi108/" target="_blank" rel="noopener">Tonumoy Mukherjee</a> · 2026</div>
   <div>
-    <a href="https://github.com/Tonumoy/India-Jobs" target="_blank">GitHub</a>
+    <a href="https://github.com/Tonumoy/India-Jobs" target="_blank" rel="noopener">GitHub</a>
     &nbsp;·&nbsp;
-    <a href="https://www.linkedin.com/in/bodhi108/" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/bodhi108/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
 </div>
 
-<div class="tooltip" id="tooltip"></div>
+<!-- Detail card (tooltip on desktop, bottom sheet on mobile) -->
+<div class="backdrop" id="backdrop"></div>
+<div class="card" id="card" role="dialog" aria-modal="false" aria-labelledby="card-title"></div>
+
+<!-- Onboarding hint -->
+<div class="onboarding" id="onboarding" style="display:none">
+  <div class="onboarding-icon">i</div>
+  <span id="onboarding-text">Tap any tile to explore. Tap again to open the source.</span>
+  <button class="onboarding-close" id="onboarding-close" aria-label="Dismiss hint">×</button>
+</div>
+
+<!-- Help modal -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+    <h2 id="modal-title">How to use this visualizer</h2>
+    <p>This treemap shows every major occupation in the Indian economy, sized by how many people work in that role and coloured by the metric you pick.</p>
+
+    <h3>READING THE TILES</h3>
+    <ul>
+      <li><strong>Bigger tile</strong> = more workers in that occupation.</li>
+      <li><strong>Colour</strong> = whatever you've selected in the View toggle.</li>
+      <li><strong>Click or tap a tile</strong> to see the LLM-written rationale + a link to the original source report.</li>
+    </ul>
+
+    <h3>THE FOUR VIEWS</h3>
+    <ul>
+      <li><strong>🤖 AI Exposure</strong> (0–10) — how much an LLM thinks AI is reshaping this work, per the India-specific rubric in <code>make_prompt.py</code>.</li>
+      <li><strong>📈 Hiring</strong> — recent YoY direction, from sector reports.</li>
+      <li><strong>💵 Pay</strong> — median annual gross pay in ₹.</li>
+      <li><strong>🎓 Education</strong> — typical formal qualification expected.</li>
+    </ul>
+
+    <h3>HOW THE SCORES ARE GENERATED</h3>
+    <p>Each occupation's description (in <code>pages/&lt;slug&gt;.md</code>) is sent to an open LLM via OpenRouter along with a rubric. The LLM returns a 0-10 score and a 2-3 sentence rationale. The whole pipeline re-runs every Monday at 04:00 IST automatically. All free models, $0 cost per run.</p>
+
+    <h3>CAVEATS</h3>
+    <ul>
+      <li>Scores are LLM estimates, not predictions.</li>
+      <li>High exposure does not mean the job disappears — it often means each worker becomes more productive.</li>
+      <li>Employment counts are reconciled from PLFS, NASSCOM, NSDC, ministries, regulators, and company filings.</li>
+    </ul>
+  </div>
+</div>
 
 <script>
 // ============================================================================
+// SECTOR ICONS
+// ============================================================================
+const SECTOR_ICONS = {
+  "Agriculture & Allied": "🌾",
+  "Construction": "🏗️",
+  "Manufacturing": "🏭",
+  "Retail & Trade": "🛍️",
+  "IT Services & Software": "💻",
+  "Global Capability Centres": "🏢",
+  "BPM / BPO": "☎️",
+  "Banking, Finance, Insurance": "💰",
+  "Government & Public Sector": "🏛️",
+  "Healthcare (Private)": "🏥",
+  "Education (Private)": "🎓",
+  "Media / Content / Creative": "🎬",
+  "Legal & Professional Services": "⚖️",
+  "Transport & Logistics": "🚛",
+  "Hospitality & Tourism": "🏨",
+  "Beauty & Personal Services": "💇",
+  "Religious & Cultural Services": "🕉️",
+  "Domestic & Personal Services": "🏠",
+  "Security Services": "🛡️",
+  "Real Estate": "🏘️",
+  "Sports & Athletics": "⚽",
+  "Social Services & NGO": "🤝",
+  "Mining & Petroleum": "⛏️",
+  "Utilities & Power": "⚡",
+  "Telecom & Communications": "📡",
+  "Renewable Energy & Green Tech": "♻️",
+};
+
+// ============================================================================
 // COLOR SCALES
 // ============================================================================
-
 function colorAI(s) {
   if (s === null || s === undefined) return '#3a3a3a';
   const t = Math.max(0, Math.min(1, s / 10));
-  if (t < 0.25) return d3.interpolateRgb("#3a7a4a", "#9ca94a")(t / 0.25);
-  if (t < 0.5)  return d3.interpolateRgb("#9ca94a", "#d4a04a")((t - 0.25) / 0.25);
-  if (t < 0.75) return d3.interpolateRgb("#d4a04a", "#c75a3c")((t - 0.5) / 0.25);
-  return d3.interpolateRgb("#c75a3c", "#8b1a1a")((t - 0.75) / 0.25);
+  if (t < 0.25) return d3.interpolateRgb("#2d6a4f", "#a4ac4a")(t / 0.25);
+  if (t < 0.5)  return d3.interpolateRgb("#a4ac4a", "#e3a93b")((t - 0.25) / 0.25);
+  if (t < 0.75) return d3.interpolateRgb("#e3a93b", "#d8552f")((t - 0.5) / 0.25);
+  return d3.interpolateRgb("#d8552f", "#7b1212")((t - 0.75) / 0.25);
 }
-
 function colorHire(s) {
   const t = (Math.max(-3, Math.min(3, s)) + 3) / 6;
-  if (t < 0.33) return d3.interpolateRgb("#8b1a1a", "#d4a04a")(t / 0.33);
-  if (t < 0.66) return d3.interpolateRgb("#d4a04a", "#9ca94a")((t - 0.33) / 0.33);
-  return d3.interpolateRgb("#9ca94a", "#3a7a4a")((t - 0.66) / 0.34);
+  if (t < 0.33) return d3.interpolateRgb("#7b1212", "#e3a93b")(t / 0.33);
+  if (t < 0.66) return d3.interpolateRgb("#e3a93b", "#a4ac4a")((t - 0.33) / 0.33);
+  return d3.interpolateRgb("#a4ac4a", "#2d6a4f")((t - 0.66) / 0.34);
 }
-
 function colorPay(pay) {
   const lp = Math.log10(Math.max(50000, pay));
   const t = Math.max(0, Math.min(1, (lp - Math.log10(50000)) / (Math.log10(4000000) - Math.log10(50000))));
-  if (t < 0.33) return d3.interpolateRgb("#8b1a1a", "#d4a04a")(t / 0.33);
-  if (t < 0.66) return d3.interpolateRgb("#d4a04a", "#9ca94a")((t - 0.33) / 0.33);
-  return d3.interpolateRgb("#9ca94a", "#3a7a4a")((t - 0.66) / 0.34);
+  if (t < 0.33) return d3.interpolateRgb("#7b1212", "#e3a93b")(t / 0.33);
+  if (t < 0.66) return d3.interpolateRgb("#e3a93b", "#a4ac4a")((t - 0.33) / 0.33);
+  return d3.interpolateRgb("#a4ac4a", "#2d6a4f")((t - 0.66) / 0.34);
 }
-
 function colorEdu(level) {
   const t = (level - 1) / 5;
-  return d3.interpolateRgb.gamma(2.2)("#5c3a5c", "#3a7a8a")(t);
+  return d3.interpolateRgb.gamma(2.2)("#4c3a6c", "#3a7a9a")(t);
 }
 
 const LAYERS = {
@@ -519,28 +940,42 @@ const LAYERS = {
   }
 };
 
+// ============================================================================
+// STATE
+// ============================================================================
 let EDU_LABELS = {};
 let HIRE_LABELS = {};
 let DATA = null;
 let currentLayer = 'ai';
+let searchQuery = '';
+let pinnedTile = null;   // the slug currently pinned in the card (mobile)
+let lastHoverData = null;
+
+const IS_TOUCH = (window.matchMedia && window.matchMedia('(hover: none)').matches) || ('ontouchstart' in window);
+const IS_SMALL = () => window.innerWidth <= 700;
 
 const treemapEl = document.getElementById('treemap');
-const tooltip = document.getElementById('tooltip');
+const card = document.getElementById('card');
+const backdrop = document.getElementById('backdrop');
 
+// ============================================================================
+// HELPERS
+// ============================================================================
 function formatJobs(n) {
   if (n >= 10000000) return (n/10000000).toFixed(1) + " Cr";
   if (n >= 100000)   return (n/100000).toFixed(1) + " L";
   if (n >= 1000)     return (n/1000).toFixed(0) + "K";
   return n.toString();
 }
-
 function pickTextColor(bgHex) {
   const rgb = d3.rgb(bgHex);
   const lum = 0.299*rgb.r + 0.587*rgb.g + 0.114*rgb.b;
   return lum < 130 ? 'light' : 'dark';
 }
-
-// Transform data.json into d3.hierarchy-compatible structure
+function scoreColor(s) {
+  if (s == null) return 'rgba(255,255,255,0.1)';
+  return colorAI(s);
+}
 function toHierarchy(data) {
   return {
     name: "India",
@@ -551,9 +986,13 @@ function toHierarchy(data) {
   };
 }
 
+// ============================================================================
+// RENDER
+// ============================================================================
 function render() {
   const w = treemapEl.clientWidth;
-  const h = Math.max(720, window.innerHeight * 0.78);
+  const minH = IS_SMALL() ? 560 : 720;
+  const h = Math.max(minH, window.innerHeight * (IS_SMALL() ? 0.7 : 0.78));
   treemapEl.style.height = h + 'px';
   treemapEl.innerHTML = '';
 
@@ -563,39 +1002,27 @@ function render() {
 
   d3.treemap()
     .size([w, h])
-    .paddingTop(d => d.depth === 1 ? 18 : 0)
+    .paddingTop(d => d.depth === 1 ? 22 : 0)
     .paddingInner(1)
     .paddingOuter(2)
     .round(true)(root);
 
   const layer = LAYERS[currentLayer];
+  const matchSet = computeMatchSet();
 
-  // Sector labels INSIDE each sector at the top — like Karpathy's
+  // Sector header strips with icons
   root.children.forEach(sector => {
     const sw = sector.x1 - sector.x0, sh = sector.y1 - sector.y0;
-    if (sw < 60 || sh < 18) return;
-    // Background strip for sector label
+    if (sw < 70 || sh < 22) return;
     const strip = document.createElement('div');
-    strip.style.position = 'absolute';
+    strip.className = 'sector-strip';
     strip.style.left = sector.x0 + 'px';
     strip.style.top = sector.y0 + 'px';
     strip.style.width = sw + 'px';
-    strip.style.height = '18px';
-    strip.style.background = 'rgba(0,0,0,0.45)';
-    strip.style.pointerEvents = 'none';
-    strip.style.zIndex = '4';
+    strip.style.height = '22px';
+    const icon = SECTOR_ICONS[sector.data.name] || '';
+    strip.innerHTML = `<span class="sector-icon">${icon}</span><span class="sector-label">${sector.data.name}</span>`;
     treemapEl.appendChild(strip);
-    // Label text
-    const lbl = document.createElement('div');
-    lbl.className = 'sector-label';
-    lbl.style.left = sector.x0 + 'px';
-    lbl.style.top = sector.y0 + 'px';
-    lbl.style.width = sw + 'px';
-    lbl.style.height = '18px';
-    lbl.style.lineHeight = '18px';
-    lbl.style.padding = '0 6px';
-    lbl.textContent = sector.data.name;
-    treemapEl.appendChild(lbl);
   });
 
   root.leaves().forEach(leaf => {
@@ -605,12 +1032,18 @@ function render() {
 
     const tile = document.createElement('div');
     tile.className = 'tile';
+    tile.dataset.slug = d.s;
     tile.style.left = leaf.x0 + 'px';
     tile.style.top = leaf.y0 + 'px';
     tile.style.width = w + 'px';
     tile.style.height = h + 'px';
     const fill = layer.color(d);
     tile.style.background = fill;
+
+    if (matchSet) {
+      if (matchSet.has(d.s)) tile.classList.add('match');
+      else tile.classList.add('dimmed');
+    }
 
     const inner = document.createElement('div');
     inner.className = 'tile-inner ' + pickTextColor(fill);
@@ -628,16 +1061,22 @@ function render() {
     }
     tile.appendChild(inner);
 
-    tile.addEventListener('mousemove', (e) => showTooltip(e, d, leaf.parent.data.name));
-    tile.addEventListener('mouseleave', hideTooltip);
-
-    if (d.u) {
-      tile.style.cursor = 'pointer';
-      tile.title = 'Click to open source';
-      tile.addEventListener('click', () => {
-        window.open(d.u, '_blank', 'noopener,noreferrer');
-      });
+    // Desktop hover + click; mobile click only
+    if (!IS_TOUCH) {
+      tile.addEventListener('mouseenter', () => showCard(d, leaf.parent.data.name, null, false));
+      tile.addEventListener('mousemove', (e) => positionHoverCard(e));
+      tile.addEventListener('mouseleave', () => { if (pinnedTile !== d.s) hideCard(); });
     }
+    tile.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (pinnedTile === d.s) {
+        // second tap: open source
+        if (d.u) window.open(d.u, '_blank', 'noopener,noreferrer');
+        return;
+      }
+      pinnedTile = d.s;
+      showCard(d, leaf.parent.data.name, null, true);
+    });
 
     treemapEl.appendChild(tile);
   });
@@ -646,34 +1085,92 @@ function render() {
   updateLegend();
 }
 
-function showTooltip(e, d, sector) {
-  let html = `<div class="tt-sector">${sector}</div>`;
-  html += `<div class="tt-title">${d.n}</div>`;
-  html += `<div class="tt-row"><span class="tt-key">Employment</span><span class="tt-val">${d.v.toLocaleString('en-IN')}</span></div>`;
+// ============================================================================
+// CARD (tooltip / sheet)
+// ============================================================================
+function showCard(d, sector, evt, pinned) {
+  const icon = SECTOR_ICONS[sector] || '';
+  const aiBg = scoreColor(d.ai);
+  const aiTextLight = pickTextColor(aiBg) === 'light';
+
+  let html = `<button class="card-close" id="card-close-btn" aria-label="Close">×</button>`;
+  html += `<div class="c-sector"><span>${icon}</span><span>${sector}</span></div>`;
+  html += `<div class="c-title" id="card-title">${d.n}</div>`;
+  html += `<div class="c-row"><span class="c-key">Employment</span><span class="c-val">${d.v.toLocaleString('en-IN')}</span></div>`;
   if (d.ai !== null && d.ai !== undefined) {
-    html += `<div class="tt-row"><span class="tt-key">AI exposure</span><span class="tt-val">${d.ai}/10</span></div>`;
+    html += `<div class="c-row"><span class="c-key">AI exposure</span><span class="c-val"><span class="c-score-pill" style="background:${aiBg};color:${aiTextLight ? '#fff' : '#000'}">${d.ai}/10</span></span></div>`;
   }
-  html += `<div class="tt-row"><span class="tt-key">Hiring trend</span><span class="tt-val">${HIRE_LABELS[d.h]}</span></div>`;
+  html += `<div class="c-row"><span class="c-key">Hiring trend</span><span class="c-val">${HIRE_LABELS[d.h]}</span></div>`;
   const payStr = d.p >= 100000 ? "₹" + (d.p/100000).toFixed(1) + " lakh/yr" : "₹" + d.p.toLocaleString('en-IN') + "/yr";
-  html += `<div class="tt-row"><span class="tt-key">Median pay</span><span class="tt-val">${payStr}</span></div>`;
-  html += `<div class="tt-row"><span class="tt-key">Education</span><span class="tt-val">${EDU_LABELS[d.e]}</span></div>`;
-  if (d.r) html += `<div class="tt-rationale"><strong>LLM rationale</strong>${d.r}</div>`;
-  if (d.src) {
-    const hint = d.u ? ' <span class="tt-hint">(click tile to open ↗)</span>' : '';
-    html += `<div class="tt-source">Source: ${d.src}${hint}</div>`;
+  html += `<div class="c-row"><span class="c-key">Median pay</span><span class="c-val">${payStr}</span></div>`;
+  html += `<div class="c-row"><span class="c-key">Education</span><span class="c-val">${EDU_LABELS[d.e]}</span></div>`;
+  if (d.r) html += `<div class="c-rationale"><span class="c-rationale-label">LLM rationale</span>${d.r}</div>`;
+  if (d.u) {
+    html += `<a class="c-source-btn" href="${d.u}" target="_blank" rel="noopener noreferrer">Open source ↗</a>`;
+    if (d.src) html += `<div class="c-source-text">${d.src}</div>`;
+  } else if (d.src) {
+    html += `<div class="c-source-text" style="margin-top:14px">Source: ${d.src}</div>`;
   }
-  tooltip.innerHTML = html;
-  tooltip.style.opacity = 1;
-  const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
-  let left = e.clientX + 14, top = e.clientY + 14;
-  if (left + tw > window.innerWidth - 16) left = e.clientX - tw - 14;
-  if (top + th > window.innerHeight - 16) top = e.clientY - th - 14;
-  tooltip.style.left = left + 'px';
-  tooltip.style.top = top + 'px';
+
+  card.innerHTML = html;
+  card.classList.remove('hover');
+  card.classList.remove('pinned');
+  if (pinned || IS_TOUCH) {
+    card.classList.add('pinned');
+    backdrop.classList.add('visible');
+    pinnedTile = d.s;
+    document.getElementById('card-close-btn').addEventListener('click', closeCard);
+  } else {
+    card.classList.add('hover');
+    lastHoverData = d;
+  }
+
+  // Position card
+  if (IS_SMALL() && pinned) {
+    // bottom sheet — CSS handles
+    requestAnimationFrame(() => card.classList.add('visible'));
+  } else {
+    // floating panel — centered if pinned on desktop, follow cursor if hover
+    if (pinned) {
+      const tw = 380;
+      card.style.left = ((window.innerWidth - tw) / 2) + 'px';
+      card.style.top = '90px';
+      card.style.maxWidth = tw + 'px';
+    } else if (evt) {
+      positionHoverCard(evt);
+    }
+    card.classList.add('visible');
+  }
 }
 
-function hideTooltip() { tooltip.style.opacity = 0; }
+function positionHoverCard(e) {
+  if (card.classList.contains('pinned')) return;
+  const tw = card.offsetWidth, th = card.offsetHeight;
+  const pad = 14;
+  let left = e.clientX + 16;
+  let top = e.clientY + 16;
+  if (left + tw > window.innerWidth - pad) left = e.clientX - tw - 16;
+  if (top + th > window.innerHeight - pad) top = e.clientY - th - 16;
+  left = Math.max(pad, left);
+  top = Math.max(pad, top);
+  card.style.left = left + 'px';
+  card.style.top = top + 'px';
+}
 
+function hideCard() {
+  card.classList.remove('visible');
+}
+function closeCard() {
+  card.classList.remove('visible');
+  backdrop.classList.remove('visible');
+  pinnedTile = null;
+}
+backdrop.addEventListener('click', closeCard);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeCard(); closeModal(); }});
+
+// ============================================================================
+// STATS
+// ============================================================================
 function updateStats() {
   const statsEl = document.getElementById('stats');
   const allOccs = DATA.sectors.flatMap(s => s.ch);
@@ -694,23 +1191,23 @@ function updateStats() {
     const declining = allOccs.filter(o => o.h < 0).reduce((a, o) => a + o.v, 0);
     const growing = allOccs.filter(o => o.h > 0).reduce((a, o) => a + o.v, 0);
     const flat = allOccs.filter(o => o.h === 0).reduce((a, o) => a + o.v, 0);
-    html += `<div class="stat"><span class="stat-label">Declining jobs</span><span class="stat-value">${(declining/10000000).toFixed(1)} Cr</span><span class="stat-sub warn">${(declining/total*100).toFixed(1)}% shrinking</span></div>`;
-    html += `<div class="stat"><span class="stat-label">Flat hiring</span><span class="stat-value">${(flat/10000000).toFixed(1)} Cr</span><span class="stat-sub">${(flat/total*100).toFixed(1)}% stable</span></div>`;
-    html += `<div class="stat"><span class="stat-label">Growing jobs</span><span class="stat-value">${(growing/10000000).toFixed(1)} Cr</span><span class="stat-sub good">${(growing/total*100).toFixed(1)}% rising</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Declining</span><span class="stat-value">${(declining/10000000).toFixed(1)} Cr</span><span class="stat-sub warn">${(declining/total*100).toFixed(1)}% shrinking</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Flat</span><span class="stat-value">${(flat/10000000).toFixed(1)} Cr</span><span class="stat-sub">${(flat/total*100).toFixed(1)}% stable</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Growing</span><span class="stat-value">${(growing/10000000).toFixed(1)} Cr</span><span class="stat-sub good">${(growing/total*100).toFixed(1)}% rising</span></div>`;
   } else if (currentLayer === 'pay') {
     const above10L = allOccs.filter(o => o.p >= 1000000).reduce((a, o) => a + o.v, 0);
     const below3L = allOccs.filter(o => o.p < 300000).reduce((a, o) => a + o.v, 0);
     const wgtPay = allOccs.reduce((a, o) => a + o.p * o.v, 0) / total;
-    html += `<div class="stat"><span class="stat-label">Earning ≥₹10L</span><span class="stat-value">${(above10L/10000000).toFixed(2)} Cr</span><span class="stat-sub good">${(above10L/total*100).toFixed(1)}%</span></div>`;
-    html += `<div class="stat"><span class="stat-label">Earning &lt;₹3L</span><span class="stat-value">${(below3L/10000000).toFixed(1)} Cr</span><span class="stat-sub warn">${(below3L/total*100).toFixed(1)}%</span></div>`;
+    html += `<div class="stat"><span class="stat-label">≥ ₹10L</span><span class="stat-value">${(above10L/10000000).toFixed(2)} Cr</span><span class="stat-sub good">${(above10L/total*100).toFixed(1)}%</span></div>`;
+    html += `<div class="stat"><span class="stat-label">&lt; ₹3L</span><span class="stat-value">${(below3L/10000000).toFixed(1)} Cr</span><span class="stat-sub warn">${(below3L/total*100).toFixed(1)}%</span></div>`;
     html += `<div class="stat"><span class="stat-label">Weighted median</span><span class="stat-value">₹${(wgtPay/100000).toFixed(1)}L</span><span class="stat-sub">per year</span></div>`;
   } else if (currentLayer === 'edu') {
     const grads = allOccs.filter(o => o.e >= 4).reduce((a, o) => a + o.v, 0);
     const lowedu = allOccs.filter(o => o.e <= 2).reduce((a, o) => a + o.v, 0);
     const advanced = allOccs.filter(o => o.e >= 5).reduce((a, o) => a + o.v, 0);
-    html += `<div class="stat"><span class="stat-label">Bachelor's+</span><span class="stat-value">${(grads/10000000).toFixed(1)} Cr</span><span class="stat-sub gold">${(grads/total*100).toFixed(1)}% of jobs</span></div>`;
-    html += `<div class="stat"><span class="stat-label">≤12th class</span><span class="stat-value">${(lowedu/10000000).toFixed(1)} Cr</span><span class="stat-sub">${(lowedu/total*100).toFixed(1)}% of jobs</span></div>`;
-    html += `<div class="stat"><span class="stat-label">Master's+</span><span class="stat-value">${(advanced/10000000).toFixed(2)} Cr</span><span class="stat-sub">${(advanced/total*100).toFixed(1)}% of jobs</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Bachelor's+</span><span class="stat-value">${(grads/10000000).toFixed(1)} Cr</span><span class="stat-sub gold">${(grads/total*100).toFixed(1)}%</span></div>`;
+    html += `<div class="stat"><span class="stat-label">≤ 12th class</span><span class="stat-value">${(lowedu/10000000).toFixed(1)} Cr</span><span class="stat-sub">${(lowedu/total*100).toFixed(1)}%</span></div>`;
+    html += `<div class="stat"><span class="stat-label">Master's+</span><span class="stat-value">${(advanced/10000000).toFixed(2)} Cr</span><span class="stat-sub">${(advanced/total*100).toFixed(1)}%</span></div>`;
   }
   statsEl.innerHTML = html;
 }
@@ -723,22 +1220,88 @@ function updateLegend() {
   document.getElementById('legend-grad').style.background = `linear-gradient(to right, ${stops})`;
 }
 
-document.querySelectorAll('#layer-buttons .btn').forEach(btn => {
+// ============================================================================
+// SEARCH
+// ============================================================================
+function computeMatchSet() {
+  if (!searchQuery) return null;
+  const q = searchQuery.toLowerCase();
+  const matches = new Set();
+  DATA.sectors.forEach(s => {
+    s.ch.forEach(o => {
+      if (o.n.toLowerCase().includes(q) || s.n.toLowerCase().includes(q)) {
+        matches.add(o.s);
+      }
+    });
+  });
+  return matches;
+}
+
+document.getElementById('search').addEventListener('input', (e) => {
+  searchQuery = e.target.value.trim();
+  document.getElementById('search-clear').classList.toggle('visible', !!searchQuery);
+  render();
+});
+document.getElementById('search-clear').addEventListener('click', () => {
+  document.getElementById('search').value = '';
+  searchQuery = '';
+  document.getElementById('search-clear').classList.remove('visible');
+  render();
+});
+
+// ============================================================================
+// LAYERS
+// ============================================================================
+document.querySelectorAll('#layer-buttons .pill').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('#layer-buttons .btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('#layer-buttons .pill').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentLayer = btn.dataset.layer;
     render();
   });
 });
 
+// ============================================================================
+// HELP MODAL
+// ============================================================================
+const modalBackdrop = document.getElementById('modal-backdrop');
+function openModal() { modalBackdrop.classList.add('visible'); }
+function closeModal() { modalBackdrop.classList.remove('visible'); }
+document.getElementById('help-btn').addEventListener('click', openModal);
+document.getElementById('modal-close').addEventListener('click', closeModal);
+modalBackdrop.addEventListener('click', e => { if (e.target === modalBackdrop) closeModal(); });
+
+// ============================================================================
+// ONBOARDING (first visit)
+// ============================================================================
+const ONBOARDING_KEY = 'indiajobs-onboarded-v2';
+if (!localStorage.getItem(ONBOARDING_KEY)) {
+  const ob = document.getElementById('onboarding');
+  ob.style.display = 'flex';
+  const txt = IS_TOUCH ? 'Tap any tile to explore. Tap again to open the source.' : 'Hover a tile for details · click to pin · double-click to open the source.';
+  document.getElementById('onboarding-text').textContent = txt;
+  document.getElementById('onboarding-close').addEventListener('click', () => {
+    ob.style.display = 'none';
+    localStorage.setItem(ONBOARDING_KEY, '1');
+  });
+  setTimeout(() => {
+    ob.style.display = 'none';
+    localStorage.setItem(ONBOARDING_KEY, '1');
+  }, 9000);
+}
+
+// ============================================================================
+// RESIZE
+// ============================================================================
 let resizeTimer;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(render, 120);
 });
 
-// Load and render
+// ============================================================================
+// LOAD
+// ============================================================================
 fetch('data.json')
   .then(r => r.json())
   .then(data => {
@@ -746,17 +1309,24 @@ fetch('data.json')
     EDU_LABELS = data.meta.edu_codes;
     HIRE_LABELS = data.meta.hire_codes;
 
+    document.getElementById('title-meta').textContent =
+      `${data.meta.total_occupations} occupations · ${data.meta.total_sectors} sectors · ${(data.meta.total_workforce_covered/10000000).toFixed(1)} Cr workforce`;
+
     document.getElementById('lede').innerHTML =
-      `A visual exploration of <strong>~${(data.meta.total_workforce_covered/10000000).toFixed(1)} crore</strong> jobs across India's economy, mapped to <strong>${data.meta.total_occupations} occupations</strong> in <strong>${data.meta.total_sectors} sectors</strong>. Each rectangle's <strong>area</strong> is proportional to total employment. <strong>Color</strong> shows the selected metric — toggle between AI exposure, hiring trend, median pay, and education. Hover any tile for the LLM-generated rationale and source.`;
+      `A treemap of <strong>${data.meta.total_occupations} occupations</strong> in <strong>${data.meta.total_sectors} Indian economic sectors</strong>, covering <strong>~${(data.meta.total_workforce_covered/10000000).toFixed(1)} crore (${(data.meta.total_workforce_covered/1000000).toFixed(0)}M)</strong> workers. Tile size = employment; tile colour = the selected metric. <a href="#" id="open-help">Click here</a> for a 30-second guide on how to read this. Data refreshes weekly via an automated LLM rescoring pipeline.`;
+
+    document.getElementById('search').placeholder = `Search ${data.meta.total_occupations} occupations…`;
 
     render();
+
+    const helpLink = document.getElementById('open-help');
+    if (helpLink) helpLink.addEventListener('click', e => { e.preventDefault(); openModal(); });
   })
   .catch(err => {
     document.getElementById('treemap').innerHTML =
-      '<div class="loading">Failed to load data.json. Run <code>uv run python pipeline/build_site_data.py</code> from the repo root.</div>';
+      '<div class="loading">Failed to load <code>data.json</code>. If you cloned the repo, run <code>uv run python pipeline/build_site_data.py</code>.</div>';
     console.error(err);
   });
 </script>
-
 </body>
 </html>

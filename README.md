@@ -12,7 +12,7 @@ Inspired by Andrej Karpathy's [US Job Market Visualizer](https://karpathy.ai/job
 
 ## What this is
 
-India has no single equivalent of the US Bureau of Labor Statistics' Occupational Outlook Handbook. So this repo merges multiple Indian sources into a unified dataset of **214 occupations covering ~554 million workers across 22 sectors**, scores each one's AI exposure using an LLM with an India-specific rubric, and renders the result as an interactive treemap.
+India has no single equivalent of the US Bureau of Labor Statistics' Occupational Outlook Handbook. So this repo merges multiple Indian sources into a unified dataset of **244 occupations covering ~566 million workers across 26 sectors**, scores each one's AI exposure using an LLM with an India-specific rubric, and renders the result as an interactive treemap.
 
 - **Area** of each tile = total employment in that occupation.
 - **Color** = the selected metric (AI exposure / hiring trend / median pay / education).
@@ -37,8 +37,8 @@ The scoring script is hardened against rate-limits, truncated JSON, null respons
                           │
                           │  hand-curated
                           ▼
-              data/occupations.json   ← Master list: 214 occupations,
-                          │              22 sectors, with source_url per row
+              data/occupations.json   ← Master list: 244 occupations,
+                          │              26 sectors, with source_url per row
                           │
        ┌──────────────────┼──────────────────┐
        ▼                  ▼                  ▼
@@ -120,7 +120,7 @@ Each occupation is scored on a single **AI Exposure** axis from 0 to 10. The ful
 | 8–9 | Very high | Bank clerks, paralegals, content writers, data entry, junior analysts |
 | 10 | Maximum | Voice call-centre agents, basic translation, medical transcription |
 
-The weighted average across all 214 occupations sits around 2/10 — much lower than the US (~5.3/10) because India's workforce is disproportionately in low-exposure physical, agricultural, and informal-sector work. Within the **formal/cognitive economy** (~80M jobs), exposure is concentrated exactly in India's export specialty: IT services, BPM, KPO, GCC back-office.
+The weighted average across all 244 occupations sits around 2/10 — much lower than the US (~5.3/10) because India's workforce is disproportionately in low-exposure physical, agricultural, and informal-sector work. Within the **formal/cognitive economy** (~80M jobs), exposure is concentrated exactly in India's export specialty: IT services, BPM, KPO, GCC back-office.
 
 ### India-specific factors the rubric weights
 
@@ -167,7 +167,7 @@ The repo is already configured to deploy to GitHub Pages from `main` / `(root)`.
 
 - The scores are **rough LLM estimates**, not rigorous predictions. They depend on the rubric and the model.
 - Many high-exposure jobs will be **reshaped**, not replaced.
-- Employment counts are reconciled from multiple Indian sources. Where sources disagreed we took the more conservative number. Total coverage sums to ~554M, which exceeds India's ~480M PLFS-formal total — because informal categories (domestic workers, religious workers, street vendors, gig delivery) are systematically under-counted by PLFS but explicitly visible here.
+- Employment counts are reconciled from multiple Indian sources. Where sources disagreed we took the more conservative number. Total coverage sums to ~566M, which exceeds India's ~480M PLFS-formal total — because informal categories (domestic workers, religious workers, street vendors, gig delivery, sanitation workers) are systematically under-counted by PLFS but explicitly visible here.
 
 ## License
 

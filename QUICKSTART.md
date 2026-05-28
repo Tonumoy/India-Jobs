@@ -8,7 +8,7 @@ The "I just want to get it running" guide. The full [README.md](README.md) has t
    Indian data sources (PLFS, NASSCOM, NSDC, ministries, regulators, ...)
                           │
                           ▼
-   data/occupations.json   ← Master list: 214 Indian occupations, sized by
+   data/occupations.json   ← Master list: 244 Indian occupations, sized by
         │                     employment, with median pay, education, hiring
         │                     trend, source, and source URL.
         │
@@ -31,7 +31,7 @@ The "I just want to get it running" guide. The full [README.md](README.md) has t
 
 ## What's in scores.json right now
 
-**Real LLM output.** Every one of the 214 occupations was scored by an OpenRouter model (primary: `nvidia/nemotron-3-super-120b-a12b:free`, fallback: `openai/gpt-oss-120b:free`). Each entry has `score`, `rationale`, and `model`.
+**Real LLM output.** Every one of the 244 occupations was scored by an OpenRouter model (primary: `nvidia/nemotron-3-super-120b-a12b:free`, fallback: `openai/gpt-oss-120b:free`). Each entry has `score`, `rationale`, and `model`.
 
 The full pipeline re-runs automatically every Monday at 04:00 IST via [.github/workflows/rescore.yml](.github/workflows/rescore.yml), so the live site stays current as model quality improves. All scoring uses **free OpenRouter models — $0 cost per re-score**.
 

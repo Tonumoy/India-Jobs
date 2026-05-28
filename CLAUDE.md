@@ -4,7 +4,7 @@ This file briefs a Claude (or other LLM) agent walking into this repo cold. Read
 
 ## What this repo is
 
-A static GitHub-Pages site that visualises **AI exposure scores for 214 Indian occupations across 22 sectors** as a D3.js treemap. The scores come from real LLM calls (OpenRouter) using a custom India-specific rubric.
+A static GitHub-Pages site that visualises **AI exposure scores for 244 Indian occupations across 26 sectors** as a D3.js treemap. The scores come from real LLM calls (OpenRouter) using a custom India-specific rubric.
 
 **Live site:** https://tonumoy.github.io/India-Jobs/ (case-sensitive URL).
 **Owner:** Tonumoy Mukherjee (LinkedIn: bodhi108, email: tonumoymukherjee2@gmail.com).
@@ -19,10 +19,10 @@ A static GitHub-Pages site that visualises **AI exposure scores for 214 Indian o
 ├── .nojekyll                  # Disables GitHub-Pages Jekyll processing
 ├── jobs.png                   # Hero image for the README
 ├── data/
-│   ├── occupations.json       # ★ Master dataset (214 occupations) — source of truth
+│   ├── occupations.json       # ★ Master dataset (244 occupations) — source of truth
 │   ├── scores.json            # ★ LLM scores per occupation (built artifact)
 │   └── occupations.csv        # Flat CSV view (built artifact)
-├── pages/<slug>.md            # ★ LLM input: one rich description per occupation (214 files)
+├── pages/<slug>.md            # ★ LLM input: one rich description per occupation (244 files)
 ├── pipeline/                  # All Python scripts
 │   ├── make_prompt.py         # ★ The scoring rubric (SYSTEM_PROMPT lives here)
 │   ├── process.py             # Generates pages/*.md from occupations.json
@@ -53,9 +53,9 @@ A static GitHub-Pages site that visualises **AI exposure scores for 214 Indian o
 {
   "meta": {
     "source": "Curated from PLFS 2023-24, NASSCOM, NSDC SSCs, ...",
-    "total_occupations": 214,
+    "total_occupations": 244,
     "total_sectors": 22,
-    "total_workforce_covered": 554368000,
+    "total_workforce_covered": 565585000,
     "last_updated": "2026-05-28",
     "edu_codes":  {"1": "None / Primary", ..., "6": "PhD"},
     "hire_codes": {"-3": "Strongly declining", ..., "3": "Booming"}
@@ -270,5 +270,24 @@ RESCORE CRON      Mon 04:00 IST (Sun 22:30 UTC)
 SECRET NEEDED     OPENROUTER_API_KEY  (GitHub Actions)
 LOCAL ENV         .env  (gitignored)  with OPENROUTER_API_KEY=sk-or-v1-...
 DEPLOYS ON        any push to main, via Pages, ~30s
-TOTAL OCCS        214 across 22 sectors, ~554M workers
+TOTAL OCCS        244 across 26 sectors, ~566M workers
 ```
+
+## Frontend UI patterns (added Phase D)
+
+The `index.html` redesign added several patterns worth knowing:
+
+- **Sector icons.** `SECTOR_ICONS` is a map from sector name → emoji. When adding a new sector, **add an entry here too** or its strip will have no icon. Keep the icon emoji-only (no external icon font) so the site stays a single-file static deploy.
+- **Detail card (was: tooltip).** One `<div id="card">` serves both desktop hover-floating and mobile bottom-sheet roles. On desktop without a pinned tile, it follows cursor and clamps to viewport. On a touch device or after `click`, it becomes "pinned" → on mobile that means full-width bottom sheet with backdrop and drag-handle visual. Don't fork into separate desktop/mobile components.
+- **Touch detection.** `IS_TOUCH = matchMedia('(hover: none)').matches || 'ontouchstart' in window`. Use this rather than `userAgent` sniffing.
+- **Card behaviour on click.** First click pins the card (mobile or desktop). Second click on the same tile opens the source URL. The card's "Open source ↗" button is the primary CTA inside the card itself.
+- **Search.** Top-level search input dims non-matching tiles and gives matching tiles an `.match` outline + glow. Substring match against occupation name OR sector name, case-insensitive.
+- **Onboarding hint.** Pill at bottom-center, shown once per browser (localStorage key `indiajobs-onboarded-v2`). Bump the suffix when copy materially changes so returning visitors see it again.
+- **Help modal.** Triggered by header `?` button OR the `Click here` link in the lede. Keyboard `Esc` closes both card and modal.
+- **Glassmorphism.** `backdrop-filter: blur(18px) saturate(1.15)` on `.card`. Safari support is via `-webkit-backdrop-filter`. Don't add more layers of blur — the GPU cost on lower-end devices stacks badly.
+
+When adding a new layer or feature, the conventions to preserve:
+- Pill-style controls (`.pill` class) — never go back to square buttons.
+- Layer toggle button has an emoji-prefixed label.
+- Stats use the seven-column grid; add new stats by appending to `updateStats()` per current layer.
+- Don't use any framework or bundler — the site is one HTML file, period.
