@@ -57,6 +57,7 @@ def main():
             "p": occ["pay"],
             "e": occ["edu"],
             "src": occ["source"],
+            "u": occ.get("source_url", ""),
             "r": sc.get("rationale", ""),
         })
 

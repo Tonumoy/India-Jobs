@@ -355,6 +355,10 @@ details .det-body code {
   font-size: 10px;
   color: var(--ink-faint);
 }
+.tt-hint {
+  color: var(--accent);
+  font-style: italic;
+}
 
 /* FOOTER */
 footer {
@@ -627,6 +631,14 @@ function render() {
     tile.addEventListener('mousemove', (e) => showTooltip(e, d, leaf.parent.data.name));
     tile.addEventListener('mouseleave', hideTooltip);
 
+    if (d.u) {
+      tile.style.cursor = 'pointer';
+      tile.title = 'Click to open source';
+      tile.addEventListener('click', () => {
+        window.open(d.u, '_blank', 'noopener,noreferrer');
+      });
+    }
+
     treemapEl.appendChild(tile);
   });
 
@@ -646,7 +658,10 @@ function showTooltip(e, d, sector) {
   html += `<div class="tt-row"><span class="tt-key">Median pay</span><span class="tt-val">${payStr}</span></div>`;
   html += `<div class="tt-row"><span class="tt-key">Education</span><span class="tt-val">${EDU_LABELS[d.e]}</span></div>`;
   if (d.r) html += `<div class="tt-rationale"><strong>LLM rationale</strong>${d.r}</div>`;
-  if (d.src) html += `<div class="tt-source">Source: ${d.src}</div>`;
+  if (d.src) {
+    const hint = d.u ? ' <span class="tt-hint">(click tile to open ↗)</span>' : '';
+    html += `<div class="tt-source">Source: ${d.src}${hint}</div>`;
+  }
   tooltip.innerHTML = html;
   tooltip.style.opacity = 1;
   const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
