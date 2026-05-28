@@ -18,7 +18,7 @@ To regenerate scores from a live LLM (default: Google Gemini 2.5 Flash via OpenR
 
 ## What's here
 
-India has no single equivalent of the US Bureau of Labor Statistics' Occupational Outlook Handbook. So this repo merges multiple Indian sources into a unified dataset of **90 occupations covering ~455 million workers across 15 sectors**, scores each one's AI exposure using an LLM with an India-specific rubric, and renders the result as an interactive treemap.
+India has no single equivalent of the US Bureau of Labor Statistics' Occupational Outlook Handbook. So this repo merges multiple Indian sources into a unified dataset of **214 occupations covering ~554 million workers across 22 sectors**, scores each one's AI exposure using an LLM with an India-specific rubric, and renders the result as an interactive treemap.
 
 ## Data pipeline
 
@@ -36,7 +36,7 @@ India has no single equivalent of the US Bureau of Labor Statistics' Occupationa
                 │  hand-curated
                 ▼
    ┌──────────────────────────┐
-   │  data/occupations.json   │  ← Master list (90 occupations, 15 sectors)
+   │  data/occupations.json   │  ← Master list (214 occupations, 22 sectors)
    └────────────┬─────────────┘
                 │
                 ├──► pipeline/process.py   ─►  pages/*.md (rich descriptions)
@@ -96,7 +96,7 @@ Each occupation is scored on a single **AI Exposure** axis from 0 to 10, measuri
 | 8-9 | Very high | Bank clerks, paralegals, content writers, journalists, travel agents |
 | 10 | Maximum | Voice call-centre agents, data entry, basic translation |
 
-**Average exposure across all 90 occupations, weighted by employment: ~3.2/10.** This is much lower than Karpathy's US figure of 5.3/10, because Indian workforce is disproportionately in low-exposure agriculture and physical work. But within the **formal/cognitive economy** (~80M jobs), the picture inverts — the AI exposure is concentrated exactly in India's export specialty.
+**Average exposure weighted by employment is much lower than Karpathy's US figure of ~5.3/10**, because the Indian workforce is disproportionately in low-exposure agriculture, construction, and physical / informal work. But within the **formal/cognitive economy** (~80M jobs), the picture inverts — AI exposure is concentrated exactly in India's export specialty (IT services, BPM, KPO, GCC back-office). The dashboard shows the live weighted average for the current dataset.
 
 ### India-specific factors the rubric accounts for
 
@@ -195,7 +195,7 @@ Re-run and you have a "Humanoid Robotics Exposure" layer. The same applies to of
 
 The AI-exposure scores are **rough LLM estimates**, not rigorous predictions. They depend on the rubric (in `make_prompt.py`) and the model. Many high-exposure jobs will be **reshaped**, not replaced. The score does not account for demand elasticity, regulatory barriers, latent demand, or social preferences for human workers.
 
-Employment counts are reconciled from multiple Indian sources (PLFS, NASSCOM, NSDC, company filings). Where sources disagreed I went with the larger sample (PLFS) for aggregates and industry-specific data for sub-sectors. Coverage is ~455M of India's ~480M total workforce; the gap is informal-sector underreporting in the granular categories.
+Employment counts are reconciled from multiple Indian sources (PLFS, NASSCOM, NSDC sector skill councils, ministry data, regulator filings, professional councils, company filings). Where sources disagreed we used the more conservative number. Total coverage sums to ~554M, which exceeds India's ~480M formal-sector total — this reflects the inclusion of informal-sector categories (domestic workers, religious workers, street vendors, gig delivery) whose totals routinely exceed PLFS counts because PLFS under-samples them.
 
 ## License
 

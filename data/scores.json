@@ -453,5 +453,625 @@
     "score": 2,
     "rationale": "Event management relies on in‑person coordination, client interaction, and on‑site logistics, with limited digital product creation. AI can assist with scheduling, budgeting, and marketing analytics, but core tasks require human judgment and physical presence, keeping exposure low.",
     "model": "openai/gpt-oss-120b:free"
+  },
+  "plantation-workers": {
+    "score": 1,
+    "rationale": "Plantation work is manual, outdoor labor requiring physical dexterity and real‑time judgment of plant health, tasks that AI cannot digitize or automate at scale in India. Limited digital interfaces and low wage arbitrage mean AI offers minimal productivity gains.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "horticulture-workers": {
+    "score": 1,
+    "rationale": "Horticulture and orchard work is primarily manual, outdoor labor involving planting, pruning, harvesting, and pest control, with minimal digital output. AI tools for precision agriculture exist but are not widely deployed at the worker level in India, and the tasks require physical dexterity and real‑time judgment, limiting automation potential.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "forestry-workers": {
+    "score": 1,
+    "rationale": "Work is primarily manual, outdoors, involving tree felling, planting, and timber transport, with minimal digital interaction. AI tools have limited applicability to core tasks, and infrastructure constraints reduce automation potential.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "veterinarians": {
+    "score": 3,
+    "rationale": "Veterinary work is heavily hands‑on, requiring physical examination, surgery, and animal handling; AI can aid diagnostics and record‑keeping but cannot replace the tactile and judgment aspects. Limited digital product means modest automation potential, yielding a low‑moderate exposure score.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "beekeepers-sericulture": {
+    "score": 1,
+    "rationale": "Beekeeping and sericulture involve hands‑on animal care, hive/​silk‑worm management, and field work that require tactile skill and real‑time judgment in uncontrolled environments. AI tools can aid data logging or disease detection, but core tasks remain physical and low‑digital, limiting automation potential.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "agri-extension": {
+    "score": 3,
+    "rationale": "The role is largely field‑based, requiring on‑site farmer interaction, demonstrations, and local knowledge; AI can augment advice through decision‑support tools and remote diagnostics, but cannot replace the physical presence and trust‑based communication. Hence exposure is modest, fitting the 2‑3 bracket.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "masons": {
+    "score": 1,
+    "rationale": "Masonry is a physically intensive, on-site trade with minimal digital work product; AI can assist design planning but cannot replace manual bricklaying or site work. Low digitality and high reliance on manual dexterity keep exposure near the bottom of the scale.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "carpenters": {
+    "score": 1,
+    "rationale": "Carpentry is a hands‑on, physical trade requiring manual dexterity, on‑site judgment, and minimal digital interaction. AI can assist design or planning tools, but core fabrication cannot be automated with current technology, especially given India's labor cost advantage and limited robotics adoption in construction.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "construction-electricians": {
+    "score": 2,
+    "rationale": "Work is hands‑on wiring, installation, and troubleshooting in unpredictable construction sites, requiring physical dexterity and on‑site judgment. AI can aid design planning or diagnostics, but cannot replace the manual tasks, and Indian infrastructure limits robotics adoption.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "plumbers": {
+    "score": 1,
+    "rationale": "Plumbing is a hands‑on trade requiring physical dexterity, on‑site problem solving, and minimal digital work. AI tools can aid design or diagnostics, but core tasks cannot be automated, especially given limited robotics adoption in Indian construction.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "welders-fitters": {
+    "score": 1,
+    "rationale": "The role is highly manual, requiring physical dexterity, on-site work, and minimal digital interaction, limiting AI automation to peripheral tooling assistance. While AI‑driven design or planning tools exist, they do not replace the core welding and fitting tasks.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "painters": {
+    "score": 1,
+    "rationale": "Painting is a manual, physical task requiring dexterity, surface preparation, and on‑site judgment; AI tools have limited relevance and cannot replicate the hands‑on work. Digital automation potential is minimal, so exposure remains low despite any design‑software assistance.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "bar-benders": {
+    "score": 1,
+    "rationale": "Bar bending and steel fixing are manual, on‑site tasks requiring physical dexterity and real‑time judgment in variable construction environments. AI tools have little relevance to the core work, and Indian labor cost advantages keep the role labor‑intensive. Hence exposure to automation is minimal.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "tile-marble-layers": {
+    "score": 1,
+    "rationale": "Tile and marble laying is a physically intensive, manual trade with minimal digital work product; AI can only assist tools (e.g., layout planning) but cannot replace the hands‑on skill. Physical labor and low education level keep automation exposure low despite any productivity aids.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "hvac-technicians": {
+    "score": 2,
+    "rationale": "HVAC technicians perform hands‑on installation, repair, and maintenance of physical systems, relying on manual dexterity and on‑site judgment. AI can assist with diagnostics or predictive maintenance tools, but core work remains physical and location‑bound, limiting automation potential in India’s construction sector.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "construction-surveyors": {
+    "score": 3,
+    "rationale": "Work is largely on‑site, requiring physical measurement, judgment of terrain, and real‑time supervision, with only limited assistance from digital tools like GPS or BIM. AI can augment planning and data capture, but cannot replace the hands‑on, location‑specific tasks central to surveying and site supervision.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "garment-workers": {
+    "score": 2,
+    "rationale": "The role is primarily manual, involving physical sewing, cutting, and assembly with minimal digital output. AI can aid design and planning but cannot perform the dexterous, real‑time tasks on the shop floor, keeping exposure low despite modest productivity gains.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "leather-workers": {
+    "score": 1,
+    "rationale": "Leather and footwear work is highly manual, involving cutting, stitching, and finishing physical materials with minimal digital interaction. AI tools can aid design or inventory but cannot replace the dexterous, tactile tasks central to production, especially given low automation investment in Indian manufacturing.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "jewelry-artisans": {
+    "score": 2,
+    "rationale": "The work is highly manual, requiring fine motor skills and tactile judgment to craft jewelry, with minimal digital output. AI can assist in design visualization but cannot replace the physical crafting, keeping exposure low despite modest productivity aids.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "handicraft-artisans": {
+    "score": 1,
+    "rationale": "Work is highly manual, tactile, and location‑specific, with little digital output; AI can only assist design inspiration or inventory, which does not replace core crafting. Physical dexterity and cultural nuances create strong barriers to automation.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "pottery-ceramics": {
+    "score": 1,
+    "rationale": "Pottery and ceramics work is highly manual, requiring tactile skill, kiln operation, and physical shaping of materials, with little digital output. AI can assist in design simulation but cannot replace the hands‑on crafting, so exposure remains minimal.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "pharma-manufacturing": {
+    "score": 2,
+    "rationale": "The role is largely physical, involving equipment operation, batch handling, and manual quality checks in factories, with limited digital output. AI can assist in predictive maintenance and process monitoring, but core tasks require hands‑on dexterity and real‑time judgment, keeping exposure low despite modest productivity gains.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "steel-foundry-workers": {
+    "score": 2,
+    "rationale": "Work is primarily manual metal casting and furnace operation with limited digital output; AI can assist in process monitoring and predictive maintenance but cannot replace the physical dexterity and onsite decision‑making required. Hence exposure is low, around the lower end of the 2‑3 range.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "chemical-plant-operators": {
+    "score": 2,
+    "rationale": "The role is primarily physical, involving manual operation, monitoring, and safety oversight of chemical processes, with limited digital work product. AI can assist with predictive maintenance and process optimization, but cannot replace on‑site human judgment and dexterity, keeping exposure low.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "food-processing": {
+    "score": 2,
+    "rationale": "Work is largely manual, involving physical handling, cleaning, and packaging of food with minimal digital interaction. AI-driven robotics are limited in India due to capital constraints and cheap labor, so automation potential is low, though some AI‑assisted quality monitoring may assist.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "electronics-assembly": {
+    "score": 2,
+    "rationale": "Electronics assembly is a hands‑on, dexterity‑intensive manufacturing role with minimal digital output; AI can aid tooling and quality inspection but cannot replace the manual assembly work, especially given India's capital constraints and cheap labor.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "kirana-store-owners": {
+    "score": 2,
+    "rationale": "Kirana work is largely physical—stocking shelves, handling cash, face‑to‑face sales—so AI can only augment inventory management or pricing, not replace the role. Limited digital product and low wage arbitrage keep exposure modest despite some automation tools.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "ecommerce-sellers": {
+    "score": 7,
+    "rationale": "The role is largely digital—listing products, pricing, and customer chat are AI‑automatable, and AI tools can boost productivity enough to reduce seller numbers. However, physical sourcing, logistics, and trust‑based buyer interactions remain human‑centric, limiting full replacement.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "street-vendors": {
+    "score": 1,
+    "rationale": "Street vending is a physical, face‑to‑face retail activity with minimal digital output; AI tools cannot replace the on‑site sales, negotiation, and mobility required. Limited automation potential keeps exposure low despite any peripheral inventory or payment apps.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "data-scientists": {
+    "score": 8,
+    "rationale": "Data scientists produce fully digital outputs (code, models, analyses) that AI‑driven AutoML and LLM tools can generate or accelerate, making the role highly augmentable and potentially reducing demand. In India’s export‑oriented IT services, productivity gains quickly erode wage arbitrage, raising exposure. However, domain expertise and client interaction still require human judgment, keeping the score below 9.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "ml-engineers": {
+    "score": 8,
+    "rationale": "The role is fully digital, producing code, models, and data pipelines that AI tools can generate, test, and optimize, dramatically boosting productivity and eroding offshore cost advantages. While deep expertise remains needed, AI already handles large portions of routine engineering work, placing the occupation in the high‑exposure bracket.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "devops-sre": {
+    "score": 7,
+    "rationale": "DevOps/SRE work is fully digital—code deployment, infrastructure as code, monitoring dashboards, and incident response are increasingly automated with AI‑driven observability and auto‑remediation tools. While AI can boost productivity and reduce headcount needs, complex architecture design, cross‑team coordination, and nuanced reliability decisions still require human expertise, keeping exposure high but not total.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "cybersecurity-pros": {
+    "score": 7,
+    "rationale": "Cybersecurity work is largely digital—log monitoring, threat hunting, vulnerability assessment—areas where AI already automates large portions and boosts productivity. However, strategic decision‑making, incident response, and nuanced risk judgment still require human expertise, keeping the role defensible despite high automation potential.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "cloud-engineers": {
+    "score": 7,
+    "rationale": "Cloud engineering is a fully digital knowledge role involving architecture design, infrastructure‑as‑code, and performance optimization, all of which AI tools can automate or augment substantially. While AI can boost productivity and reduce headcount needs, the need for deep system integration, security judgment, and client‑specific customization keeps a strong human component.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "mobile-app-devs": {
+    "score": 8,
+    "rationale": "Mobile app development is a fully digital knowledge task; LLMs and code‑generation tools can write, test, and debug large portions of code, dramatically boosting productivity and reducing offshore demand. While architectural design and client interaction remain human‑centric, the core coding work is highly automatable, placing the role in the 8‑range for AI exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "qa-testing": {
+    "score": 8,
+    "rationale": "QA testing is a largely digital knowledge task involving writing test cases, executing scripts, and analyzing software behavior, all of which AI/LLM-driven test generation and automated execution can perform today. In India's export‑oriented IT services, AI dramatically boosts productivity, threatening large portions of the 480k tester workforce, though some manual exploratory testing remains.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "dba-data-engineers": {
+    "score": 7,
+    "rationale": "The role is fully digital, involving database management, pipeline coding, and data modeling, which AI can automate (auto‑tuning, ETL generation, query assistance). In India's export‑oriented IT services, AI‑driven productivity gains can sharply reduce required staff, though design and governance still need human oversight.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "ux-ui-designers": {
+    "score": 7,
+    "rationale": "UX/UI design is a fully digital knowledge job where generative AI can produce wireframes, mockups, and design suggestions, dramatically boosting productivity. However, nuanced user research, brand strategy, and iterative decision‑making still require human insight, keeping the role defensible despite strong export‑oriented pressure in India.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "tech-writers": {
+    "score": 8,
+    "rationale": "Technical writing is a fully digital knowledge task; LLMs can already draft, edit, and format documentation, reducing demand for human writers. In India, the role is export‑oriented and wage‑sensitive, so AI productivity gains quickly erode the cost advantage, driving a declining hiring trend.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "blockchain-devs": {
+    "score": 8,
+    "rationale": "Blockchain/Web3 development is a fully digital coding role; LLMs can already generate smart contracts, audit code, and assist architecture, dramatically boosting productivity and eroding offshore price advantage. While deep domain expertise remains valuable, the core tasks are highly automatable, placing the occupation in the high‑exposure bracket.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "gcc-cybersecurity": {
+    "score": 7,
+    "rationale": "Cybersecurity work is highly digital—log analysis, threat hunting, incident response—all increasingly assisted or partially automated by AI-driven analytics and autonomous response tools. While human expertise for nuanced judgment and strategy remains essential, AI can boost productivity dramatically, reshaping team sizes in export‑oriented GCCs.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "gcc-fa": {
+    "score": 8,
+    "rationale": "GCC finance & accounting work is largely digital—processing invoices, reconciliations, reporting, and routine analysis—all tasks that LLMs and automation tools can perform today with high accuracy. India's export‑oriented finance services amplify exposure, as AI productivity gains quickly erode low‑cost labor arbitrage. Human judgment remains for complex judgments, keeping the score below 9.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "gcc-product-mgmt": {
+    "score": 7,
+    "rationale": "Product managers in GCCs work primarily with digital artifacts—roadmaps, data dashboards, and collaborative platforms—making the role highly augmentable by AI for market analysis, prioritization, and documentation. AI can boost productivity and reduce headcount needs, but strategic decision‑making and client relationship nuances keep a strong human component.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "kpo-research": {
+    "score": 9,
+    "rationale": "Research analysts produce digital reports, synthesize data, and write content—all tasks that LLMs already perform at near‑human quality, enabling 3‑5× productivity gains and eroding offshore price advantage. The role is export‑oriented, highly digital, and shows declining hiring, indicating strong AI reshaping.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "content-moderation": {
+    "score": 8,
+    "rationale": "Content moderation is a fully digital task that AI models already perform at scale, handling text, image, and video screening. In India's export‑oriented BPM sector, AI can replace a large share of the work, though human reviewers remain for nuanced cases and policy enforcement.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "customer-success": {
+    "score": 8,
+    "rationale": "The role is largely digitalâmanaging SaaS client data, monitoring usage metrics, and communicating via CRM/emailâmaking it highly automatable with AI-driven analytics, chatbots, and workflow orchestration. In India's{{\n{{\n acacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacacac",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "tax-professionals": {
+    "score": 8,
+    "rationale": "Tax work is highly digital—data entry, document analysis, compliance filing, and advisory are all software‑driven and increasingly automatable with LLMs and specialized tax AI tools. In India, many of these roles support export‑oriented finance services, so productivity gains can sharply reduce demand. Regulatory protections may slow adoption, but the underlying task exposure is strong.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "company-secretaries": {
+    "score": 7,
+    "rationale": "Company secretaries work heavily with digital documents, regulatory filings, and governance reporting, which AI can draft, review, and automate, boosting productivity dramatically. While nuanced legal judgment and stakeholder interaction remain human‑centric, the core knowledge‑work is highly digitizable, leading to strong exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "mutual-fund-distributors": {
+    "score": 5,
+    "rationale": "The role relies on client interaction and trust‑based sales, but much of the back‑office work (KYC, portfolio analysis, product recommendation) is increasingly digitised and can be assisted or partially replaced by AI‑driven robo‑advisors and automation tools. Hence AI will reshape significant parts of the job without fully substituting the human distributor.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "wealth-managers": {
+    "score": 6,
+    "rationale": "Wealth management relies heavily on digital data analysis, portfolio modeling, and client communication, making it highly augmentable by AI tools. However, the advisory relationship, trust, and regulatory compliance require human judgment, limiting full automation. In India, the role is largely domestic and high‑pay, so wage arbitrage pressures are modest, keeping exposure at a strong‑augmentation level.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "treasury-forex": {
+    "score": 8,
+    "rationale": "Treasury and forex work is highly digital—data analysis, trade execution, reporting, and compliance can be automated or dramatically accelerated by AI and algorithmic systems. In India, these roles are often offshore service‑export functions, so AI‑driven productivity gains directly erode the cost advantage, raising exposure. While some judgment and relationship management remain, core tasks are already being performed by AI tools.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "actuaries": {
+    "score": 8,
+    "rationale": "Actuarial work is heavily digital, involving statistical modeling, data analysis, and report generation, which AI/LLM tools can perform with high accuracy. AI can automate many pricing, reserving, and risk‑assessment tasks, dramatically increasing productivity and reducing demand for junior actuaries, though senior judgment and regulatory compliance remain human‑centric.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "civil-services": {
+    "score": 2,
+    "rationale": "IAS/IPS/IFS roles involve high‑level policy, governance, field inspections and discretionary decision‑making that rely on political judgment and human interaction, with limited digital work products. AI can assist with data analysis and document drafting, but core responsibilities remain non‑digital and trust‑based, yielding low exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "judiciary-staff": {
+    "score": 5,
+    "rationale": "Judges and court staff perform legal reasoning, case management, and courtroom interaction that require nuanced human judgment and in‑person presence, limiting full automation. AI can substantially augment research, document drafting, and scheduling, reshaping parts of the workflow, especially in a digitizing Indian judiciary, but core decision‑making remains human.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "income-tax-customs": {
+    "score": 5,
+    "rationale": "The role involves substantial document analysis, data verification, and risk assessment, which can be aided by AI-driven analytics and OCR, but also requires discretionary judgment, field inspections, and legal authority that are hard to automate. In India, strong regulatory and bureaucratic safeguards limit rapid digital replacement, keeping exposure moderate.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "asha-workers": {
+    "score": 2,
+    "rationale": "ASHA workers perform in‑person health education, home visits, and basic data collection, tasks that rely on physical presence and interpersonal trust. AI can assist with mobile reporting tools, but core duties remain manual and non‑digital, limiting exposure to automation.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "anganwadi-workers": {
+    "score": 1,
+    "rationale": "Work is largely physical, community‑based childcare, nutrition monitoring, and face‑to‑face education, requiring personal interaction and manual tasks. AI tools have minimal relevance to core duties, and limited digitalization in this low‑skill public sector role.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "forest-service": {
+    "score": 1,
+    "rationale": "Work is primarily outdoor, involving field monitoring, enforcement, and manual data collection, with limited digital output. AI tools can aid analysis of satellite data but cannot replace on‑ground presence, so exposure remains low.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "municipal-staff": {
+    "score": 3,
+    "rationale": "Work is largely administrative and field‑based with low digital output; AI can assist with document routing and basic data entry but core tasks require human interaction, local knowledge, and regulatory judgment. Limited digitization in Indian municipal bodies keeps exposure modest.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "election-officials": {
+    "score": 3,
+    "rationale": "The role is largely administrative and field‑based, involving coordination, legal compliance, and on‑site supervision rather than purely digital output. AI can aid document processing and data analysis, but core tasks require human judgment, political discretion, and physical presence, limiting automation potential in the Indian context.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "dentists": {
+    "score": 2,
+    "rationale": "Dentists' work is heavily procedural and requires manual dexterity, direct patient interaction, and physical presence—tasks AI cannot perform. AI may assist with image analysis and treatment planning, but these are supportive rather than core. In India, dental services are domestically focused and regulated, limiting automation impact.",
+    "model": "nvidia/nemotron-3-super-120b-a12b:free"
+  },
+  "physiotherapists": {
+    "score": 2,
+    "rationale": "Physiotherapy relies on hands‑on assessment, manual treatment, and real‑time patient interaction, which are difficult to automate. AI may assist with exercise recommendations or tele‑rehab monitoring, but cannot replace the physical and nuanced therapeutic work.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "optometrists": {
+    "score": 2,
+    "rationale": "Optometrists rely on hands‑on eye examinations, patient interaction, and manual fitting of lenses, tasks that are physical and require nuanced clinical judgment. AI can assist with image analysis and preliminary screening, but cannot replace the in‑person diagnostic and therapeutic role, resulting in low exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "dieticians": {
+    "score": 3,
+    "rationale": "Dieticians rely heavily on in‑person assessment, personalized counseling, and nuanced clinical judgment, which AI can augment (e.g., nutrient analysis, recipe generation) but cannot fully replace. The work is partly digital but remains a service‑oriented, human‑centric role, limiting exposure to automation.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "ayush-practitioners": {
+    "score": 2,
+    "rationale": "The role is primarily in-person patient consultation and treatment using traditional medical systems, with limited digital work products. AI can assist with record‑keeping or reference literature, but core diagnostic and therapeutic judgments remain human‑centered, especially given regulatory and cultural protection in India.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "mental-health-pros": {
+    "score": 2,
+    "rationale": "Mental health work relies on nuanced human interaction, empathy, and clinical judgment, which AI cannot replicate. AI may provide supportive tools (screening questionnaires, decision aids), but core therapeutic tasks remain human‑centric, limiting exposure to low‑moderate levels.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "surgeons": {
+    "score": 1,
+    "rationale": "Surgery relies on manual dexterity, real‑time physical judgment, and patient interaction; AI tools (e.g., imaging assistance) augment but cannot replace the core operative work. The role remains largely non‑digital, so exposure is minimal despite modest AI assistance in planning.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "medical-reps": {
+    "score": 5,
+    "rationale": "Medical sales reps rely on personal relationships, field visits, and trust‑based persuasion, limiting full automation. However, AI can automate lead scoring, CRM updates, product content generation, and virtual presentations, reshaping a sizable portion of the role. The mix of physical outreach and digital augmentation places exposure at a moderate‑high level.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "paramedics-emt": {
+    "score": 1,
+    "rationale": "Paramedics perform real-time, on-site medical care requiring physical dexterity, situational judgment, and human interaction, which AI cannot replicate. While decision-support tools may assist, the core tasks remain hands‑on and location‑bound, limiting AI impact.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "school-principals": {
+    "score": 3,
+    "rationale": "Principals' work is largely people‑focused management, policy decisions, and on‑site oversight, with limited digital output. AI can aid scheduling, reporting, and data‑driven insights, but core leadership and stakeholder interaction remain human‑centric, yielding modest exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "iti-vocational": {
+    "score": 4,
+    "rationale": "Teaching vocational skills involves physical demonstrations and personal mentorship that AI cannot fully replace, but AI can augment lesson planning, content delivery, and assessment, reshaping parts of the role. The work is partly digital (materials, grading) yet retains a strong in‑person component, leading to moderate AI exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "special-educators": {
+    "score": 2,
+    "rationale": "Special education teaching relies heavily on in‑person interaction, individualized behavioral management, and nuanced communication, which are difficult for AI to replicate. AI can assist with lesson‑plan generation or assessment analytics, but the core pedagogical role remains human‑centric, limiting exposure to the lower end of the scale.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "language-teachers": {
+    "score": 4,
+    "rationale": "Language teaching relies on real‑time interpersonal interaction, cultural nuance, and adaptive pedagogy that AI cannot fully replicate, but AI‑driven tutoring platforms, pronunciation analysis, and content generation can automate large portions of lesson prep and basic practice, reshaping parts of the role.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "fashion-designers": {
+    "score": 6,
+    "rationale": "Fashion design relies heavily on digital design tools and increasingly on generative AI for concept sketches, making the core work highly augmentable. However, final collection decisions, brand aesthetics, and client interaction still require human creativity and judgment, limiting full replacement. In India, lower labor costs and export‑oriented design services raise exposure, but the role remains partly defensible.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "product-designers": {
+    "score": 8,
+    "rationale": "Design work is highly digital, using CAD and generative AI that can produce concepts, renderings, and variations, dramatically boosting productivity and reducing the number of designers needed for many tasks. Human judgment on aesthetics, ergonomics, and client collaboration remains essential, but AI already handles core creative outputs, placing the role in the high‑exposure bracket.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "game-developers": {
+    "score": 8,
+    "rationale": "Game development is a fully digital knowledge work involving coding, asset creation, and design, all of which AI tools (code assistants, procedural content generators, AI art) can perform at or near professional levels. In India, the role is export‑oriented, so AI‑driven productivity gains quickly erode wage arbitrage, raising exposure. While creative direction still needs humans, core production tasks are highly automatable.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "musicians-composers": {
+    "score": 6,
+    "rationale": "Music creation is increasingly digital, with AI tools able to generate melodies, arrangements, and even full tracks, boosting productivity and reducing demand for entry‑level composers. However, live performance, nuanced artistic judgment, and cultural context still require human talent, limiting full replacement.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "actors-performers": {
+    "score": 2,
+    "rationale": "Acting relies on physical presence, emotional nuance, and live performance, which are hard for AI to replicate despite advances in deepfakes and virtual avatars. AI can assist with script analysis or background tasks, but core creative delivery remains human‑centric, especially in India's growing film and TV market.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "dancers-choreographers": {
+    "score": 1,
+    "rationale": "Dance and choreography rely on embodied performance, physical creativity, and real‑time human interaction, which are not digitizable tasks. AI can assist with music selection or movement analysis, but cannot replace the core artistic and kinetic work, resulting in minimal exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "authors-writers": {
+    "score": 8,
+    "rationale": "Book writing is a fully digital knowledge task; LLMs can already produce coherent prose, outline plots, and perform research, dramatically augmenting or replacing junior writers. In India, low wages and modest hiring growth increase vulnerability to AI-driven productivity gains, though cultural and editorial nuances provide some human edge.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "podcasters": {
+    "score": 7,
+    "rationale": "Podcasting is a fully digital workflow—scriptwriting, audio editing, and distribution—all of which AI can automate or augment (e.g., generative text, synthetic voices, auto‑mixing). While human creativity and personal branding remain essential, AI tools can dramatically boost productivity and reduce the number of creators needed, especially in India’s cost‑sensitive content market.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "notaries": {
+    "score": 2,
+    "rationale": "Notary work relies on physical document handling, legal verification, and trust‑based attestation, which are hard to digitize or automate. AI can aid with document checks or template generation, but core tasks remain in‑person and require professional judgment, limiting exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "tax-advisors": {
+    "score": 8,
+    "rationale": "Tax advisory and GST compliance are largely digital, involving data extraction, rule‑based calculations, and document generation—tasks AI/LLMs can already perform with high accuracy. While strategic planning and complex dispute resolution still need human judgment, AI can automate most routine filings, reducing the need for junior advisors. Indian firms rely heavily on cost‑effective labor, so AI productivity gains strongly affect this occupation.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "patent-attorneys": {
+    "score": 8,
+    "rationale": "Patent work is largely digital—drafting applications, prior‑art searches, and legal analysis—all of which large language models can perform at near‑human quality, dramatically boosting productivity. Indian IP services are export‑oriented, so AI‑driven efficiency directly threatens demand. Human expertise in strategy and nuanced claim crafting remains a barrier, keeping exposure below 10.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "bus-drivers": {
+    "score": 2,
+    "rationale": "Bus driving is a physical, real‑time control task with limited digital output; AI can provide driver‑assist features but full automation is constrained by Indian infrastructure and regulatory limits. Hence exposure is low, around the lower end of the 2‑3 band.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "auto-drivers": {
+    "score": 2,
+    "rationale": "The role is primarily physical, requiring real‑time driving, navigation, and in‑person passenger interaction, with minimal digital work product. AI can aid via navigation or ride‑hailing platforms, but full automation faces infrastructure, regulatory, and cost barriers in India, limiting exposure to assistance rather than replacement.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "food-delivery-riders": {
+    "score": 2,
+    "rationale": "Work is primarily physical delivery with minimal digital output; AI can improve routing and order allocation but cannot replace the on‑ground navigation and hand‑off tasks. Limited automation potential keeps exposure low despite modest AI‑driven efficiency gains.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "ecommerce-delivery": {
+    "score": 2,
+    "rationale": "Parcel delivery is primarily physical, requiring manual handling, navigation, and face‑to‑face interactions. AI can aid routing, load optimization, and predictive demand, but core tasks remain labor‑intensive and low‑skill, limiting automation potential in the near term.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "bike-taxi-riders": {
+    "score": 2,
+    "rationale": "Work is primarily physical riding and in‑person passenger interaction with minimal digital output; AI can improve dispatch and routing but cannot replace the rider’s real‑time navigation and safety decisions. Limited automation potential keeps exposure low despite modest digital support tools.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "air-traffic-controllers": {
+    "score": 2,
+    "rationale": "Air traffic control relies on real-time situational awareness, safety-critical human judgment, and physical coordination, with limited scope for full automation. AI can assist with decision support and conflict detection, but core control functions remain human-driven, especially given safety regulations and limited AI trust in India.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "merchant-marine": {
+    "score": 2,
+    "rationale": "Work is largely physical and environment‑dependent, with navigation and engine monitoring already assisted by existing autopilot systems; AI can augment decision support but cannot replace crew functions on ships. Limited digital product output keeps exposure low despite modest automation aids.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "loco-pilots": {
+    "score": 2,
+    "rationale": "Operating locomotives is a safety‑critical, real‑time physical task with limited digital output; AI can provide decision‑support and predictive maintenance but cannot replace the human operator. The role’s low digitality and reliance on manual control keep exposure modest.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "chefs-cooks": {
+    "score": 2,
+    "rationale": "Cooking is a highly physical, sensory‑driven occupation requiring manual dexterity, taste, and real‑time adjustments that AI cannot replicate. While AI can assist with menu planning or inventory, the core work remains hands‑on, limiting automation potential despite modest digital tools.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "bartenders": {
+    "score": 2,
+    "rationale": "The role is highly physical and relies on real‑time human interaction, sensory judgment, and manual drink preparation, which AI cannot replicate. AI can assist with recipe suggestions or inventory management, but core tasks remain non‑digital and dexterity‑bound, limiting exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "housekeeping-staff": {
+    "score": 1,
+    "rationale": "Housekeeping is a physically intensive, on‑site role requiring manual cleaning, linen handling, and guest interaction; AI can only aid scheduling or inventory, not replace the core tasks. Digital exposure is minimal, and Indian labor cost advantages keep the role labor‑intensive.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "homestay-operators": {
+    "score": 2,
+    "rationale": "The role is primarily physical and service‑oriented, involving guest interaction, property upkeep, and on‑site hospitality tasks that AI cannot perform remotely. While digital booking platforms and chat‑bots can assist with reservations, the core work remains in‑person, limiting AI exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "salon-staff": {
+    "score": 1,
+    "rationale": "Salon and spa work is highly physical, requiring manual dexterity, real‑time sensory judgment, and personal interaction; AI tools can assist scheduling or inventory but cannot perform the core service. Limited digital product and low wage arbitrage keep exposure minimal.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "barbers-hairdressers": {
+    "score": 1,
+    "rationale": "The work is highly manual, requiring physical dexterity, real‑time tactile judgment, and in‑person interaction, with little digital output. AI tools can assist with scheduling or style recommendations, but cannot replace the core haircutting tasks. Physical nature and low wage reduce automation incentives.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "beauticians": {
+    "score": 2,
+    "rationale": "Beauticians and makeup artists rely on manual dexterity, in‑person aesthetic judgment, and real‑time client interaction, tasks that are hard to digitize. AI can offer product recommendations or virtual try‑ons, but cannot replace the hands‑on service. Hence exposure is low, limited to supportive tools.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "fitness-trainers": {
+    "score": 1,
+    "rationale": "The role is primarily physical, requiring in‑person instruction, demonstration of exercises, and real‑time human motivation, with minimal digital work product. AI can offer supplemental video guides or scheduling tools, but cannot replace the hands‑on coaching and personal interaction central to the job.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "yoga-instructors": {
+    "score": 1,
+    "rationale": "The role is primarily physical, requiring in‑person demonstration, posture correction, and personal interaction, with minimal digital work product. AI can offer supplemental video content or scheduling tools, but cannot replace the embodied, real‑time guidance central to yoga instruction.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "mehendi-artists": {
+    "score": 1,
+    "rationale": "Mehendi artistry relies on manual dexterity, real‑time aesthetic judgment, and in‑person client interaction, with no digital work product. AI tools cannot replicate the tactile, cultural, and creative aspects of applying henna, so exposure is minimal despite any broader tech trends.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "hindu-priests": {
+    "score": 1,
+    "rationale": "Priestly duties involve ritual performance, personal counsel, and cultural authority that rely on physical presence, human trust, and nuanced religious knowledge, which are not digitizable. AI can assist with administrative tasks but cannot replace the core ceremonial role.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "imams-muezzins": {
+    "score": 1,
+    "rationale": "Imams and muezzins perform primarily oral, ritual, and community‑based duties that rely on personal authority, cultural knowledge, and live interaction, with minimal digital work. AI can assist with reference material but cannot replace the core religious functions, resulting in very low exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "granthis-priests": {
+    "score": 1,
+    "rationale": "The role is centered on physical presence, oral recitation, ritual management and community interaction, with minimal digital work. AI tools can assist with scheduling or document digitisation, but core tasks remain non‑digital and culturally anchored, limiting automation potential.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "church-clergy": {
+    "score": 1,
+    "rationale": "The role is centered on personal counseling, preaching, and ritual leadership, requiring human empathy, trust, and physical presence; AI can assist only with limited administrative tasks. Digital work products are minimal, so AI impact remains low despite any modest productivity gains in back‑office functions.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "religious-teachers": {
+    "score": 2,
+    "rationale": "The role is primarily in-person instruction with low reliance on digital artifacts; AI can supply lesson materials but cannot replace the cultural, relational, and interpretive aspects of religious{&}moral teaching. Limited:",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "domestic-help": {
+    "score": 2,
+    "rationale": "Domestic work is primarily physical and requires in‑person interaction, limiting AI automation. Low digitality and high labor cost arbitrage keep the role largely unchanged, though modest AI‑enabled tools (e.g., smart appliances) may assist but not replace workers.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "cooks-personal": {
+    "score": 1,
+    "rationale": "The role is primarily manual food preparation in private homes with minimal digital interaction; AI can offer recipe suggestions or smart‑appliance assistance but cannot replace the physical cooking tasks. Low wage and lack of formal education further limit AI-driven productivity gains.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "drivers-personal": {
+    "score": 1,
+    "rationale": "The role is primarily physical driving and in‑person service with minimal digital output; AI can aid navigation but cannot replace the manual control, especially given limited autonomous vehicle adoption and infrastructure in India.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "nannies-caregivers": {
+    "score": 2,
+    "rationale": "Caregiving relies on physical assistance, emotional support, and real‑time human judgment, tasks that AI cannot replicate at scale. Limited digital work means AI can only offer peripheral tools (e.g., scheduling apps), so exposure remains low despite modest growth in demand.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "urban-company-pros": {
+    "score": 2,
+    "rationale": "The work is primarily physical, requiring on‑site manual skills (plumbing, electrical fixes, in‑home beauty services) that cannot be digitized or remotely automated. AI can aid scheduling or diagnostics, but core task execution remains hands‑on, keeping exposure low despite growing gig demand.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "private-security-guards": {
+    "score": 2,
+    "rationale": "The role is primarily physical, requiring on‑site presence, patrolling and interaction with people, with minimal digital work. AI can augment surveillance (e.g., video analytics) but cannot replace the human judgment and deterrence functions, so exposure remains low.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "cash-logistics-armed": {
+    "score": 2,
+    "rationale": "The role is physically intensive, involving cash handling, armored vehicle operation, and armed escort, tasks that require real‑time human judgment and physical presence. AI can aid route planning or surveillance analytics, but cannot replace the core security and dexterity functions, especially given limited automation in Indian security services.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "bouncers": {
+    "score": 1,
+    "rationale": "Bouncers & event security rely on physical presence, real‑time judgment, and interpersonal deterrence, tasks that are not digitizable. AI can assist with background checks or video monitoring, but cannot replace on‑site human enforcement, especially in India's low‑wage, high‑touch security market.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "real-estate-brokers": {
+    "score": 3,
+    "rationale": "The role is heavily based on personal networking, negotiations, and physical property viewings, with limited digital work product. AI can assist with lead generation, pricing analytics, and virtual tours, but cannot replace the trust‑based human interaction central to brokerage. Hence exposure is modest, around a 3.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "property-valuers": {
+    "score": 5,
+    "rationale": "Valuation and surveying combine physical site inspections with market data analysis; AI can automate data gathering, modeling, and report generation, reshaping a large portion of the work, but field measurements and judgment calls remain human-intensive. The role is not heavily export‑oriented, limiting wage‑arbitrage pressure, but digital augmentation is significant.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "property-managers": {
+    "score": 4,
+    "rationale": "Facility managers rely on on‑site inspections, vendor coordination, and physical problem‑solving, with limited digital output. AI can augment scheduling, IoT‑based maintenance alerts, and data analytics, reshaping parts of the role, but core judgment and physical presence remain essential, placing exposure at a moderate level.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "professional-athletes": {
+    "score": 1,
+    "rationale": "Performance relies on physical skill, real‑time human judgment and audience appeal, which AI cannot replicate. The work is non‑digital and largely immune to automation, despite modest data analytics support in training.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "sports-coaches": {
+    "score": 2,
+    "rationale": "Coaching relies on real‑time physical interaction, motivation, and nuanced judgment that AI cannot replicate; AI tools (video analytics, training apps) may augment but not replace the role. Low digital work product and limited offshore wage pressure keep exposure modest.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "umpires-referees": {
+    "score": 2,
+    "rationale": "Umpiring relies on real‑time physical observation and judgment in unpredictable sporting events, with limited digital work product. AI tools (e.g., video replay, VAR) assist but cannot replace on‑field decisions, so exposure remains low despite modest tech aids.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "ngo-staff": {
+    "score": 4,
+    "rationale": "NGO staff blend field outreach, stakeholder coordination, and report/grant writing. While parts of documentation and data analysis can be automated, much work requires on‑ground interaction and contextual judgment, limiting full digital substitution. India's large NGO sector and modest wage arbitrage keep the role relatively insulated, yielding a mid‑range exposure.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "social-workers": {
+    "score": 2,
+    "rationale": "Social work relies heavily on face‑to‑face counseling, empathy, and nuanced judgment in complex social contexts, with only modest paperwork that can be digitised. AI can assist with data entry or resource matching, but cannot replace the core interpersonal functions, especially in India's NGO and public‑sector settings.",
+    "model": "openai/gpt-oss-120b:free"
+  },
+  "child-welfare-workers": {
+    "score": 2,
+    "rationale": "The role is centered on in‑person assessments, counseling, and safeguarding children, requiring nuanced human judgment and trust. AI can aid paperwork and data tracking, but cannot replace the core relational and field‑based tasks, leading to low overall exposure.",
+    "model": "openai/gpt-oss-120b:free"
   }
 }
