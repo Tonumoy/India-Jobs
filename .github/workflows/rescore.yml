@@ -1,0 +1,59 @@
+name: Weekly rescore
+
+on:
+  schedule:
+    # Monday 04:00 IST = Sunday 22:30 UTC. GitHub cron only supports whole
+    # UTC hours, so we use the closest UTC slot.
+    - cron: "30 22 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rescore
+  cancel-in-progress: false
+
+jobs:
+  rescore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Re-score all occupations
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "::error::OPENROUTER_API_KEY secret is not set. Add it under Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          uv run python pipeline/score.py --force --model nvidia/nemotron-3-super-120b-a12b:free
+
+      - name: Rebuild data.json and CSV
+        run: |
+          uv run python pipeline/build_site_data.py
+          uv run python pipeline/make_csv.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json data/scores.json data/occupations.csv
+          if git diff --cached --quiet; then
+            echo "No changes to commit — data is identical to previous run."
+          else
+            git commit -m "chore: weekly rescore $(date -u +'%Y-%m-%d')"
+            git push
+          fi
