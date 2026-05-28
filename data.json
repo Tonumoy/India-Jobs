@@ -31,13 +31,13 @@
           "n": "Cultivators",
           "s": "cultivators",
           "v": 119000000,
-          "ai": 1,
+          "ai": 2,
           "h": 0,
           "p": 110000,
           "e": 1,
           "src": "PLFS 2023-24",
           "u": "https://www.mospi.gov.in/publication/annual-report-plfs-2023-24",
-          "r": "Cultivators perform physical, weather‑dependent field work that AI cannot replace; AI tools such as satellite monitoring or pest‑detection apps only augment decisions. Small average landholdings (1.1 ha) and high capital costs limit mechanisation and AI adoption in India."
+          "r": "Cultivation is a physical, land‑bound activity with minimal digital output; AI tools (satellite monitoring, pest‑detection apps) only aid decision‑making and cannot replace manual planting, weeding, or harvesting. Low capital and small plot sizes limit automation, keeping exposure modest despite some AI augmentation."
         },
         {
           "n": "Agricultural labourers",
@@ -49,7 +49,7 @@
           "e": 1,
           "src": "PLFS 2023-24",
           "u": "https://www.mospi.gov.in/publication/annual-report-plfs-2023-24",
-          "r": "Agricultural labourers perform primarily manual, outdoor tasks such as planting, weeding, harvesting, and livestock handling, which require physical presence and dexterity. While AI-driven advisory services and precision‑agriculture tools can support farm management, they do not replace the core labour‑intensive work done by these workers. In India, low wages and limited mechanisation keep the role largely insulated from AI disruption."
+          "r": "Agricultural labour involves manual planting, harvesting, and field maintenance, tasks that require physical dexterity and real‑time environmental judgment. AI tools are limited to remote monitoring or equipment guidance, which do not replace the labourer’s hands‑on work."
         },
         {
           "n": "Dairy & livestock workers",
@@ -61,7 +61,7 @@
           "e": 1,
           "src": "PLFS 2023-24 + NDDB",
           "u": "https://www.nddb.coop/about/statistics",
-          "r": "Dairy & livestock work is primarily physical, outdoor, and dexterity‑bound, involving animal handling, feeding, milking, and cleaning. While AI‑enabled sensors and automated milking exist, adoption in India remains low due to high capital costs, fragmented smallholder farms, and cheap labor, limiting technology impact."
+          "r": "Work is hands‑on animal husbandry, requiring physical presence, manual dexterity, and real‑time judgment about animal health, which AI cannot replicate. Limited digital output means low automation potential despite any decision‑support tools."
         },
         {
           "n": "Fishing & aquaculture",
@@ -73,7 +73,7 @@
           "e": 2,
           "src": "PLFS + DoF",
           "u": "https://dof.gov.in/sites/default/files/2024-08/HandbookFS2023.pdf",
-          "r": "Fishing and aquaculture involve primarily outdoor, manual labor such as net handling, boat operation, and pond management, with limited digital or data‑centric tasks. While AI can support weather forecasting, market pricing, and stock monitoring, these are peripheral aids and do not alter the core physical work."
+          "r": "Work is primarily manual, outdoors, and involves physical capture and handling of fish, with minimal digital or data‑centric tasks. AI tools have limited applicability, and infrastructure constraints keep automation low despite any productivity gains."
         }
       ]
     },
@@ -90,31 +90,31 @@
           "e": 1,
           "src": "PLFS 2023-24",
           "u": "https://www.mospi.gov.in/publication/annual-report-plfs-2023-24",
-          "r": "Construction labour involves manual, outdoor tasks like lifting, digging, and material handling that require physical presence and dexterity. AI can only support via scheduling or design tools, not replace the core physical work. In India, low wages and limited capital for robotics further reduce automation potential."
+          "r": "The role is primarily manual, involving physical tasks on site with minimal digital interaction. AI tools can aid planning or safety monitoring, but cannot replace the hands‑on labor required, especially given limited digitization and low wage arbitrage pressure."
         },
         {
           "n": "Civil engineers",
           "s": "civil-engineers",
           "v": 800000,
-          "ai": 6,
+          "ai": 4,
           "h": 0,
           "p": 600000,
           "e": 4,
           "src": "NSDC CSSC report",
           "u": "https://constructionskills.in/",
-          "r": "Civil engineers rely heavily on digital tools for design, analysis, and drafting—tasks where AI already provides strong augmentation (e.g., generative design, automated code checking). However, site supervision, judgment in unpredictable field conditions, and coordination with contractors require physical presence and human interaction, limiting full automation. In India, the role is largely domestic and less exposed to wage‑arbitrage erosion, keeping exposure moderate."
+          "r": "Civil engineering combines on‑site supervision and physical judgment with digital design tools; AI can automate drafting, structural analysis, and project scheduling, boosting productivity, but core field work and context‑specific decisions remain human‑driven. Indian construction relies heavily on manual labor, limiting automation impact, yet design phases are increasingly software‑centric."
         },
         {
           "n": "Architects",
           "s": "architects",
           "v": 150000,
-          "ai": 6,
+          "ai": 7,
           "h": -1,
           "p": 700000,
           "e": 4,
           "src": "Council of Architecture",
           "u": "https://www.coa.gov.in/",
-          "r": "Architects produce digital drawings and models that AI can accelerate via generative design, BIM automation, and rendering, cutting drafting time significantly. However, creative design, client negotiation, regulatory compliance, and site supervision require human judgment and physical presence, limiting full automation. In India, professional licensing and local code knowledge add further protection, keeping exposure moderate."
+          "r": "Architects produce primarily digital design deliverables (CAD, BIM) that AI‑driven generative and drafting tools can automate or accelerate, reshaping the role. However, site coordination, client interaction, and creative judgment remain human‑centric, limiting full replacement. In India, the profession is moderately digital with limited export pressure,{​} supporting a high but not maximal exposure."
         }
       ]
     },
@@ -131,7 +131,7 @@
           "e": 2,
           "src": "Ministry of Textiles",
           "u": "https://texmin.nic.in/",
-          "r": "Textile work is largely manual dexterity‑bound, involving loom operation, sewing, and fabric handling with minimal digital output. AI can support design or predictive maintenance but cannot replace the physical tasks, keeping exposure low."
+          "r": "The role involves manual operation of looms, spinning, weaving, and other physical processes with minimal digital output. AI can assist in predictive maintenance or design, but core tasks require dexterity and on‑site labor, limiting automation impact in India’s cost‑advantaged manufacturing context."
         },
         {
           "n": "Machine operators",
@@ -143,43 +143,43 @@
           "e": 3,
           "src": "NSDC CSSM",
           "u": "https://www.cssmindia.org/",
-          "r": "Machine operators perform manual, dexterity‑bound tasks on the shop floor; AI can assist with predictive maintenance and vision‑based quality inspection but cannot replace the need for physical presence and real‑time adjustments. In India, low‑cost labor and expensive capital limit robotics adoption, keeping AI exposure low."
+          "r": "Machine operators perform hands‑on, physical tasks on manufacturing equipment with limited digital output. AI can aid scheduling or predictive maintenance, but robotics adoption is constrained by capital costs and cheap labor in India, keeping core work largely manual."
         },
         {
           "n": "Auto & components",
           "s": "auto-components",
           "v": 4500000,
-          "ai": 2,
+          "ai": 3,
           "h": 0,
           "p": 350000,
           "e": 3,
           "src": "ACMA",
           "u": "https://www.acma.in/industry-statistics.php",
-          "r": "Auto & components work is primarily physical assembly, machining, and inspection with limited digital output. AI can support via vision‑based defect detection and predictive maintenance, but core tasks remain manual and dexterity‑bound. In India, cheap labor and infrastructure constraints keep robotics adoption low, limiting AI displacement."
+          "r": "The role is largely physical—assembly, machining, and inspection on the shop floor—with limited digital output. AI can aid tooling, predictive maintenance, and quality‑control vision systems, but core manual dexterity and real‑time decision‑making remain human‑centric, keeping exposure modest."
         },
         {
           "n": "Quality control inspectors",
           "s": "qc-inspectors",
           "v": 1200000,
-          "ai": 2,
+          "ai": 4,
           "h": -1,
           "p": 380000,
           "e": 3,
           "src": "NSDC",
           "u": "https://www.nsdcindia.org/sector-skill-councils",
-          "r": "Quality control inspectors rely on physical presence, manual dexterity, and visual judgment to detect defects on the shop floor. While AI-powered vision systems can automate routine inspection, adoption in Indian manufacturing is constrained by high capital costs and cheap labor, limiting AI impact. Hence exposure remains low."
+          "r": "QC inspection relies on physical, visual and tactile assessment of products, limiting digital exposure, but AI-powered vision and sensor systems can automate portions of defect detection, reshaping parts of the role. Indian manufacturing’s capital constraints slow full automation, keeping the job partly viable."
         },
         {
           "n": "Industrial engineers",
           "s": "industrial-engineers",
           "v": 600000,
-          "ai": 6,
+          "ai": 7,
           "h": 1,
           "p": 900000,
           "e": 4,
           "src": "NSDC + AICTE",
           "u": "https://www.aicte-india.org/",
-          "r": "Industrial engineers spend much of their time analyzing production data, simulating workflows, and optimizing layouts—tasks that AI can augment through predictive analytics, process mining, and generative design. However, they also require shop‑floor observation, tacit knowledge of machines, and coordination with workers, preserving a strong human element. India’s wage advantage may erode as AI‑driven productivity gains reduce the need for offshore engineering services."
+          "r": "Industrial engineers work largely with digital tools—process simulation, data analytics, and optimization software—making their tasks highly amenable to AI augmentation and productivity gains. AI can automate many design and scheduling functions, reshaping the role, though human judgment on plant layout and change management remains essential. Indian manufacturing’s export focus amplifies exposure as AI narrows the cost advantage of low‑skill engineering labor."
         }
       ]
     },
@@ -196,43 +196,43 @@
           "e": 2,
           "src": "Retailers Association of India",
           "u": "https://rai.net.in/",
-          "r": "Retail sales associates rely on in‑person customer interaction, product handling, and real‑time problem solving—tasks AI can augment (self‑checkout, recommendation engines) but not fully perform. India’s vast informal retail sector and low wage base slow physical automation, keeping exposure modest."
+          "r": "Retail sales associates rely on in‑person customer interaction and physical product handling; AI can assist with inventory, pricing, and recommendation tools but cannot replace the on‑floor service. The role’s low digital work product and limited automation potential keep exposure modest despite some productivity gains."
         },
         {
           "n": "Wholesale traders",
           "s": "wholesale-traders",
           "v": 12000000,
-          "ai": 5,
+          "ai": 3,
           "h": 0,
           "p": 350000,
           "e": 2,
           "src": "PLFS",
           "u": "https://www.mospi.gov.in/publication/annual-report-plfs-2023-24",
-          "r": "Wholesale traders rely heavily on personal negotiation, credit assessment, and logistics coordination—tasks that are increasingly supported by AI-driven demand forecasting, automated order processing, and inventory management systems. While AI can boost productivity in these sub‑tasks, the trust‑based, relationship‑driven nature of bulk trade limits full automation, especially in India’s large informal wholesale sector. Hence AI exposure is moderate."
+          "r": "Wholesale trading relies on physical goods handling, relationship‑based negotiation and offline market intelligence; AI can aid pricing analytics and inventory management but cannot replace the on‑site sourcing and trust functions. The work is largely non‑digital, so exposure is limited to assistance rather than fundamental reshaping."
         },
         {
           "n": "Cashiers",
           "s": "cashiers",
           "v": 4500000,
-          "ai": 5,
+          "ai": 7,
           "h": -2,
           "p": 200000,
           "e": 2,
           "src": "RAI + NPCI",
           "u": "https://www.npci.org.in/",
-          "r": "Cashiers perform routine, rule‑based tasks (scanning, payment processing) that are increasingly handled by self‑checkout kiosks, UPI QR codes and AI‑driven fraud detection, reducing the need for human intervention. While the role still requires physical presence and customer interaction, AI reshapes a substantial share of the workload, especially in organized retail where digital payments are growing rapidly."
+          "r": "Cashier work is largely digital—scanning items, processing payments, and managing POS data—tasks that AI‑driven self‑checkout and automated payment systems can perform today. In India, the export‑oriented retail back‑office is limited, but the declining hiring trend and growing adoption of digital checkout in larger stores raise exposure to a high level."
         },
         {
           "n": "Customer service (retail)",
           "s": "retail-cs",
           "v": 1800000,
-          "ai": 7,
+          "ai": 8,
           "h": -2,
           "p": 280000,
           "e": 4,
           "src": "NASSCOM",
           "u": "https://nasscom.in/knowledge-center/publications",
-          "r": "Customer service (retail) relies heavily on digital channels (phone, chat, email) where AI chatbots and voice assistants already handle routine inquiries, order tracking, and returns processing. In India, wage arbitrage makes offshore agents vulnerable to AI‑driven productivity gains, and the declining hiring trend reflects early displacement. While complex or emotionally nuanced issues still need humans, AI substantially reshapes the role."
+          "r": "Retail customer service is primarily digital, handling queries via chat, email, and phone, which LLM‑driven chatbots and voice assistants can already perform at near‑human quality. India's large export‑oriented call‑center industry amplifies exposure, and declining hiring reflects AI‑driven productivity gains. Human agents remain for complex or escalated issues, keeping the role partially defensible."
         }
       ]
     },
@@ -243,13 +243,13 @@
           "n": "TCS engineers",
           "s": "tcs-engineers",
           "v": 607000,
-          "ai": 7,
+          "ai": 8,
           "h": -2,
           "p": 700000,
           "e": 4,
           "src": "TCS Q4 FY25 + Jul 2025 layoff announcement",
           "u": "https://www.tcs.com/investor-relations",
-          "r": "TCS engineers primarily write, test, and maintain code—digital tasks that AI coding assistants now automate with large productivity gains, eroding the wage arbitrage that underpins India's offshore IT model. While higher‑level design and client interaction remain human‑centric, the bulk of mid‑tier engineering is highly exposed, as evidenced by declining hiring and large layoffs."
+          "r": "TCS engineers perform primarily digital software development tasks—coding, testing, and configuration—that AI coding assistants can already execute with high accuracy, dramatically boosting productivity and reducing required headcount. The export‑oriented nature of Indian IT services amplifies exposure as offshore cost advantages erode. While some complex design and client‑interaction elements remain, the core work is highly automatable."
         },
         {
           "n": "Infosys engineers",
@@ -261,19 +261,19 @@
           "e": 4,
           "src": "Infosys Q4 FY25",
           "u": "https://www.infosys.com/investors/reports-filings.html",
-          "r": "Infosys engineers primarily deliver digital services—coding, ERP configuration, testing—tasks that LLMs and AI agents already automate or augment substantially. India's export‑oriented IT‑services model and wage‑arbitrage advantage amplify exposure, as AI productivity gains erode the offshore cost benefit. While senior design and architecture retain human judgment, the bulk of mid‑tier engineering work is highly susceptible to AI‑driven productivity shifts."
+          "r": "Infosys engineers produce primarily digital code, test scripts, and AI/agent platforms, making their core tasks highly automatable by LLMs and code‑generation tools. AI productivity gains erode the offshore cost advantage, exposing mid‑level engineers to large displacement, while senior architects retain some protection."
         },
         {
           "n": "Wipro engineers",
           "s": "wipro-engineers",
           "v": 233000,
-          "ai": 8,
+          "ai": 7,
           "h": -2,
           "p": 700000,
           "e": 4,
           "src": "Wipro SEC 6-K FY25",
           "u": "https://www.wipro.com/investors/",
-          "r": "Wipro engineers primarily perform digital knowledge work—coding, debugging, testing, and documentation—tasks that AI assistants already handle substantially, boosting individual productivity 3‑5×. Because Indian IT services rely on wage arbitrage, AI‑driven productivity gains erode the offshore cost advantage, reducing demand for these roles even as the work persists. This is reflected in the declining hiring trend."
+          "r": "Wipro engineers produce largely digital deliverables—software code, system designs, and client‑facing solutions—making them highly susceptible to AI‑driven code generation and productivity gains. In India, offshore cost arbitrage amplifies exposure as AI tools compress the value gap with higher‑cost onshore developers. While human oversight remains essential, AI reshapes the role substantially."
         },
         {
           "n": "HCLTech engineers",
@@ -285,7 +285,7 @@
           "e": 4,
           "src": "HCLTech Q4 FY25",
           "u": "https://www.hcltech.com/investors",
-          "r": "The role is fully digital, involving coding, system design, and maintenance—tasks increasingly handled by LLM‑based coding assistants and automated testing. In India's export‑driven IT services sector, AI productivity gains sharply erode wage arbitrage, reducing demand for large engineering teams. Hence AI fundamentally reshapes the work."
+          "r": "Software engineering is a fully digital knowledge work; LLMs already generate code, test, and debug, dramatically boosting productivity and eroding offshore cost advantages. In India's export‑oriented IT services, AI tools can replace a sizable share of junior engineering effort, leading to high exposure despite current flat hiring."
         },
         {
           "n": "Tech Mahindra engineers",
@@ -297,19 +297,19 @@
           "e": 4,
           "src": "Tech Mahindra Q4 FY25",
           "u": "https://www.techmahindra.com/en-in/investors/",
-          "r": "Tech Mahindra engineers perform largely digital software development, testing, and integration tasks that AI/LLM code assistants can automate or dramatically accelerate, eroding the offshore cost advantage. The declining hiring trend reflects productivity gains and wage arbitrage pressures, placing the role in the high‑exposure bracket."
+          "r": "Tech Mahindra engineers perform primarily digital software development and support tasks that AI/LLM tools can generate, test, and maintain, dramatically boosting productivity and eroding offshore cost advantages. While human oversight remains, core coding and routine engineering work is already being automated at scale, placing the role in the high‑exposure bracket."
         },
         {
           "n": "Mid-tier IT services",
           "s": "midtier-it",
           "v": 850000,
-          "ai": 7,
+          "ai": 8,
           "h": -1,
           "p": 700000,
           "e": 4,
           "src": "NASSCOM SR 2025",
           "u": "https://nasscom.in/knowledge-center/publications/strategic-review-2025",
-          "r": "Work is largely digital—software maintenance, system integration, and client support—all amenable to AI code generation, automated testing, and chat‑based troubleshooting, boosting productivity and reducing offshore demand. Export‑oriented Indian BPM/IT services amplify exposure, though some human client‑interaction and legacy system nuances keep full replacement limited."
+          "r": "Mid-tier IT services involve largely digital tasks—software maintenance, testing, integration, and client support—that AI/LLMs can already automate or dramatically accelerate, especially in export‑oriented Indian BPM and KPO models. High wage arbitrage and modest hiring decline signal strong productivity displacement, even if the role persists."
         },
         {
           "n": "Small / regional IT services",
@@ -321,7 +321,7 @@
           "e": 4,
           "src": "NASSCOM SR 2025",
           "u": "https://nasscom.in/knowledge-center/publications/strategic-review-2025",
-          "r": "The role is fully digital—software development, system integration, and support are core tasks that AI‑driven code generation and automated monitoring can perform today. Indian wage arbitrage for such services is eroding as AI boosts productivity, making offshore delivery less cost‑effective. Although some client interaction remains, the bulk of work is highly automatable."
+          "r": ""
         },
         {
           "n": "Indian product startups",
@@ -333,7 +333,7 @@
           "e": 4,
           "src": "NASSCOM startup report",
           "u": "https://nasscom.in/knowledge-center/publications/indian-tech-startup-ecosystem-report-2025",
-          "r": "Work is fully digital—coding, product design, testing, and data analysis—all of which AI/LLMs can already perform at a competent level, dramatically boosting productivity and reducing headcount needs. Indian software product firms rely on cost arbitrage, so AI‑driven efficiency erodes the wage advantage, raising exposure. Regulatory or physical constraints are irrelevant."
+          "r": "The role is fully digital—coding, product design, data analysis, and online collaboration—all of which AI/LLMs can already perform at or near human levels, dramatically boosting productivity. In India, the large offshore software base amplifies wage‑arbitrage pressure, making AI-driven efficiency gains especially impactful."
         },
         {
           "n": "Freelance developers",
@@ -345,7 +345,7 @@
           "e": 4,
           "src": "NASSCOM + Upwork India",
           "u": "https://nasscom.in/knowledge-center/publications/decoding-indias-freelance-marketplace",
-          "r": "Development is fully digital and LLMs (e.g., Copilot, code‑gen models) already produce large code portions, dramatically boosting productivity and eroding offshore price advantage. While senior architecture and client interaction remain human‑centric, the core coding work is highly automatable, placing freelance developers in the high‑exposure bracket."
+          "r": "Work is fully digital—coding, debugging, and delivering software—all tasks that LLMs and code‑generation tools can already perform at a competent level, dramatically boosting productivity and reducing offshore cost advantage. While complex architecture and client interaction still need humans, AI can replace much of the routine development work, placing the role in the high‑exposure bracket."
         }
       ]
     },
@@ -362,7 +362,7 @@
           "e": 4,
           "src": "Zinnov GCC report 2025",
           "u": "https://zinnov.com/global-capability-centers/india-gcc-landscape-report-2025/",
-          "r": "Software engineering is a fully digital knowledge job; LLMs already produce functional code, perform code reviews, and generate documentation, dramatically boosting productivity and eroding offshore cost advantages. While human architects and complex system design remain, AI reshapes the core tasks, placing the role in the high‑exposure bracket."
+          "r": "Software engineering is a fully digital knowledge work where LLMs already generate code, debug and test, dramatically boosting productivity and eroding offshore cost advantages. In India’s export‑oriented GCC model, AI tools can cut required headcount despite continued hiring growth, placing the role at high exposure."
         },
         {
           "n": "GCC engineering R&D",
@@ -374,19 +374,19 @@
           "e": 4,
           "src": "Zinnov 2025",
           "u": "https://zinnov.com/global-capability-centers/india-gcc-landscape-report-2025/",
-          "r": "The role is highly digital, involving software/hardware design, coding, and testing—tasks where LLMs and AI tools already automate large portions and boost productivity, threatening offshore cost advantages. Indian GCC R&D centers face wage arbitrage pressure as AI narrows the price gap with onshore talent, leading to substantial exposure."
+          "r": "The role is fully digital, involving software/hardware design, coding, and analysis, which AI/LLMs can already generate, test, and document. In India’s export‑oriented GCC model, AI‑driven productivity sharply reduces the cost advantage of offshore engineers, raising exposure. While some deep R&D insight remains human‑centric, core engineering tasks are highly automatable."
         },
         {
           "n": "GCC data & analytics",
           "s": "gcc-data",
           "v": 250000,
-          "ai": 8,
+          "ai": 9,
           "h": 3,
           "p": 2200000,
           "e": 4,
           "src": "Zinnov 2025",
           "u": "https://zinnov.com/global-capability-centers/india-gcc-landscape-report-2025/",
-          "r": "The role is fully digital, involving data processing, reporting and analytics that AI/LLM tools can already automate (e.g., data cleaning, dashboard generation, basic insights). In export‑oriented GCCs, AI productivity gains can sharply reduce headcount needs, though human oversight remains for complex modeling."
+          "r": "The role is fully digital, centered on data processing, reporting, and statistical analysis, tasks that LLMs and automated analytics platforms already perform at or above junior analyst levels. In India's export‑oriented GCC sector, AI productivity gains can dramatically reduce demand for human analysts, though senior strategic work remains less replaceable."
         },
         {
           "n": "GCC shared services",
@@ -398,7 +398,7 @@
           "e": 4,
           "src": "Zinnov 2025",
           "u": "https://zinnov.com/global-capability-centers/india-gcc-landscape-report-2025/",
-          "r": "GCC shared services are largely digital back‑office functions (finance, HR, IT support, data processing) that are export‑oriented and already see AI handling data entry, reconciliation, and routine analysis. Large productivity gains can drastically reduce headcount, though regulatory and client‑specific constraints may slow full replacement."
+          "r": "GCC shared services are largely digital back‑office functions (finance, HR, IT support, analytics) that can be automated or dramatically accelerated by LLMs and workflow AI. High export orientation and relatively low wages amplify AI’s impact, even though some regulatory or client‑specific safeguards may linger."
         },
         {
           "n": "GCC AI/ML specialists",
@@ -410,7 +410,7 @@
           "e": 5,
           "src": "Zinnov 2025 - 120K+ AI pros in Indian GCCs",
           "u": "https://zinnov.com/global-capability-centers/india-gcc-landscape-report-2025/",
-          "r": "GCC AI/ML specialists perform highly digital work—training models, building MLOps pipelines, and productionizing GenAI use‑cases—where AI tools already augment coding, hyperparameter tuning, and experiment tracking. While AI substantially changes their workflow, novel research and system design still require human judgment, keeping the role defensible. India’s high‑wage offshore advantage makes this segment vulnerable to productivity shifts that could reduce headcount even as demand for AI‑enabled output grows."
+          "r": "The role is fully digital—building, training, and deploying AI models—so AI tools can dramatically augment productivity and reduce headcount needs. However, deep expertise, research, and bespoke model engineering remain human‑centric, limiting full replacement within five years."
         }
       ]
     },
@@ -427,7 +427,7 @@
           "e": 4,
           "src": "TeamLease via Reuters Oct 2025; LimeChat case",
           "u": "https://www.reuters.com/world/india/indias-it-firms-cut-back-fresh-hiring-ai-tools-take-over-2025-10-15/",
-          "r": "Voice agents perform scripted, digital interactions that AI chat/voice platforms already replicate at lower cost, driving a sharp hiring decline. The{ }  role is 100% screenâbased, exportâoriented BPO work, making \tAI productivity gains 10âplusÃ and eroding wage arbitrage. Regulatory or informal protections are minimal, so technology exposure is very high."
+          "r": "Voice agents perform scripted, digital interactions that LLM‑powered voice bots already replicate at scale, driving a steep productivity multiplier and eroding the offshore cost advantage. The rapid decline in hiring and low wages amplify exposure, though some legacy contracts and regulatory data‑privacy rules provide limited protection."
         },
         {
           "n": "Data entry / processing",
@@ -439,19 +439,19 @@
           "e": 2,
           "src": "TeamLease Digital",
           "u": "https://www.teamleasedigital.com/research-and-reports/",
-          "r": "The work is entirely digitalâreading scanned documents and typing data into systemsâ{}  AI documentâtrawling models  90% 0.9   0.9  0.9   0.9   0.9   0.9   0.9   0.9   0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0    } \n}   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }   }"
+          "r": "The work is entirely digital—reading scanned documents and typing data into systems—making it a prime target for document‑understanding AI, which already matches or exceeds human accuracy. AI can automate 90%+ of the tasks, leaving only minimal human review, and the low wage amplifies offshoring pressure. Regulatory or informal protections are minimal for BPM data‑entry roles."
         },
         {
           "n": "F&A outsourcing",
           "s": "bpm-fa",
           "v": 250000,
-          "ai": 9,
+          "ai": 8,
           "h": -1,
           "p": 450000,
           "e": 4,
           "src": "NASSCOM",
           "u": "https://nasscom.in/knowledge-center/publications",
-          "r": "Finance and accounting BPO work is largely digital (data entry, reconciliations, reporting) and already sees AI/ML tools handling large portions, eroding the cost advantage of Indian labor. Export‑oriented BPM amplifies exposure, though some regulatory and client‑specific controls may retain a human layer."
+          "r": "F&A outsourcing is a fully digital, back‑office knowledge task (accounting, reporting, reconciliations) that AI/LLM tools can already perform with high accuracy, and the sector is heavily export‑oriented, making wage arbitrage sensitive to AI productivity gains. While some judgment and client interaction remain, the core work is highly automatable."
         },
         {
           "n": "Transaction processing",
@@ -463,7 +463,7 @@
           "e": 4,
           "src": "NASSCOM",
           "u": "https://nasscom.in/knowledge-center/publications",
-          "r": "Transaction processing is a fully digital, rule‑based workflow that AI/LLM‑driven automation can execute end‑to‑end, especially in export‑oriented BPM/BPO services. The declining hiring trend and low wage level amplify the impact of productivity gains, making the role highly susceptible to displacement despite any regulatory or informal protections."
+          "r": "Transaction processing is a fully digital, rule‑based BPM task that AI/LLM‑driven workflow automation can already perform at or above human speed, especially for export‑oriented back‑office services. The declining hiring trend and low wage further increase exposure, despite any regulatory or informal protections."
         },
         {
           "n": "Medical transcription / coding",
@@ -475,19 +475,19 @@
           "e": 4,
           "src": "NASSCOM HC BPM",
           "u": "https://nasscom.in/knowledge-center/publications/business-process-management-strategic-review",
-          "r": "Medical transcription and coding are fully digital tasks—audio-to-text conversion and mapping diagnoses to codes—that LLMs and specialized AI (e.g., speech‑to‑text, coding assistants) already perform at or above human levels. India's large export‑oriented BPM pool makes the role especially vulnerable to AI‑driven productivity gains, reflected in the sharp hiring decline."
+          "r": "Medical transcription and coding are fully digital tasks that LLMs and specialized AI (e.g., speech‑to‑text, coding algorithms) already perform at or above human levels, driving a sharp decline in headcount. India's large export‑oriented BPM base amplifies exposure, despite any regulatory or informal protections."
         },
         {
           "n": "HR outsourcing",
           "s": "bpm-hr",
           "v": 100000,
-          "ai": 9,
+          "ai": 8,
           "h": -1,
           "p": 400000,
           "e": 4,
           "src": "NASSCOM",
           "u": "https://nasscom.in/knowledge-center/publications",
-          "r": "HR outsourcing work is largely digital—resume screening, payroll, employee queries, and data management—all of which AI/LLMs can already perform with high accuracy, reducing demand for human agents. India's export‑oriented BPM sector and relatively low wages amplify the impact, even though some regulatory or client‑specific nuances may retain a human layer."
+          "r": "HR outsourcing work is largely screen‑based (candidate screening, payroll, benefits administration, data entry) and aligns with tasks that LLMs and workflow automation already perform at scale. In India, the sector is export‑oriented and wage‑arbitrage sensitive, so AI productivity gains quickly erode demand. While some judgment and client interaction remain, the core workflow is highly automatable."
         }
       ]
     },
@@ -498,37 +498,37 @@
           "n": "Insurance agents",
           "s": "insurance-agents",
           "v": 3000000,
-          "ai": 5,
+          "ai": 3,
           "h": 0,
           "p": 250000,
           "e": 2,
           "src": "IRDAI",
           "u": "https://irdai.gov.in/",
-          "r": "Insurance agents perform a mix of relationship‑driven sales and paperwork; AI can automate quoting, policy recommendation, and data entry, reshaping parts of the role, but personal trust and face‑to‑face interaction remain essential, limiting full digital replacement."
+          "r": "Insurance agents rely on personal trust, relationship building, and in‑person sales, which are hard for AI to replace. AI can augment lead generation, policy recommendation, and paperwork automation, but the core role remains physical and interpersonal, limiting exposure to a low‑moderate level."
         },
         {
           "n": "Bank clerks & tellers",
           "s": "bank-clerks",
           "v": 1800000,
-          "ai": 8,
+          "ai": 6,
           "h": -2,
           "p": 400000,
           "e": 4,
           "src": "IBA + RBI",
           "u": "https://www.rbi.org.in/",
-          "r": "Bank clerks and tellers perform highly digital, transaction‑processing and customer‑service tasks that are already being automated with RPA, AI chatbots, and OCR. AI can handle routine deposits, withdrawals, and account queries, reducing the need for human staff despite regulatory safeguards. The declining hiring trend and low wages further increase exposure."
+          "r": "Core tasks—transaction processing, data entry, routine inquiries—are highly digital and can be automated with RPA and conversational AI, reducing demand for clerks. However, face‑to‑face customer service and discretionary judgment in exception handling remain human‑centric, limiting exposure to the highest tier."
         },
         {
           "n": "Accountants & auditors",
           "s": "accountants",
           "v": 1500000,
-          "ai": 9,
+          "ai": 7,
           "h": 0,
           "p": 700000,
           "e": 4,
           "src": "ICAI estimates",
           "u": "https://www.icai.org/",
-          "r": "Accounting and audit work is largely digital—processing ledgers, preparing reports, and compliance checks—all of which are increasingly handled by AI‑driven tools that can match or exceed junior human performance. In India, a large export‑oriented back‑office segment amplifies wage arbitrage pressure, making the role highly vulnerable to AI productivity gains."
+          "r": "Accounting and audit work is largely digital—data entry, financial analysis, report generation, and compliance checks can be largely automated or accelerated by AI tools, especially in India's export‑oriented finance services. While professional judgment and client interaction remain, AI-driven productivity gains can sharply reduce demand for junior accountants, placing the role in the high‑exposure bracket."
         },
         {
           "n": "Financial advisors",
@@ -540,7 +540,7 @@
           "e": 4,
           "src": "AMFI + SEBI",
           "u": "https://www.sebi.gov.in/statistics.html",
-          "r": "Financial advisors work with digital data, analytics, and client communication, making their tasks highly augmentable by AI-driven portfolio tools and robo‑advisors. While AI can automate routine analysis and recommendation generation, personal trust, regulatory compliance, and nuanced client relationship management remain human‑centric, limiting full replacement."
+          "r": "Advisors rely on digital data analysis, report generation, and regulatory compliance, all of which AI can automate or augment, reducing the number of advisors needed for the same output. However, client relationship management, trust, and nuanced judgment remain human‑centric, limiting full replacement."
         },
         {
           "n": "Loan processors / officers",
@@ -552,19 +552,19 @@
           "e": 4,
           "src": "IBA",
           "u": "https://www.iba.org.in/",
-          "r": "Loan processing is a largely digital workflow involving document verification, data entry, and rule‑based eligibility checks, all of which LLMs and AI‑driven underwriting tools can perform today. Indian banks and offshore finance BPOs rely heavily on this export‑oriented function, making wage arbitrage and productivity gains especially salient. While final approval still needs human judgment, core tasks are already automatable."
+          "r": "Loan processing is largely digital—reviewing applications, verifying documents, running credit checks, and generating decisions—all tasks that LLMs and AI underwriting tools can perform today. In India, many of these roles are export‑oriented back‑office functions, making them highly vulnerable to AI‑driven productivity gains despite some regulatory safeguards."
         },
         {
           "n": "NBFC / fintech ops",
           "s": "fintech-ops",
           "v": 400000,
-          "ai": 7,
+          "ai": 8,
           "h": 1,
           "p": 600000,
           "e": 4,
           "src": "FACE + NASSCOM",
           "u": "https://nasscom.in/knowledge-center/publications/fintech-industry-report",
-          "r": "NBFC/fintech operations are highly digital, involving data processing, compliance checks, transaction monitoring and reporting—all tasks that LLMs and AI workflow tools can automate or dramatically accelerate. India's large export‑oriented back‑office base makes the productivity gains economically significant, though some regulatory oversight and human judgment retain a role."
+          "r": "Fintech operations are primarily digital back‑office tasks—transaction processing, KYC verification, compliance reporting, and data reconciliation—that AI/LLMs can already automate at scale. The role is export‑oriented and wage‑arbitrage sensitive, making it highly vulnerable to AI‑driven productivity gains. Regulatory protections may slow adoption, but the underlying task exposure remains high."
         },
         {
           "n": "Chartered Accountants",
@@ -576,19 +576,19 @@
           "e": 5,
           "src": "ICAI",
           "u": "https://www.icai.org/",
-          "r": "Chartered accountants work primarily with digital financial data, tax filings, and audit reports, tasks that AI/LLMs can already automate for routine compliance and analysis. In India, a large share of CA services is export‑oriented back‑office work, making the role vulnerable to productivity‑driven demand reductions. Human judgment remains crucial for complex advisory and regulatory interpretation, limiting exposure to the highest tier."
+          "r": "Chartered accountants work primarily with digital financial data, preparing reports, tax filings, and audits that AI tools can already automate or augment at scale. In India, many CA services are export‑oriented BPM tasks, making them vulnerable to productivity gains from LLM‑driven analysis and document generation. While judgment and client advisory retain a human element, the core routine work is highly digitized and AI‑replaceable."
         },
         {
           "n": "Bank branch managers",
           "s": "branch-managers",
           "v": 250000,
-          "ai": 6,
+          "ai": 5,
           "h": -1,
           "p": 1500000,
           "e": 4,
           "src": "IBA",
           "u": "https://www.iba.org.in/",
-          "r": "Branch managers handle digital reporting, compliance, and sales analytics that AI can automate or augment, reducing the need for extensive human oversight. However, the role still relies heavily on in‑person customer relationship management, staff leadership, and local decision‑making, limiting full digital replacement."
+          "r": "Branch managers oversee both digital operations (reporting, compliance, sales analytics) that AI can augment and in‑person customer relationship and staff management that require human judgment. AI can streamline many back‑office tasks and reduce managerial bandwidth, but the role’s hybrid physical‑digital nature limits full automation."
         },
         {
           "n": "Investment analysts",
@@ -600,19 +600,19 @@
           "e": 5,
           "src": "SEBI + AMFI",
           "u": "https://www.sebi.gov.in/statistics.html",
-          "r": "Investment analysts work primarily with digital data, financial models, and report writing, all of which are highly amenable to LLM and ML augmentation, dramatically boosting productivity. While nuanced judgment and client interaction remain human strengths, AI can replace many routine analysis tasks, especially in offshore‑focused Indian finance services."
+          "r": "Investment analysts work primarily with digital data, financial models, and report writing, all of which are increasingly automatable by LLMs and predictive analytics. AI can boost productivity and reduce headcount needs, especially for offshore analysts, but nuanced judgment, client interaction, and regulatory compliance retain a human element."
         },
         {
           "n": "Stock brokers / traders",
           "s": "stock-brokers",
           "v": 90000,
-          "ai": 8,
+          "ai": 7,
           "h": 0,
           "p": 1000000,
           "e": 4,
           "src": "BSE + NSE",
           "u": "https://www.nseindia.com/national-stock-exchange/about-us-overview",
-          "r": "The role is fundamentally digital, involving real-time data analysis, order execution, and client communication, all of which AI/ML models can already perform or augment at scale. In India, many brokers serve offshore and domestic clients, making cost‑driven AI productivity gains especially relevant, though regulatory constraints and client relationship nuances provide some protection."
+          "r": "Trading is a highly digital activity involving data analysis, order execution, and market monitoring, all of which AI can augment or automate (e.g., algorithmic trading, predictive analytics). While human judgment{{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{\n{"
         }
       ]
     },
@@ -623,13 +623,13 @@
           "n": "School teachers (govt)",
           "s": "govt-teachers",
           "v": 5500000,
-          "ai": 3,
+          "ai": 4,
           "h": 0,
           "p": 450000,
           "e": 4,
           "src": "UDISE+ MoE",
           "u": "https://udiseplus.gov.in/",
-          "r": "Teaching relies heavily on in‑person interaction, classroom management, and nuanced pedagogy that AI cannot replace, though AI can automate grading and lesson‑plan generation. The role is low‑digital, with limited AI‑driven productivity gains, and Indian government schools have modest tech adoption, keeping exposure modest."
+          "r": "Teaching relies heavily on in‑person interaction and judgment, limiting full automation, but AI can automate grading, lesson‑plan generation, and content delivery, reshaping parts of the role. The job’s mixed physical/cognitive nature places it in the mid‑range exposure."
         },
         {
           "n": "Clerical & admin staff (govt)",
@@ -641,7 +641,7 @@
           "e": 4,
           "src": "DoPT + state estimates",
           "u": "https://dopt.gov.in/",
-          "r": "Government clerical work involves substantial document handling and data entry, tasks that AI/LLM tools can automate, raising productivity and reducing staffing needs. However, strong regulatory and institutional protections limit rapid adoption, and many duties still require human judgment and compliance, moderating overall exposure."
+          "r": "Government clerical work involves routine data entry, form processing and record keeping that AI/LLM tools can automate, but large bureaucratic inertia, data security concerns and low digital penetration limit rapid displacement. The role is partially digital, so AI will reshape parts of the job but not replace it entirely in the near term."
         },
         {
           "n": "Police",
@@ -653,31 +653,31 @@
           "e": 4,
           "src": "BPRD",
           "u": "https://bprd.nic.in/",
-          "r": "Police work is primarily physical, in‑person law enforcement and judgment under unpredictable conditions; AI can aid surveillance, data analysis, and decision support but cannot replace core duties. Limited digital product and high reliance on human presence keep exposure low."
+          "r": "Police work is heavily physical, requires real‑time judgment, and unpredictable human interaction; AI can aid with analytics, surveillance, and decision support but cannot replace core duties. Hence exposure is limited to assistance tools, placing it in the low‑range bracket."
         },
         {
           "n": "Other PSU employees",
           "s": "psu-employees",
           "v": 2000000,
-          "ai": 5,
+          "ai": 4,
           "h": 0,
           "p": 700000,
           "e": 4,
           "src": "DPE survey",
           "u": "https://dpe.gov.in/",
-          "r": "The role is largely bureaucratic and administrative within public sector undertakings, involving paperwork, reporting, and routine decision‑making that can be digitized and assisted by AI tools. However, significant portions require policy judgment, stakeholder interaction, and oversight that are less amenable to full automation, placing exposure at a moderate level."
+          "r": "Most tasks involve bureaucratic administration, paperwork, and routine reporting in public sector undertakings, which can be partially digitized and assisted by AI (e.g., document processing, data entry). However, the work remains tied to regulatory compliance, stakeholder interaction, and on‑site oversight, limiting full digital automation. Indian public‑sector inertia and limited AI adoption further temper exposure."
         },
         {
           "n": "Healthcare staff (govt)",
           "s": "govt-healthcare",
           "v": 1800000,
-          "ai": 3,
+          "ai": 4,
           "h": 1,
           "p": 400000,
           "e": 4,
           "src": "MoHFW",
           "u": "https://www.mohfw.gov.in/",
-          "r": "Government healthcare staff perform mostly physical patient care and in‑person clinical tasks, with limited digital output. AI can aid record‑keeping and decision support, but core duties require human judgment and interaction, keeping exposure modest."
+          "r": "The role combines physical patient care with administrative tasks; AI can automate record‑keeping, scheduling, and basic decision support, reshaping parts of the job, but core clinical interactions remain human‑centric. Government health services have limited outsourcing and slower tech adoption, moderating overall exposure."
         },
         {
           "n": "Defence personnel",
@@ -689,19 +689,19 @@
           "e": 4,
           "src": "MoD",
           "u": "https://www.mod.gov.in/",
-          "r": "Defence personnel primarily perform physical, tactical and command duties that require real‑time human judgment and physical presence; AI can aid planning and intelligence analysis but cannot replace core combat or field operations. Hence exposure is low, limited to decision‑support tools."
+          "r": "Defence roles involve physical presence, tactical decision‑making, and secure, non‑digital operations, limiting AI's direct automation. AI can assist with data analysis and simulations, but core duties remain hands‑on and security‑sensitive, keeping exposure low."
         },
         {
           "n": "Indian Railways staff",
           "s": "railways",
           "v": 1200000,
-          "ai": 3,
+          "ai": 2,
           "h": -1,
           "p": 500000,
           "e": 4,
           "src": "Indian Railways annual report",
           "u": "https://indianrailways.gov.in/railwayboard/view_section.jsp?lang=0&id=0,1,304,366,554",
-          "r": "Railway staff perform a mix of physical operations, field maintenance, and on‑site safety tasks that require real‑time human judgment and manual dexterity, limiting AI automation. While scheduling, ticketing and some administrative functions are digitised and can be assisted by AI, the core role remains hands‑on and location‑bound, keeping exposure modest."
+          "r": "Most Railways staff perform physical, on‑site duties (train operation, station management, track maintenance) with limited digital work; AI can assist ticketing and scheduling but cannot replace the core manual and safety‑critical tasks. Hence exposure is low, around the lower end of the 2‑3 band."
         },
         {
           "n": "Postal workers",
@@ -713,7 +713,7 @@
           "e": 2,
           "src": "India Post",
           "u": "https://www.indiapost.gov.in/VAS/Pages/AboutUs/Default.aspx",
-          "r": "Core tasks involve physical collection, sorting, and delivery of mail, which require manual handling and in‑person interaction. AI can aid routing and logistics planning, but cannot replace the hands‑on work, especially given limited automation infrastructure in India's postal network."
+          "r": "Core tasks involve physical mail handling and delivery, which require manual dexterity and in‑person interaction. AI can aid sorting and routing, but the bulk of work remains non‑digital and labor‑intensive, limiting automation potential in India’s current infrastructure."
         }
       ]
     },
@@ -730,31 +730,31 @@
           "e": 4,
           "src": "INC + MoHFW",
           "u": "https://www.indiannursingcouncil.org/",
-          "r": "Nursing is primarily physical patient care with critical real‑time judgment; AI can aid documentation and decision support but cannot replace bedside tasks. Low digitality keeps exposure modest despite productivity tools."
+          "r": "Nursing is primarily physical patient care, requiring dexterity, real‑time judgment and empathy; AI can assist with documentation, scheduling and decision support but cannot replace bedside tasks. The role’s low digital product and high human interaction keep exposure modest despite growing tech aids."
         },
         {
           "n": "Doctors",
           "s": "doctors",
           "v": 1300000,
-          "ai": 3,
+          "ai": 4,
           "h": 2,
           "p": 1500000,
           "e": 5,
           "src": "NMC registration",
           "u": "https://www.nmc.org.in/information-desk/indian-medical-register/",
-          "r": "Medical practice relies on physical examination, patient interaction, and complex clinical judgment that AI cannot fully replace, though decision‑support tools and diagnostic AI will augment doctors. The high education barrier and strong hiring growth in India limit immediate displacement, keeping exposure in the lower‑mid range."
+          "r": "Doctors combine physical examination, patient interaction, and complex clinical judgment, limiting full digital automation. AI can augment diagnostics, imaging analysis, and documentation, reshaping parts of the workflow, but core decision‑making and bedside care remain human‑centric. Indian private healthcare’s growth and regulatory safeguards keep the role largely intact."
         },
         {
           "n": "Pharmacists",
           "s": "pharmacists",
           "v": 850000,
-          "ai": 5,
+          "ai": 6,
           "h": 0,
           "p": 350000,
           "e": 4,
           "src": "PCI",
           "u": "https://www.pci.nic.in/",
-          "r": "Pharmacy work combines physical dispensing and patient counseling with digital prescription processing; AI can automate verification, interaction checks, and inventory, reshaping parts of the role, but human judgment and regulatory compliance keep a substantial manual component."
+          "r": "Pharmacy work blends physical dispensing with digital prescription processing and drug‑interaction checks, tasks that AI can automate or augment substantially. AI‑driven verification and inventory systems can boost productivity, potentially reducing headcount, but human counseling and regulatory judgment remain essential, keeping exposure at a high‑mid level."
         },
         {
           "n": "Hospital admin",
@@ -766,19 +766,19 @@
           "e": 4,
           "src": "NSDC HSSC",
           "u": "https://www.healthcare-ssc.in/",
-          "r": "Hospital administrators handle scheduling, billing, records management, and regulatory compliance, all largely digital tasks that AI/LLM tools can automate or dramatically accelerate. In India's export‑oriented private healthcare services, cost pressures amplify adoption, though some on‑site coordination remains. Hence AI exposure is high, bordering on core task automation."
+          "r": "Hospital administrators handle patient scheduling, billing, records management, and regulatory compliance, tasks that are largely digital and increasingly automated by AI‑driven health‑IT systems. In India, cost‑sensitive private hospitals adopt AI for workflow optimization, threatening the demand for human admins despite current flat hiring. The role is therefore highly exposed to AI augmentation and potential displacement."
         },
         {
           "n": "Lab technicians",
           "s": "lab-techs",
           "v": 500000,
-          "ai": 3,
+          "ai": 5,
           "h": 0,
           "p": 280000,
           "e": 3,
           "src": "NSDC HSSC",
           "u": "https://www.healthcare-ssc.in/",
-          "r": "Lab technicians perform hands‑on sample preparation, equipment operation, and physical testing, tasks that are difficult to fully automate in India’s cost‑sensitive labs. AI can augment data analysis and reporting, but the core work remains physical, limiting exposure to a low‑moderate level."
+          "r": "Lab technicians perform physical sample preparation and instrument operation, but much of the analytical interpretation can be automated with AI image analysis and diagnostic algorithms. The role is partially digital, so AI can boost productivity and replace some analysis tasks, yet hands‑on work remains essential, limiting exposure to the mid‑range."
         },
         {
           "n": "Diagnostic radiologists",
@@ -790,7 +790,7 @@
           "e": 5,
           "src": "Indian Radiological Society",
           "u": "https://www.irsi.in/",
-          "r": "Radiology is a fully digital, image‑analysis job where AI models already match or exceed human performance on many routine scans, dramatically boosting productivity and potentially reducing demand for radiologists. In India, adoption is growing but still constrained by cost and regulatory acceptance, keeping the score just below the highest tier."
+          "r": "Radiologists work with fully digital imaging data; AI algorithms already match or exceed human performance on many detection tasks, dramatically augmenting productivity and potentially reducing demand. While final clinical judgment and patient interaction remain human, the core interpretive work is highly automatable, especially in India's export‑oriented diagnostic services."
         }
       ]
     },
@@ -807,7 +807,7 @@
           "e": 4,
           "src": "UDISE+ MoE",
           "u": "https://udiseplus.gov.in/",
-          "r": "Teaching relies heavily on real‑time human interaction, classroom management, and nuanced pedagogy, which AI cannot replace. AI can automate grading and provide lesson‑plan assistance, boosting productivity, but the core role remains in‑person and low‑digital, yielding moderate exposure."
+          "r": "Teaching relies heavily on realâtime interpersonal interaction, classroom management, and nuanced pedagogy{â}tasks that AI cannot replace. While AIâ"
         },
         {
           "n": "Private tutors",
@@ -819,43 +819,43 @@
           "e": 4,
           "src": "NSDC + ASER",
           "u": "https://asercentre.org/",
-          "r": "Tutoring is largely interpersonal and relies on real‑time judgment, limiting full digital automation, but AI‑driven tutoring platforms and LLMs can handle many routine explanations and practice, boosting productivity and eroding demand for low‑cost private tutors in India."
+          "r": "Tutoring is largely a knowledge‑transfer role that can be digitized; AI‑driven tutoring platforms can automate lesson delivery and basic query handling, reducing demand for human tutors. However, personalized mentorship, classroom dynamics, and trust‑based relationships remain human‑centric, limiting full replacement in the near term."
         },
         {
           "n": "College & university faculty",
           "s": "college-faculty",
           "v": 1500000,
-          "ai": 7,
+          "ai": 6,
           "h": 0,
           "p": 800000,
           "e": 5,
           "src": "AISHE 2022-23",
           "u": "https://aishe.gov.in/aishe/home",
-          "r": "Faculty work is largely digital—lecture prep, grading, research, and content creation—areas where generative AI can automate large portions and boost productivity, potentially shrinking hiring demand despite unchanged trends. However, teaching relies on in‑person interaction and subject‑matter authority, keeping a defensible human element."
+          "r": "Faculty work is largely knowledge‑based and increasingly digital (lecture slides, grading software, research literature searches), so AI can boost productivity and automate parts of assessment and content creation. However, core teaching, mentorship, and original research require human judgment and in‑person interaction, limiting full replacement in the next five years."
         },
         {
           "n": "Coaching / test prep",
           "s": "coaching",
           "v": 1200000,
-          "ai": 6,
+          "ai": 5,
           "h": -1,
           "p": 400000,
           "e": 4,
           "src": "NSDC + industry estimates",
           "u": "https://www.nsdcindia.org/sector-skill-councils",
-          "r": "Coaching relies on knowledge transfer and personalized guidance, which AI-driven tutoring platforms can increasingly automate, boosting productivity and reducing demand for human coaches. However, the role still depends on real‑time interaction, trust, and nuanced pedagogy, limiting full replacement in the near term."
+          "r": "Coaching relies on personal interaction and adaptive teaching, limiting full automation, but AI can generate test material, provide instant feedback, and augment tutoring, reshaping a sizable portion of the work. India's large private education export market amplifies exposure, though regulatory and cultural preferences for human teachers temper it."
         },
         {
           "n": "EdTech roles",
           "s": "edtech",
           "v": 200000,
-          "ai": 8,
+          "ai": 9,
           "h": 0,
           "p": 800000,
           "e": 4,
           "src": "NASSCOM EdTech report",
           "u": "https://nasscom.in/knowledge-center/publications/indian-edtech-industry-report",
-          "r": "EdTech work is primarily digital—creating, curating, and delivering learning content, managing platforms, and providing online tutoring—all tasks that LLMs and generative AI can already perform at scale. India's large export‑oriented EdTech services amplify wage arbitrage pressure, making AI‑driven productivity gains highly disruptive. Regulatory or institutional protections are limited, so technology exposure is high."
+          "r": "EdTech work is largely digitalâcontent creation, curriculum design, platform management, dataâdriven analytics and online instructionâall of which LLMs and generative AI can produce, edit and personalize at scale. In India, many of these roles serve exportâoriented SaaS and Kâ12 platforms, making them highly vulnerable to AIâdriven productivity gains despite current flat hiring."
         }
       ]
     },
@@ -872,7 +872,7 @@
           "e": 2,
           "src": "Industry estimates (Inc42, EY)",
           "u": "https://inc42.com/reports/",
-          "r": "The work is fully digital—creating, editing, and distributing video, audio, and written content—tasks that AI generative models already perform at scale, reducing the need for human creators. AI tools can automate editing, scriptwriting, thumbnail design, and audience analytics, reshaping the role despite the booming hiring trend. Indian creators rely on low‑cost labor, but AI erodes that advantage rapidly."
+          "r": "The work is fully digital—creating, editing, and distributing video, audio, and written content—tasks that generative AI can already perform at scale, reducing the need for human creators. AI-driven tools (e.g., LLMs, image/video generators) can produce comparable outputs, making the role highly susceptible to automation despite current hiring booms."
         },
         {
           "n": "Content writers",
@@ -884,7 +884,7 @@
           "e": 4,
           "src": "Industry estimates",
           "u": "https://www.nsdcindia.org/sector-skill-councils",
-          "r": "Content writing is a fully digital knowledge task that LLMs already generate at median quality, dramatically lowering unit cost and prompting a sharp hiring decline. Indian writers compete globally on price, so AI productivity directly erodes the export‑oriented market. While some editors remain, the core writing function is highly substitutable."
+          "r": "Content writing is a fully digital output that LLMs already generate at or above median quality, dramatically lowering unit cost and prompting a sharp hiring decline. Indian writers compete globally on price, so AI productivity erodes the wage arbitrage that sustained the role, leading to very high exposure."
         },
         {
           "n": "Graphic designers",
@@ -896,7 +896,7 @@
           "e": 3,
           "src": "NSDC MESC",
           "u": "https://mescindia.org/",
-          "r": "Graphic design is a fully digital output that AI image generators can already produce at junior‑designer quality, reshaping most routine layout and asset creation tasks. While senior creative direction and client liaison remain human‑centric, the core production work is highly automatable, especially for export‑oriented Indian studios."
+          "r": "Design work is fully digital and generative AI can create layouts, illustrations, and branding assets at or above junior designer quality, dramatically boosting productivity and reducing demand for low‑skill designers. Indian firms rely on cost‑effective design outsourcing, so AI erodes the wage arbitrage that sustains the role."
         },
         {
           "n": "Social media managers",
@@ -908,7 +908,7 @@
           "e": 4,
           "src": "NSDC MESC",
           "u": "https://mescindia.org/",
-          "r": "Social media managers produce and curate digital content, analyze engagement metrics, and schedule posts—tasks that LLMs and AI analytics platforms can already perform with high quality. In India, a large share of these roles serve domestic and export‑oriented marketing, making them vulnerable to AI‑driven productivity gains despite flat hiring trends."
+          "r": "Social media managers produce and curate digital content, analyze engagement metrics, and schedule posts—all tasks that LLMs and AI marketing platforms can automate or augment at scale. In India, the role is largely export‑oriented and low‑wage, making AI‑driven productivity gains especially impactful, though human brand voice and crisis handling still require oversight."
         },
         {
           "n": "Photographers",
@@ -920,7 +920,7 @@
           "e": 2,
           "src": "NSDC MESC",
           "u": "https://mescindia.org/",
-          "r": "Photography combines physical image capture with digital post‑processing; AI tools can automate editing, tagging, and even generate stock‑style images, reshaping parts of the workflow. However, creative composition, client interaction, and on‑site shooting remain human‑centric, limiting full replacement."
+          "r": "Photographers combine physical image capture with post‑production editing. AI tools can automate many editing and compositional tasks, reducing demand for manual work, but the core shooting activity remains hands‑on and location‑dependent, limiting full digital replacement."
         },
         {
           "n": "Video editors",
@@ -932,7 +932,7 @@
           "e": 3,
           "src": "NSDC MESC",
           "u": "https://mescindia.org/",
-          "r": "Video editing is a fully digital workflow; AI tools can automate cuts, color grading, and generate effects, dramatically boosting productivity and reducing headcount needs. Indian editors, often low‑cost export labor, face strong wage arbitrage pressure as AI narrows the cost advantage. Regulatory or informal protections are minimal for this export‑oriented creative service."
+          "r": "Video editing is a fully digital workflow; AI can automate cuts, color grading, effects, and even generate footage, dramatically boosting productivity. While creative judgment remains, generative and assistive tools already handle core tasks, placing the role in the high‑exposure bracket."
         },
         {
           "n": "Animation / VFX",
@@ -944,7 +944,7 @@
           "e": 3,
           "src": "FICCI-EY M&E report",
           "u": "https://www.ey.com/en_in/industries/media-entertainment",
-          "r": "Animation/VFX is a fully digital creative workflow where generative AI can produce assets, automate rotoscoping, compositing, and rendering, dramatically boosting productivity. Indian studios rely on cost arbitrage for export work, so AI‑driven efficiency threatens demand for large teams despite the need for artistic direction. The core tasks are highly automatable, placing exposure in the 8‑range."
+          "r": "Animation and VFX are fully digital, relying on software for modeling, rendering, and compositing; generative AI can already produce assets, automate rotoscoping, and speed up rendering pipelines, dramatically reshaping productivity. While artistic direction still needs human judgment, the core production tasks are highly automatable, giving the role a strong AI exposure."
         },
         {
           "n": "Translators",
@@ -956,7 +956,7 @@
           "e": 4,
           "src": "Industry estimates",
           "u": "https://www.nsdcindia.org/sector-skill-councils",
-          "r": "Translation is a largely digital knowledge task; LLMs and neural MT now achieve near‑human quality for most Indian‑English pairs, handling volume work and reducing demand for human translators. Indian translators face strong export‑oriented competition and declining hiring, indicating high AI substitution risk despite niche specialist needs."
+          "r": "Translation is a largely digital task; LLMs and neural MT now achieve near‑human quality for most Indian language pairs, handling bulk work and displacing volume translators. AI dramatically boosts productivity, eroding demand for standard translators, especially given India's export‑oriented language services. Specialized post‑editing remains, but core translation is highly exposed."
         },
         {
           "n": "Journalists",
@@ -968,7 +968,7 @@
           "e": 4,
           "src": "PCI + Editors Guild estimates",
           "u": "https://www.pci.nic.in/",
-          "r": "Journalism is a primarily digital knowledge work—writing, researching, editing, and publishing are tasks that large language models already perform at a competent level, enabling massive productivity gains and reducing demand for junior reporters. India's export‑oriented media services and relatively low wages amplify the impact, though editorial judgment and investigative reporting retain a human edge."
+          "r": "Journalism is a predominantly digital knowledge job where AI can already draft articles, summarize reports, and generate routine news content, reducing the need for human writers. The declining hiring trend and export‑oriented Indian media services amplify exposure, though editorial judgment and investigative reporting remain human‑centric."
         }
       ]
     },
@@ -979,49 +979,49 @@
           "n": "Lawyers (litigation)",
           "s": "lawyers",
           "v": 1300000,
-          "ai": 6,
+          "ai": 7,
           "h": 0,
           "p": 800000,
           "e": 5,
           "src": "Bar Council of India",
           "u": "http://www.barcouncilofindia.org/",
-          "r": "Litigation lawyers perform substantial digital work (research, drafting, document analysis) that AI can automate, boosting productivity and reducing demand for junior lawyers. However, core courtroom advocacy, strategy, and client interaction remain human‑centric, limiting full replacement."
+          "r": "Litigation lawyers perform a mix of digital tasks (legal research, drafting pleadings, document review) that AI can substantially augment, while courtroom advocacy and strategic judgment remain human‑centric. In India, a large export‑oriented legal services segment makes these digital components highly exposed, though regulatory and professional norms protect the advocacy element."
         },
         {
           "n": "HR professionals",
           "s": "hr-professionals",
           "v": 750000,
-          "ai": 7,
+          "ai": 6,
           "h": 0,
           "p": 700000,
           "e": 4,
           "src": "NHRDN estimates",
           "u": "https://nhrd.org/",
-          "r": "HR work is largely digital—resume screening, payroll, performance analytics, and employee queries are increasingly handled by AI-driven platforms, boosting productivity and reducing headcount needs. India's large, export‑oriented HR/BPO sector amplifies exposure, though human judgment in culture fit and conflict resolution remains a barrier."
+          "r": "HR work is largely digital—resume databases, payroll systems, analytics and internal communications—so AI can automate screening, routine queries and data processing, boosting productivity. However, core functions like employee relations, negotiation and strategic planning require human judgment and interpersonal skills, limiting full replacement."
         },
         {
           "n": "Paralegals & legal research",
           "s": "paralegals",
           "v": 250000,
-          "ai": 8,
+          "ai": 9,
           "h": -2,
           "p": 400000,
           "e": 4,
           "src": "Industry estimates",
           "u": "https://www.nsdcindia.org/sector-skill-councils",
-          "r": "Paralegals primarily perform document review, legal research, and drafting—tasks that are largely digital and already handled by LLMs with high accuracy. India's large export‑oriented legal process outsourcing sector amplifies exposure, and the recent hiring decline reflects firms adopting AI for cost efficiency. Human judgment remains for complex strategy, keeping the role from a 10."
+          "r": "Paralegal work is largely digital—researching statutes, drafting briefs, reviewing contracts—tasks that LLMs already perform at near‑human quality, especially in India’s export‑oriented legal BPO sector. AI can dramatically boost productivity, reducing demand for junior staff, while regulatory or client preferences may slow full replacement."
         },
         {
           "n": "Corporate legal counsel",
           "s": "corporate-legal",
           "v": 150000,
-          "ai": 7,
+          "ai": 6,
           "h": 0,
           "p": 2000000,
           "e": 5,
           "src": "GC Counsel estimates",
           "u": "https://nasscom.in/knowledge-center/publications",
-          "r": "Corporate counsel work is largely digital—drafting contracts, legal research, and compliance reviews—but requires nuanced judgment, client trust, and strategic advice that AI cannot fully replace. Generative AI can automate routine document creation and research, boosting productivity and potentially reducing headcount, yet human oversight remains essential."
+          "r": "Work is largely digital (contract drafting, legal research, document review) so AI can automate many routine tasks and boost productivity, but strategic judgment, client interaction, and regulatory nuance remain human‑centric. Indian legal outsourcing amplifies exposure, yet the senior advisory role retains defensible human elements."
         },
         {
           "n": "Management consultants",
@@ -1033,7 +1033,7 @@
           "e": 5,
           "src": "Industry estimates",
           "u": "https://www.nsdcindia.org/sector-skill-councils",
-          "r": ""
+          "r": "Consultants produce digital analyses, presentations, and strategic recommendations that AI can generate, summarize, and model, dramatically boosting productivity and reducing demand for junior consultants. The work is export‑oriented and highly digital, making it vulnerable to AI‑driven automation despite current growth."
         }
       ]
     },
@@ -1044,13 +1044,13 @@
           "n": "Truck drivers",
           "s": "truck-drivers",
           "v": 8500000,
-          "ai": 3,
+          "ai": 2,
           "h": 0,
           "p": 250000,
           "e": 2,
           "src": "AIMTC",
           "u": "https://aimtc.org/",
-          "r": "Driving is a physical, real‑time task with limited digital work product; AI can assist via navigation and driver‑assist tools, but full autonomy is constrained by Indian road infrastructure and regulations. Hence exposure is modest, fitting the 2‑3 range."
+          "r": "Truck driving is primarily physical and requires real‑time navigation and vehicle control in varied Indian road conditions. While autonomous driving research exists, limited infrastructure, regulatory barriers, and low cost advantage keep AI impact modest, mainly as driver‑assist tools rather than replacement."
         },
         {
           "n": "Cab / auto drivers",
@@ -1062,19 +1062,19 @@
           "e": 2,
           "src": "NSDC TSC",
           "u": "https://www.tsscindia.com/",
-          "r": "Driving is a physical, real‑time task requiring situational judgment and dexterity; AI currently offers only navigation and driver‑assist tools, which do not replace the driver. India's infrastructure and cost constraints limit autonomous‑vehicle rollout, keeping exposure low despite modest digital assistance."
+          "r": "Driving is a physical, real‑time task that relies on on‑road judgment and dexterity; AI‑driven autonomous vehicles are not yet viable in India's infrastructure and cost constraints. AI can assist with navigation and dispatch, but cannot replace the driver, so exposure remains low."
         },
         {
           "n": "Last-mile delivery",
           "s": "delivery",
           "v": 3000000,
-          "ai": 5,
+          "ai": 2,
           "h": 3,
           "p": 230000,
           "e": 2,
           "src": "NASSCOM + industry",
           "u": "https://nasscom.in/knowledge-center/publications",
-          "r": "Last‑mile delivery is primarily physical, but AI already reshapes routing, demand forecasting, and fleet management, reducing the number of workers needed per unit of output. Autonomous vehicle adoption is limited in India, so core on‑ground work remains, placing exposure at a mid‑range level."
+          "r": "Work is primarily physical—picking, transporting, and delivering parcels—requiring on‑ground navigation and hand‑off. AI can improve routing and demand forecasting, but autonomous delivery is limited in India, so core tasks remain human. Hence exposure is low to moderate."
         },
         {
           "n": "Warehouse workers",
@@ -1086,31 +1086,31 @@
           "e": 2,
           "src": "NSDC LSC",
           "u": "https://lsssdc.in/",
-          "r": "The role is primarily physical—manual handling, sorting, and moving goods—with limited digital output. AI‑driven robotics and warehouse management systems can augment tasks, but high capital costs and cheap labor keep full automation low in India, placing exposure at the low‑to‑mid range."
+          "r": "Warehouse work is primarily physical—picking, packing, loading—requiring manual dexterity and on‑site presence. AI‑driven robotics and inventory software could augment tasks, but high capital costs and limited adoption in India keep automation impact modest. Hence exposure is low to moderate."
         },
         {
           "n": "Logistics coordinators",
           "s": "logistics-coordinators",
           "v": 600000,
-          "ai": 8,
+          "ai": 7,
           "h": 0,
           "p": 400000,
           "e": 4,
           "src": "NSDC LSC",
           "u": "https://lsssdc.in/",
-          "r": "The role is largely digital—managing shipments, routing, documentation, and communication via transport management systems. AI-driven optimization, automated booking, and chat‑based coordination can perform core tasks, substantially reshaping the job. Indian logistics heavily relies on offshore‑cost arbitrage, so AI productivity gains threaten the volume of coordinator roles."
+          "r": "Logistics coordinators work largely with digital scheduling, routing, and communication platforms, making their tasks highly automatable by AI-driven optimization and chat‑bot interfaces. In India, many such roles are export‑oriented back‑office services, so AI productivity gains can sharply reduce demand. Physical presence is minimal, but some human judgment on exceptions remains."
         },
         {
           "n": "Pilots & airline crew",
           "s": "pilots",
           "v": 70000,
-          "ai": 3,
+          "ai": 2,
           "h": 1,
           "p": 1500000,
           "e": 4,
           "src": "DGCA",
           "u": "https://www.dgca.gov.in/",
-          "r": "Piloting relies on real-time physical control, situational judgment, and safety-critical decision‑making that AI cannot fully replace, though advanced autopilot and decision‑support systems augment the role. The job’s low digital product and high regulatory safety barriers keep AI exposure modest."
+          "r": "Piloting and cabin crew rely on real-time physical control, situational judgment, and passenger interaction, which AI cannot fully replicate. While AI‑driven decision‑support and autopilot systems augment tasks, the core role remains manual and safety‑critical, limiting automation potential."
         }
       ]
     },
@@ -1127,7 +1127,7 @@
           "e": 2,
           "src": "NRAI + NSDC THSC",
           "u": "https://www.thsc.in/",
-          "r": "Work is primarily physical—taking orders, serving food, cleaning—and requires real‑time human interaction in a dynamic environment. AI can assist with scheduling or digital ordering kiosks, but core tasks remain non‑digital and dexterity‑bound, limiting automation potential in India’s hospitality sector."
+          "r": "Work is largely physical and interpersonal—taking orders, serving food, cleaning—so AI can only assist (e.g., digital ordering kiosks, kitchen management software). The core tasks require real‑time human judgment and dexterity, limiting automation potential despite some digital tools."
         },
         {
           "n": "Hotel staff",
@@ -1139,19 +1139,19 @@
           "e": 2,
           "src": "FHRAI",
           "u": "https://www.fhrai.com/",
-          "r": "Hotel staff work is largely physical and people‑focused (front‑desk service, housekeeping, concierge), with limited digital output. AI can augment booking systems and provide chat‑bot assistance, but core tasks require on‑site human interaction and manual work, especially in India where automation capital is constrained."
+          "r": "Hotel staff perform primarily in‑person service (check‑in, housekeeping, guest assistance) that relies on physical presence and interpersonal judgment. AI can support back‑office tasks (booking systems, chatbots) but cannot replace the core front‑line duties, yielding low exposure."
         },
         {
           "n": "Event management",
           "s": "event-mgmt",
           "v": 300000,
-          "ai": 3,
+          "ai": 2,
           "h": 1,
           "p": 500000,
           "e": 4,
           "src": "EEMA",
           "u": "https://www.eemaindia.com/",
-          "r": "Event management relies heavily on in‑person coordination, client interaction, and on‑site execution, which are hard to automate. AI can aid scheduling, marketing copy, and vendor selection, boosting productivity, but cannot replace the human relationship and real‑time problem‑solving needed, leading to modest exposure."
+          "r": "Event management relies on in‑person coordination, client interaction, and on‑site logistics, with limited digital product creation. AI can assist with scheduling, budgeting, and marketing analytics, but core tasks require human judgment and physical presence, keeping exposure low."
         },
         {
           "n": "Tour guides",
@@ -1163,7 +1163,7 @@
           "e": 4,
           "src": "Ministry of Tourism",
           "u": "https://tourism.gov.in/",
-          "r": "Tour guiding relies on live, location‑specific interaction, cultural nuance, and real‑time problem solving, which are hard for AI to replicate. While AI‑driven audio apps and AR can augment the role, they do not replace the personal presence needed, keeping exposure low."
+          "r": "Tour guiding is a highly interpersonal, on‑site role requiring real‑time cultural interpretation and physical presence; AI can augment with audio apps or translation tools but cannot replace the human guide’s situational judgment and engagement. Low digital work product keeps exposure modest."
         },
         {
           "n": "Travel agents",
@@ -1175,7 +1175,7 @@
           "e": 4,
           "src": "TAAI",
           "u": "https://www.taai.in/",
-          "r": "Core work is digital—searching, comparing, and booking travel services—tasks that AI-driven chatbots and recommendation engines already perform at scale, reducing demand for human agents. Indian travel agencies rely heavily on offshore BPO models, making wage arbitrage sensitive to AI productivity gains. While personal service and complex itineraries retain some human value, the majority of routine bookings are highly automatable."
+          "r": "Core tasks—searching, comparing, and booking travel services—are largely digital and already handled by AI‑driven platforms and chatbots, reducing the need for human agents. Indian travel agencies face export‑type competition and declining hiring, indicating strong productivity displacement despite some regulatory or relationship‑based protection."
         }
       ]
     }
