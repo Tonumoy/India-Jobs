@@ -38,7 +38,7 @@ def main():
 
     scores_path = DATA_DIR / "scores.json"
     if scores_path.exists():
-        scores = json.loads(scores_path.read_text())
+        scores = json.loads(scores_path.read_text(encoding="utf-8"))
     else:
         scores = {}
         print("[warn] data/scores.json not found — AI exposure layer will be missing.")
@@ -77,7 +77,7 @@ def main():
     }
 
     out = ROOT / "data.json"
-    out.write_text(json.dumps(site_data, indent=2, ensure_ascii=False))
+    out.write_text(json.dumps(site_data, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote {out} ({out.stat().st_size:,} bytes, {len(bundle['occupations'])} occupations).")
 
 

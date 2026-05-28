@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -44,6 +45,26 @@ SCORES_PATH = DATA_DIR / "scores.json"
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_MODEL = "google/gemini-2.5-flash"
+# Fallback models tried in order if the primary model fails all retries for an
+# occupation. Ordered: largest / strongest first, then smaller models.
+# All are free on OpenRouter as of writing.
+FALLBACK_MODELS = [
+    "openai/gpt-oss-120b:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "z-ai/glm-4.5-air:free",
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "qwen/qwen3-next-80b-a3b-instruct:free",
+    "minimax/minimax-m2.5:free",
+    "moonshotai/kimi-k2.6:free",
+    "deepseek/deepseek-v4-flash:free",
+    "openai/gpt-oss-20b:free",
+    "nousresearch/hermes-3-llama-3.1-405b:free",
+    "google/gemma-4-31b-it:free",
+    "google/gemma-4-26b-a4b-it:free",
+    "nvidia/nemotron-3-nano-30b-a3b:free",
+    "nvidia/nemotron-nano-9b-v2:free",
+    "meta-llama/llama-3.2-3b-instruct:free",
+]
 
 
 def load_occupations() -> list[dict]:
@@ -70,17 +91,99 @@ def load_page_md(slug: str) -> str:
 
 def load_existing_scores() -> dict:
     if SCORES_PATH.exists():
-        return json.loads(SCORES_PATH.read_text())
+        return json.loads(SCORES_PATH.read_text(encoding="utf-8"))
     return {}
 
 
 def save_scores(scores: dict) -> None:
     SCORES_PATH.parent.mkdir(parents=True, exist_ok=True)
-    SCORES_PATH.write_text(json.dumps(scores, indent=2, ensure_ascii=False))
+    SCORES_PATH.write_text(json.dumps(scores, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
-def score_one(client: httpx.Client, model: str, occupation: dict, page_md: str) -> dict:
-    """Call the LLM and parse the JSON response."""
+def _strip_fences(s: str) -> str:
+    """Strip ```json ... ``` (or plain ```) fences if the model wrapped them."""
+    s = s.strip()
+    if s.startswith("```"):
+        s = s.split("\n", 1)[1] if "\n" in s else s[3:]
+        if s.endswith("```"):
+            s = s[:-3]
+        s = s.strip()
+        if s.startswith("json"):
+            s = s[4:].strip()
+    return s
+
+
+def _repair_truncated_json(s: str) -> str:
+    """Best-effort repair for JSON cut off mid-string by max_tokens.
+
+    If the response ends inside an unterminated string, close the string and
+    any unclosed object braces so json.loads can parse it.
+    """
+    # Walk to detect whether we ended inside a string
+    in_str = False
+    escape = False
+    brace_depth = 0
+    for ch in s:
+        if escape:
+            escape = False
+            continue
+        if ch == "\\":
+            escape = True
+            continue
+        if ch == '"':
+            in_str = not in_str
+            continue
+        if in_str:
+            continue
+        if ch == "{":
+            brace_depth += 1
+        elif ch == "}":
+            brace_depth -= 1
+    repaired = s
+    if in_str:
+        repaired += '"'
+    repaired += "}" * max(brace_depth, 0)
+    return repaired
+
+
+def _regex_extract(s: str) -> dict | None:
+    """Last-resort: pull score + rationale from raw text with regex."""
+    m = re.search(r'"score"\s*:\s*(\d+)', s)
+    if not m:
+        return None
+    score = int(m.group(1))
+    if not (0 <= score <= 10):
+        return None
+    r = re.search(r'"rationale"\s*:\s*"((?:[^"\\]|\\.)*)', s)
+    rationale = r.group(1).encode().decode("unicode_escape", errors="ignore") if r else ""
+    return {"score": score, "rationale": rationale.strip()}
+
+
+def _parse_response(content: str) -> dict:
+    """Parse the model's content into {score, rationale}. Raises ValueError on failure."""
+    content = _strip_fences(content)
+    # Try direct, then repaired, then regex
+    for candidate in (content, _repair_truncated_json(content)):
+        try:
+            parsed = json.loads(candidate)
+            raw = parsed.get("score")
+            if raw is None:
+                continue
+            score = int(raw)
+            if not (0 <= score <= 10):
+                continue
+            return {"score": score, "rationale": str(parsed.get("rationale", "")).strip()}
+        except (json.JSONDecodeError, TypeError, ValueError):
+            continue
+    extracted = _regex_extract(content)
+    if extracted is not None:
+        return extracted
+    raise ValueError(f"could not extract score from response: {content[:200]!r}")
+
+
+def score_one(client: httpx.Client, model: str, occupation: dict, page_md: str,
+              max_attempts: int = 5) -> dict:
+    """Call the LLM and parse the JSON response. Retries with backoff on failure."""
     api_key = os.environ.get("OPENROUTER_API_KEY")
     if not api_key:
         raise RuntimeError(
@@ -88,41 +191,56 @@ def score_one(client: httpx.Client, model: str, occupation: dict, page_md: str) 
             "Get one free at https://openrouter.ai/keys"
         )
 
-    payload = {
-        "model": model,
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": make_user_prompt(occupation, page_md)},
-        ],
-        "response_format": {"type": "json_object"},
-        "temperature": 0.2,
-        "max_tokens": 400,
-    }
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://github.com/Tonumoy/india-jobs",
+        "HTTP-Referer": "https://github.com/Tonumoy/India-Jobs",
         "X-Title": "India Jobs - AI Exposure Scoring",
     }
 
-    for attempt in range(3):
+    last_err: Exception | None = None
+    for attempt in range(max_attempts):
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": make_user_prompt(occupation, page_md)},
+            ],
+            "response_format": {"type": "json_object"},
+            "temperature": 0.2 if attempt == 0 else 0.4,
+            # Generous budget so the rationale never truncates. Rubric caps it
+            # at 75 words but free models often overshoot.
+            "max_tokens": 1200,
+        }
         try:
-            r = client.post(OPENROUTER_URL, json=payload, headers=headers, timeout=60.0)
+            r = client.post(OPENROUTER_URL, json=payload, headers=headers, timeout=90.0)
+            if r.status_code == 429:
+                # Rate-limited — back off longer
+                wait = 5 + 5 * attempt
+                print(f"  [429 rate-limited] {occupation['slug']} attempt {attempt+1}/{max_attempts}, sleeping {wait}s",
+                      file=sys.stderr)
+                time.sleep(wait)
+                last_err = RuntimeError("rate limited")
+                continue
             r.raise_for_status()
-            content = r.json()["choices"][0]["message"]["content"]
-            parsed = json.loads(content)
-            # Defensive validation
-            score = int(parsed.get("score"))
-            if not (0 <= score <= 10):
-                raise ValueError(f"score {score} out of range")
-            rationale = str(parsed.get("rationale", "")).strip()
-            return {"score": score, "rationale": rationale, "model": model}
-        except (httpx.HTTPError, json.JSONDecodeError, ValueError, KeyError) as e:
-            if attempt == 2:
-                raise
-            wait = 2 ** attempt
-            print(f"  Retry {attempt+1}/3 after {wait}s for {occupation['slug']}: {e}", file=sys.stderr)
+            body = r.json()
+            try:
+                content = body["choices"][0]["message"]["content"]
+            except (KeyError, IndexError, TypeError):
+                content = None
+            if content is None or not str(content).strip():
+                # Some providers return null content on safety filter / empty completion.
+                raise ValueError(f"empty response from {model}")
+            parsed = _parse_response(content)
+            return {"score": parsed["score"], "rationale": parsed["rationale"], "model": model}
+        except (httpx.HTTPError, ValueError, KeyError, TypeError) as e:
+            last_err = e
+            wait = min(2 ** attempt, 8)
+            print(f"  Retry {attempt+1}/{max_attempts} after {wait}s for {occupation['slug']}: {e}",
+                  file=sys.stderr)
             time.sleep(wait)
+    assert last_err is not None
+    raise last_err
 
 
 def main():
@@ -150,15 +268,40 @@ def main():
             print(f"  - {o['slug']} ({o['name']})")
         return
 
+    failures = []
+    fallbacks_used = []
+    # Try the user-chosen model first, then walk the fallback chain. Drop any
+    # fallback that duplicates the primary so we don't waste a retry on the same model.
+    model_chain = [args.model] + [m for m in FALLBACK_MODELS if m != args.model]
+
     with httpx.Client() as client:
         for occ in tqdm(to_do, desc="Scoring"):
             page_md = load_page_md(occ["slug"])
-            result = score_one(client, args.model, occ, page_md)
+            result = None
+            last_err: Exception | None = None
+            for idx, model in enumerate(model_chain):
+                try:
+                    result = score_one(client, model, occ, page_md)
+                    if idx > 0:
+                        fallbacks_used.append((occ["slug"], model))
+                        print(f"  [fallback] {occ['slug']} scored via {model}", file=sys.stderr)
+                    break
+                except Exception as e:
+                    last_err = e
+                    print(f"  [model {model} failed for {occ['slug']}] {e}", file=sys.stderr)
+            if result is None:
+                print(f"  [SKIP — all models failed] {occ['slug']}: {last_err}", file=sys.stderr)
+                failures.append(occ["slug"])
+                continue
             scores[occ["slug"]] = result
             # Save incrementally so we never lose progress
             save_scores(scores)
 
     print(f"\nDone. {len(scores)} scores saved to {SCORES_PATH}")
+    if fallbacks_used:
+        print(f"  {len(fallbacks_used)} occupation(s) scored via fallback model.")
+    if failures:
+        print(f"  {len(failures)} occupation(s) kept their previous score: {', '.join(failures)}")
 
 
 if __name__ == "__main__":

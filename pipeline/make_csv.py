@@ -22,7 +22,7 @@ def main():
     scores = {}
     scores_path = DATA_DIR / "scores.json"
     if scores_path.exists():
-        scores = json.loads(scores_path.read_text())
+        scores = json.loads(scores_path.read_text(encoding="utf-8"))
 
     rows = []
     for occ in bundle["occupations"]:
