@@ -188,8 +188,18 @@ def _parse_response(content: str) -> dict:
 
 
 def score_one(client: httpx.Client, model: str, occupation: dict, page_md: str,
-              max_attempts: int = 5) -> dict:
-    """Call the LLM and parse the JSON response. Retries with backoff on failure."""
+              max_attempts: int = 5, rate_limit_attempts: int = 2) -> dict:
+    """Call the LLM and parse the JSON response.
+
+    Two retry budgets:
+      * `max_attempts` (5): for parse / timeout / transient HTTP errors — these
+        we want to retry because the model is responsive but the response was
+        malformed, so a fresh attempt might land cleanly.
+      * `rate_limit_attempts` (2): for 429s — a 429 means *this provider* is
+        busy; spending 75 seconds backing off here is worse than letting the
+        outer fallback chain hand the job to a non-busy provider after just
+        one short retry. The chain IS the rate-limit recovery mechanism.
+    """
     api_key = os.environ.get("OPENROUTER_API_KEY")
     if not api_key:
         raise RuntimeError(
@@ -205,6 +215,7 @@ def score_one(client: httpx.Client, model: str, occupation: dict, page_md: str,
     }
 
     last_err: Exception | None = None
+    rate_limit_seen = 0
     for attempt in range(max_attempts):
         payload = {
             "model": model,
@@ -221,9 +232,17 @@ def score_one(client: httpx.Client, model: str, occupation: dict, page_md: str,
         try:
             r = client.post(OPENROUTER_URL, json=payload, headers=headers, timeout=90.0)
             if r.status_code == 429:
-                # Rate-limited — back off longer
-                wait = 5 + 5 * attempt
-                print(f"  [429 rate-limited] {occupation['slug']} attempt {attempt+1}/{max_attempts}, sleeping {wait}s",
+                # Rate-limited — back off briefly, then fall through to the
+                # next model in the chain. Don't burn the full retry budget
+                # waiting for one busy provider.
+                rate_limit_seen += 1
+                if rate_limit_seen >= rate_limit_attempts:
+                    last_err = RuntimeError("rate limited")
+                    print(f"  [429 x{rate_limit_seen}] {occupation['slug']} on {model.split('/')[-1]}, falling through",
+                          file=sys.stderr)
+                    break  # Exit attempts loop, raise to outer fallback chain
+                wait = 5 * rate_limit_seen
+                print(f"  [429] {occupation['slug']} on {model.split('/')[-1]} attempt {rate_limit_seen}/{rate_limit_attempts}, sleeping {wait}s",
                       file=sys.stderr)
                 time.sleep(wait)
                 last_err = RuntimeError("rate limited")
