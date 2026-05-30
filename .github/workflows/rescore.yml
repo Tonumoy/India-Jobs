@@ -39,7 +39,7 @@ jobs:
             echo "::error::OPENROUTER_API_KEY secret is not set. Add it under Settings -> Secrets and variables -> Actions."
             exit 1
           fi
-          uv run python pipeline/score.py --force --model nvidia/nemotron-3-super-120b-a12b:free
+          uv run python pipeline/score.py --force --model moonshotai/kimi-k2.6:free
 
       - name: Rebuild data.json and CSV
         run: |

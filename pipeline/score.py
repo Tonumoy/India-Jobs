@@ -47,28 +47,29 @@ PAGES_DIR = ROOT / "pages"
 SCORES_PATH = DATA_DIR / "scores.json"
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-# Default to a free-tier model so a vanilla `score.py` run never bills.
-# Override at the CLI with `--model <provider/model>` (paid models welcome).
-DEFAULT_MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
-# Fallback models tried in order if the primary model fails all retries for an
-# occupation. Ordered: largest / strongest first, then smaller models.
-# All are free on OpenRouter as of writing.
+# Default to the strongest open-weight free model on OpenRouter as of
+# 2026-05-29, per the Artificial Analysis Intelligence Index v4.0
+# (Kimi K2.6: index 54, #1 open / #4 overall). Override with --model.
+DEFAULT_MODEL = "moonshotai/kimi-k2.6:free"
+# Fallback chain ordered by AA Intelligence Index (best → worst) so each
+# occupation always gets the highest-quality model that's not currently
+# rate-limited. Index scores annotated for next-time updates.
+# Drop a model only if it returns 404; keep rate-limited (429) ones — the
+# script retries with backoff before falling through.
 FALLBACK_MODELS = [
-    "openai/gpt-oss-120b:free",
-    "nvidia/nemotron-3-super-120b-a12b:free",
-    "z-ai/glm-4.5-air:free",
-    "meta-llama/llama-3.3-70b-instruct:free",
-    "qwen/qwen3-next-80b-a3b-instruct:free",
-    "minimax/minimax-m2.5:free",
-    "moonshotai/kimi-k2.6:free",
-    "deepseek/deepseek-v4-flash:free",
-    "openai/gpt-oss-20b:free",
-    "nousresearch/hermes-3-llama-3.1-405b:free",
-    "google/gemma-4-31b-it:free",
-    "google/gemma-4-26b-a4b-it:free",
-    "nvidia/nemotron-3-nano-30b-a3b:free",
-    "nvidia/nemotron-nano-9b-v2:free",
-    "meta-llama/llama-3.2-3b-instruct:free",
+    "deepseek/deepseek-v4-flash:free",          # 47
+    "google/gemma-4-31b-it:free",               # 39
+    "nvidia/nemotron-3-super-120b-a12b:free",   # 36
+    "openai/gpt-oss-120b:free",                 # 33
+    "google/gemma-4-26b-a4b-it:free",           # 31
+    "nvidia/nemotron-3-nano-30b-a3b:free",      # 24
+    "openai/gpt-oss-20b:free",                  # 24
+    "z-ai/glm-4.5-air:free",                    # 23
+    "qwen/qwen3-next-80b-a3b-instruct:free",    # 20
+    "nousresearch/hermes-3-llama-3.1-405b:free",# ~17
+    "nvidia/nemotron-nano-9b-v2:free",          # 15
+    "meta-llama/llama-3.3-70b-instruct:free",   # 14
+    "meta-llama/llama-3.2-3b-instruct:free",    # small / on-device tier
 ]
 
 
